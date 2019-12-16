@@ -15,10 +15,8 @@ class CreateCheckListEmployeeTable extends Migration
     {
         Schema::create('check_list_employee', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('user_id');
+            $table->string('user_id');
             $table->unsignedInteger('location_id');
-            $table->text('check_list_ids');
-            $table->text('days');
             $table->timestamps();
         }
         );

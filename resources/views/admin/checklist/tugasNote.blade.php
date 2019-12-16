@@ -16,7 +16,7 @@
                         class="ri2-block ri2-relative ri2-boxpad40 ri2-mobileboxpad20 ri2-box ri2-left">
                         <div class="ri2-block ri2-relative ri2-marginbottom20">
                             <div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">
-                                <img src="image/user1.jpg"
+                                <img src="{{ asset('admin/image/user1.jpg') }}"
                                      class="ri2-circle new-user-mthumbnail ri2-vmid">
                             </div>
                             <div class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16">

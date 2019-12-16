@@ -21,6 +21,11 @@ class CheckListProgress extends Model
         return $this->hasMany(CheckListProgressDetail::class);
     }
 
+    public function checkListEmployee ()
+    {
+        return $this->hasMany(CheckListEmployee::class, 'user_id', 'user_id');
+    }
+
     public function location ()
     {
         return $this->belongsTo(Location::class, 'location_id');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class ClientController extends Controller
 {
@@ -46,7 +47,36 @@ class ClientController extends Controller
             ],
         ]);
 
+        Cookie::queue('bearer', $at, 60);
+
         $response = json_decode((string) $response->getBody(), true);
         return $response;
+    }
+
+    public function getUserEmployee()
+    {
+        if(Cookie::has('bearer')) {
+            $client   = new Client();
+            $response = $client->request('POST', config('app.client_url') . 'api/data/users', [
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Authorization' => 'Bearer ' . Cookie::get('bearer'),
+                ],
+            ]
+            );
+            $response = json_decode((string)$response->getBody(), true);
+            return $response;
+        }
+        return false;
+    }
+
+    protected function getUserEmployeeNameById($id)
+    {
+        $data = [];
+        foreach ($this->getUserEmployee() as $item) {
+            $data[$item['nik']] =  $item ;
+        }
+
+        return $data[$id]['name'];
     }
 }

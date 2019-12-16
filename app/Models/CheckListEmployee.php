@@ -10,10 +10,18 @@ class CheckListEmployee extends Model
     protected $fillable = [
         'user_id',
         'location_id',
-        'check_list_ids',
-        'days',
         'created_at',
         'updated_at',
     ];
+
+    public function location()
+    {
+    	return $this->belongsTo(Location::class);
+    }
+
+    public function checkListEmployeeDetail()
+    {
+        return $this->hasMany(CheckListEmployeeDetail::class);
+    }
 
 }

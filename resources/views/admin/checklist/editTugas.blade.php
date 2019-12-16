@@ -9,23 +9,21 @@
                     class="ri2-modal-body ri2-block ri2-relative ri2-bgwhite1 ri2-marginbottom15 ri2-borderradius2 ri2-overflowhidden">
                     <div
                         class="ri2-block ri2-relative ri2-left new-blackoutgradient ri2-txwhite1 ri2-font20 ri2-boxpad10 ri2-box">
-                        Edit Tugas
+                        Edit Tugas {{ (new App\Http\Controllers\Admin\CheckListController)->tanggal_indo(date('Y-m-d')) }}
                     </div>
                     <div
                         class="ri2-block ri2-relative ri2-boxpad40 ri2-mobileboxpad20 ri2-box">
+                        <input type="hidden" name="editTugasId" id="editTugasId">
+                        <input type="hidden" name="editTugasNote" id="editTugasNote">
                         <div class="ri2-block ri2-relative ri2-marginbottom20 ri2-left">
                             <div
                                 class="ri2-block ri2-relative ri2-marginbottom5 ri2-font14 ri2-txgrey1 ri2-semibold">
-                                Pilih Personel
+                                Personel
                             </div>
                             <div class="ri2-block ri2-relative">
-                                <select
-                                    class="basic-single ri2-block ri2-relative ri2-input40 ri2-input-greyholder ri2-box ri2-bgwhite4 ri2-fullwidth"
-                                    name="select">
-                                    <option value="" selected>Pilih Personel</option>
-                                    <option value="JKT">Personel 1</option>
-                                    <option value="SBY">Personel 2</option>
-                                </select>
+                                <input
+                                    class="ri2-input40 ri2-paddingleft10 ri2-paddingright10 ri2-box ri2-bgwhite2 ri2-borderradius2 ri2-borderfull1 ri2-borderwhite5 ri2-fullwidth ri2-input-greyholder ri2-font14"
+                                    name="editTugasUserName" id="editTugasUserName" readOnly>
                             </div>
                         </div>
                         <div class="ri2-block ri2-relative ri2-marginbottom20 ri2-left">
@@ -36,10 +34,11 @@
                             <div class="ri2-block ri2-relative">
                                 <select
                                     class="basic-single ri2-block ri2-relative ri2-input40 ri2-input-greyholder ri2-box ri2-bgwhite4 ri2-fullwidth"
-                                    name="select">
+                                    name="editTugasLocationId" id="editTugasLocationId">
                                     <option value="" selected>Pilih Lokasi</option>
-                                    <option value="JKT">Lokasi 1</option>
-                                    <option value="SBY">Lokasi 2</option>
+                                    @foreach($location as $locations)
+                                        <option value="{{ $locations->id}}">{{ $locations->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -49,84 +48,16 @@
                                 Atur Tugas
                             </div>
                             <div class="ri2-block ri2-relative">
-                                <div
-                                    class="ri2-block ri2-relative ri2-checkbox ri2-marginbottom5">
-                                    <label
-                                        class="ri2-checkbox-container ri2-txblack3 ri2-paddingleft30 ri2-pointer ri2-font14 ri2-line14">
-                                        <input type="checkbox" checked="">
-                                        <span class="ri2-checkmark-text">Bersihkan Lantai</span>
-                                        <span class="ri2-checkmark"></span>
-                                    </label>
-                                </div>
-                                <div
-                                    class="ri2-block ri2-relative ri2-checkbox ri2-marginbottom5">
-                                    <label
-                                        class="ri2-checkbox-container ri2-txblack3 ri2-paddingleft30 ri2-pointer ri2-font14 ri2-line14">
-                                        <input type="checkbox" disabled="">
-                                        <span
-                                            class="ri2-checkmark-text">Bersihkan Meja</span>
-                                        <span class="ri2-checkmark"></span>
-                                    </label>
-                                </div>
-                                <div
-                                    class="ri2-block ri2-relative ri2-checkbox ri2-marginbottom5">
-                                    <label
-                                        class="ri2-checkbox-container ri2-txblack3 ri2-paddingleft30 ri2-pointer ri2-font14 ri2-line14">
-                                        <input type="checkbox" checked="">
-                                        <span
-                                            class="ri2-checkmark-text">Bersihkan Jendela</span>
-                                        <span class="ri2-checkmark"></span>
-                                    </label>
-                                </div>
-                                <div
-                                    class="ri2-block ri2-relative ri2-checkbox ri2-marginbottom5">
-                                    <label
-                                        class="ri2-checkbox-container ri2-txblack3 ri2-paddingleft30 ri2-pointer ri2-font14 ri2-line14">
-                                        <input type="checkbox" checked="">
-                                        <span
-                                            class="ri2-checkmark-text">Bersihkan Kamar Mandi</span>
-                                        <span class="ri2-checkmark"></span>
-                                    </label>
-                                </div>
-                                <div
-                                    class="ri2-block ri2-relative ri2-checkbox ri2-marginbottom5">
-                                    <label
-                                        class="ri2-checkbox-container ri2-txblack3 ri2-paddingleft30 ri2-pointer ri2-font14 ri2-line14">
-                                        <input type="checkbox" checked="">
-                                        <span
-                                            class="ri2-checkmark-text">Buang Sampah</span>
-                                        <span class="ri2-checkmark"></span>
-                                    </label>
-                                </div>
-                                <div
-                                    class="ri2-block ri2-relative ri2-checkbox ri2-marginbottom5">
-                                    <label
-                                        class="ri2-checkbox-container ri2-txblack3 ri2-paddingleft30 ri2-pointer ri2-font14 ri2-line14">
-                                        <input type="checkbox" checked="">
-                                        <span
-                                            class="ri2-checkmark-text">Bersihkan Tirai</span>
-                                        <span class="ri2-checkmark"></span>
-                                    </label>
-                                </div>
-                                <div
-                                    class="ri2-block ri2-relative ri2-checkbox ri2-marginbottom5">
-                                    <label
-                                        class="ri2-checkbox-container ri2-txblack3 ri2-paddingleft30 ri2-pointer ri2-font14 ri2-line14">
-                                        <input type="checkbox" checked="">
-                                        <span
-                                            class="ri2-checkmark-text">Siram Tanaman</span>
-                                        <span class="ri2-checkmark"></span>
-                                    </label>
-                                </div>
+                                <span id='editTugasCheckList'></span>
                             </div>
                         </div>
                         <div class="ri2-block ri2-relative ri2-left">
                             <button
-                                class="noty-button modaledittugasclose ri2-inlineblock ri2-bordernone ri2-borderradius2 ri2-boxpad7 ri2-paddingright15 ri2-paddingleft15 ri2-bgblue1 ri2-txwhite1 ri2-hovering ri2-font16 ri2-semibold ri2-pointer">
+                                class="modaledittugassave ri2-inlineblock ri2-bordernone ri2-borderradius2 ri2-boxpad7 ri2-paddingright15 ri2-paddingleft15 ri2-bgblue1 ri2-txwhite1 ri2-hovering ri2-font16 ri2-semibold ri2-pointer">
                                 Simpan
                             </button>
                             <button
-                                class="noty-button-hapus modaledittugasclose ri2-inlineblock ri2-bordernone ri2-borderradius2 ri2-boxpad7 ri2-paddingright15 ri2-paddingleft15 ri2-bgyellow1 ri2-txblack3 ri2-hovering ri2-font16 ri2-semibold ri2-pointer">
+                                class="modaledittugasdelete ri2-inlineblock ri2-bordernone ri2-borderradius2 ri2-boxpad7 ri2-paddingright15 ri2-paddingleft15 ri2-bgyellow1 ri2-txblack3 ri2-hovering ri2-font16 ri2-semibold ri2-pointer">
                                 Hapus
                             </button>
                         </div>

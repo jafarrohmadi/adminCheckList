@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ce8d682-b236-4736-9d99-6b5ac6b37df5" name="Default Changelist" comment="" />
+    <list default="true" id="9ce8d682-b236-4736-9d99-6b5ac6b37df5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/CheckListEmployeeDetail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/CheckListOperTugas.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CheckListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CheckListController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CheckListEmployee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CheckListEmployee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CheckListProgress.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CheckListProgress.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_09_092858_create_check_list_employee_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_09_092858_create_check_list_employee_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_09_095600_create_check_list_progress_detail_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_09_095600_create_check_list_progress_detail_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_10_105527_create_oper_check_list_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_10_105527_create_check_list_oper_tugas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/editTugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/editTugas.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/operTugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/operTugas.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/tambahTugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/tambahTugas.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +31,16 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\laragon\www\site\.idea" />
+      </set>
+    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -116,9 +144,11 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1UjJWXHwuRnsW3jY8SPChjCFUt8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ship" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
@@ -161,12 +191,26 @@
       <workItem from="1575942314262" duration="1180000" />
       <workItem from="1575944399066" duration="24011000" />
       <workItem from="1575985165929" duration="592000" />
-      <workItem from="1576032026054" duration="9002000" />
+      <workItem from="1576032026054" duration="14937000" />
+      <workItem from="1576244569401" duration="222000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

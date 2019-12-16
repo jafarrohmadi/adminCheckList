@@ -25,8 +25,23 @@ Route::group(['prefix' => 'site', 'as' => 'site.'], function () {
     Route::put('/updateCheckList/{id}', 'Admin\ChecklistController@updateCheckList');
     Route::delete('/deleteCheckList/{id}', 'Admin\ChecklistController@deleteCheckList');
     Route::get('/getDataCheckListProgress/{id}', 'Admin\ChecklistController@getDataCheckListProgress');
+    
     Route::get('/login', 'ClientController@redirect')->name('get.token');
+   
     Route::get('/callback', 'ClientController@callback')->name('callback');
+    
+    Route::get('/getUserEmployee', 'Admin\ChecklistController@getUserEmployee');
+    
+    Route::get('/getUserEmployeeHaveCheckList', 'Admin\ChecklistController@getUserEmployeeHaveCheckList');
+    
+    Route::get('/getUserEmployeeDontHaveCheckList', 'Admin\ChecklistController@getUserEmployeeDontHaveCheckList');
+    
+    Route::get('/getCheckListEmployeeByUserId/{id}', 'Admin\ChecklistController@getCheckListEmployeeByUserId');    
+    Route::post('/saveOperTugas', 'Admin\ChecklistController@saveOperTugas');
+    Route::delete('/checkListProcessDelete/{id}', 'Admin\ChecklistController@checkListProcessDelete');
+    
+    Route::put('/checkListProgressDetailEditById/{id}', 'Admin\ChecklistController@checkListProgressDetailEditById');
+    Route::get('/getOnDutyData', 'Admin\ChecklistController@getOnDutyData');
 });
 
 Auth::routes();

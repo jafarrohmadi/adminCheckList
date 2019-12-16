@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOperCheckListTable extends Migration
+class CreateCheckListEmployeeDetailTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateOperCheckListTable extends Migration
      */
     public function up()
     {
-        Schema::create('check_list_oper', function (Blueprint $table) {
+        Schema::create('check_list_employee_detail', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('from_user_id');
-            $table->unsignedInteger('to_user_id');
-            $table->unsignedInteger('location_id');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->unsignedBigInteger('check_list_employee_id');
+            $table->unsignedBigInteger('check_list_id');
+            $table->string('day');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateOperCheckListTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('oper_check_list');
+        Schema::dropIfExists('check_list_employee_detail');
     }
 }

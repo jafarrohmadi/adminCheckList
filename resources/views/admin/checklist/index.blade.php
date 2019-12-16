@@ -70,120 +70,23 @@
                         </div>
                     </div>
                     <div class="ri2-block ri2-relative ri2-boxpad20 ri2-box">
-                        <div class="new-onduty new-parent ri2-inlineblock ri2-fullwidth ri2-relative">
-                            <div
-                                class="modaledittugasopen ri2-floatleft new-onduty-list new-child ri2-vtop ri2-boxpad15 ri2-box ri2-borderradius5 ri2-borderfull1 ri2-borderwhite3 ri2-pointer">
-                                <div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">
-                                    <div class="ri2-inlineblock ri2-relative">
-                                        <div
-                                            class="new-individual-task ri2-absolute ri2-center ri2-bgred1 ri2-txwhite1 ri2-font10 ri2-circle">
-                                            7
-                                        </div>
-                                        <img src="image/user1.jpg"
-                                             class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">
-                                    </div>
-                                </div>
-                                <div class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16">
-                                    Samuel Jordan
-                                </div>
-                                <div class="ri2-block ri2-relative ri2-center ri2-txgrey1 ri2-font14">
-                                    Lt.1 Ayookopi
-                                </div>
-                            </div>
-                            <div
-                                class="modaledittugasopen ri2-floatleft new-onduty-list new-child ri2-vtop ri2-boxpad15 ri2-box ri2-borderradius5 ri2-borderfull1 ri2-borderwhite3 ri2-pointer">
-                                <div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">
-                                    <img src="image/user2.jpg"
-                                         class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">
-                                </div>
-                                <div class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16">
-                                    Mamimu Memo
-                                </div>
-                                <div class="ri2-block ri2-relative ri2-center ri2-txgrey1 ri2-font14">
-                                    Lt.2 Airmas
-                                </div>
-                            </div>
-                            <div
-                                class="modaledittugasopen ri2-floatleft new-onduty-list new-child ri2-vtop ri2-boxpad15 ri2-box ri2-borderradius5 ri2-borderfull1 ri2-borderwhite3 ri2-pointer">
-                                <div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">
-                                    <img src="image/user3.jpg"
-                                         class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">
-                                </div>
-                                <div class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16">
-                                    Luc Mahrez
-                                </div>
-                                <div class="ri2-block ri2-relative ri2-center ri2-txgrey1 ri2-font14">
-                                    Lt.3 Airmas
-                                </div>
-                            </div>
-                            <div
-                                class="modaleditopertugasopen ri2-floatleft new-onduty-list new-child ri2-vtop ri2-boxpad15 ri2-box ri2-borderradius5 ri2-borderfull1 ri2-borderwhite3 ri2-pointer">
-                                <div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">
-                                    <img src="image/user3.jpg"
-                                         class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">
-                                </div>
-                                <div class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16">
-                                    Luc Mahrez
-                                </div>
-                                <div class="ri2-block ri2-relative ri2-center ri2-txgrey1 ri2-font14">
-                                    Lt.1 Ayookopi <a
-                                        class="ri2-relative ri2-inlineblock ri2-nowrap ri2-tooltip"><span
-                                            class="ri2-tooltiptext ri2-normal ri2-linenormal">Operan dari Samuel Jordan</span><i
-                                            class="fas fa-exchange-alt ri2-rotate-45 ri2-txgreen1"></i></a>
-                                </div>
-                            </div>
-                            <div
-                                class="modaledittugasopen ri2-floatleft new-onduty-list new-child ri2-vtop ri2-boxpad15 ri2-box ri2-borderradius5 ri2-borderfull1 ri2-borderwhite3 ri2-pointer">
-                                <div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">
-                                    <img src="image/user4.jpg"
-                                         class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">
-                                </div>
-                                <div class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16">
-                                    Champo Pentin
-                                </div>
-                                <div class="ri2-block ri2-relative ri2-center ri2-txgrey1 ri2-font14">
-                                    Lt.4 Airmas
-                                </div>
-                            </div>
-                            <div
-                                class="modaledittugasopen ri2-floatleft new-onduty-list new-child ri2-vtop ri2-boxpad15 ri2-box ri2-borderradius5 ri2-borderfull1 ri2-borderwhite3 ri2-pointer">
-                                <div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">
-                                    <img src="image/user5.jpg"
-                                         class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">
-                                </div>
-                                <div class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16">
-                                    Lucretia Aura
-                                </div>
-                                <div class="ri2-block ri2-relative ri2-center ri2-txgrey1 ri2-font14">
-                                    Lt.1 Ayooservice
-                                </div>
-                            </div>
-                            <div
-                                class="modaledittugasopen ri2-floatleft new-onduty-list new-child ri2-vtop ri2-boxpad15 ri2-box ri2-borderradius5 ri2-borderfull1 ri2-borderwhite3 ri2-pointer">
-                                <div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">
-                                    <img src="image/user6.jpg"
-                                         class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">
-                                </div>
-                                <div class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16">
-                                    Chika Khan
-                                </div>
-                                <div class="ri2-block ri2-relative ri2-center ri2-txgrey1 ri2-font14">
-                                    Lt.3 Ayooservice
-                                </div>
-                            </div>
+                        <div class="new-onduty new-parent ri2-inlineblock ri2-fullwidth ri2-relative" id="onDutyData">
                         </div>
-                        <div class="ri2-block ri2-relative ri2-center ri2-margintop20">
-                            <div
-                                class="onduty-open ri2-inlineblock ri2-font16 ri2-txblack3 ri2-pointer ri2-linkhover">
-                                <i class="fas fa-angle-double-down"></i> Lihat Semua 6 Personel
+                        @if( count($onDutyData) > 4)
+                            <div class="ri2-block ri2-relative ri2-center ri2-margintop20">
+                                <div
+                                    class="onduty-open ri2-inlineblock ri2-font16 ri2-txblack3 ri2-pointer ri2-linkhover">
+                                    <i class="fas fa-angle-double-down"></i> Lihat Semua {{ count($onDutyData) }}
+                                    Personel
+                                </div>
                             </div>
-                        </div>
-                        <div class="ri2-desktop-hide ri2-relative ri2-center ri2-margintop20">
-                            <div
-                                class="onduty-close ri2-inlineblock ri2-font16 ri2-txblack3 ri2-pointer ri2-linkhover">
-                                <i class="fas fa-angle-double-up"></i> Sembunyikan
+                            <div class="ri2-desktop-hide ri2-relative ri2-center ri2-margintop20">
+                                <div
+                                    class="onduty-close ri2-inlineblock ri2-font16 ri2-txblack3 ri2-pointer ri2-linkhover">
+                                    <i class="fas fa-angle-double-up"></i> Sembunyikan
+                                </div>
                             </div>
-                        </div>
+                        @endif
                         @include('admin.checklist.editTugas')
                         @include('admin.checklist.editOperTugas')
                     </div>
@@ -221,15 +124,13 @@
                                             <td>{{ $checkListProgres->id }}</td>
                                             <td>
                                                 <div class="ri2-inlineblock ri2-relative ri2-vmid ri2-marginright7">
-                                                    <div
-                                                        class="new-individual-task2 ri2-absolute ri2-center ri2-bgred1 ri2-txwhite1 ri2-font8 ri2-circle">
-                                                        7
-                                                    </div>
-                                                    <img src="image/user1.jpg"
+                                                    <img src="{{ asset('admin/image/user1.jpg') }}"
                                                          class="new-user-sthumbnail ri2-inlineblock ri2-circle ri2-vmid">
                                                 </div>
                                                 <span
-                                                    class="new-datatable-nowrap new-datatable-male">Samuel Jordan</span>
+                                                    class="new-datatable-nowrap new-datatable-male">
+                                                    {{ $checkListProgres->name }}
+                                                </span>
                                             </td>
                                             <td>{{ (new App\Http\Controllers\Admin\CheckListController)->tanggal_indo(date('Y-m-d', strtotime($checkListProgres->date))) }}</td>
                                             <td>{{ $checkListProgres->location->name }}</td>
@@ -318,6 +219,8 @@
         $(modaltambahtugasopen).on('click', function () {
             $('.modaltambahtugas').css('display', 'block');
             $('body', 'html').css('overflow', 'hidden');
+            getUserEmployeeDontHaveCheckList();
+            getChecklist();
         });
 
         $(modaltambahtugasback).on('click', function () {
@@ -329,16 +232,26 @@
             $('.modaltambahtugas').css('display', 'none');
             $('body', 'html').css('overflow', 'auto');
         });
-        modaltugasnoteopen
+
         //edit tugas
         var modaledittugas = $('.modaledittugas');
         var modaledittugasopen = $('.modaledittugasopen');
         var modaledittugasback = $('.modaledittugasback');
         var modaledittugasclose = $('.modaledittugasclose');
 
-        $(modaledittugasopen).on('click', function () {
+        $(document).on("click", ".modaledittugasopen", function () {
+            let id = $(this).attr("data-id");
+            let name = $(this).attr("data-name");
+            let locationId = $(this).attr("data-location");
+            let datachecklist = $(this).attr("data-checklist");
+            let editTugasNote = $(this).attr("data-note");
+            $('#editTugasId').val(id);
+            $('#editTugasUserName').val(name);
+            $('#editTugasLocationId').val(locationId);
+            $('#editTugasNote').val(locationId);
             $('.modaledittugas').css('display', 'block');
             $('body', 'html').css('overflow', 'hidden');
+            getChecklist(datachecklist);
         });
 
         $(modaledittugasback).on('click', function () {
@@ -351,6 +264,50 @@
             $('body', 'html').css('overflow', 'auto');
         });
 
+        $('.modaledittugassave').on('click', function () {
+            $('.modaledittugas').css('display', 'none');
+            $('body', 'html').css('overflow', 'auto');
+
+            const check_list_ids = [];
+
+            $("input[name='edit_check_list_ids']:checked").each(function () {
+                check_list_ids.push(this.value);
+            });
+
+            $.ajax({
+                type: 'put',
+                url: "{{url('/site/checkListProgressDetailEditById') }}/" + $('#editTugasId').val(),
+                data: {
+                    '_token': "{{  csrf_token() }}",
+                    'location_id': $('#editTugasLocationId').val(),
+                    'note': $('#editTugasNote').val(),
+                    'check_list_ids': check_list_ids
+                },
+                success: function (data) {
+                    $('.modaledittugas').css('display', 'none');
+                    $('body', 'html').css('overflow', 'auto');
+                    getOnDutyData();
+                    popUpMessage('Success Tambah CheckList');
+                },
+            })
+        });
+
+        $('.modaledittugasdelete').on('click', function () {
+            $.ajax({
+                type: 'delete',
+                url: "{{url('/site/checkListProcessDelete') }}/" + $('#editTugasId').val(),
+                data: {
+                    '_token': "{{  csrf_token() }}"
+                },
+                success: function (data) {
+                    $('.modaledittugas').css('display', 'none');
+                    $('body', 'html').css('overflow', 'auto');
+                    getChecklist();
+                    popUpMessage('Success Tambah CheckList');
+                },
+            })
+        });
+
         //edit opertugas
         var modaleditopertugas = $('.modaleditopertugas');
         var modaleditopertugasopen = $('.modaleditopertugasopen');
@@ -359,6 +316,10 @@
 
         $(modaleditopertugasopen).on('click', function () {
             $('.modaleditopertugas').css('display', 'block');
+            $('#start_date').val();
+            $('#end_date').val();
+            $('#oper_tugas_location_id').val();
+
             $('body', 'html').css('overflow', 'hidden');
         });
 
@@ -381,6 +342,7 @@
         $(modalchecklistopen).on('click', function () {
             $('.modalchecklist').css('display', 'block');
             $('body', 'html').css('overflow', 'hidden');
+            getChecklist();
         });
 
         $(modalchecklistback).on('click', function () {
@@ -402,6 +364,11 @@
         $(modalopertugasopen).on('click', function () {
             $('.modalopertugas').css('display', 'block');
             $('body', 'html').css('overflow', 'hidden');
+            $('#start_date').val('');
+            $('#end_date').val('');
+            $('#oper_tugas_location_id').val('');
+            getUserEmployeeHaveCheckList();
+            getUserEmployeeData();
         });
 
         $(modalopertugasback).on('click', function () {
@@ -412,6 +379,28 @@
         $(modalopertugasclose).on('click', function () {
             $('.modalopertugas').css('display', 'none');
             $('body', 'html').css('overflow', 'auto');
+        });
+
+        $('.modalopertugassave').on('click', function () {
+            $('.modalopertugas').css('display', 'none');
+            $('body', 'html').css('overflow', 'auto');
+            $.ajax({
+                type: 'post',
+                url: "{{url('/site/saveOperTugas') }}",
+                data: {
+                    '_token': "{{  csrf_token() }}",
+                    'from_user_id': $("#from_user_id").val(),
+                    'to_user_id': $("#to_user_id").val(),
+                    'location_id': $("#oper_tugas_location_id").val(),
+                    'start_date': $("#start_date").val(),
+                    'end_date': $("#end_date").val(),
+                },
+                success: function (data) {
+                    $('.ubahchecklistopen').parent().parent().slideDown();
+                    getChecklist();
+                    popUpMessage('Success Tambah CheckList');
+                },
+            });
         });
 
         //edit checklistprogress
@@ -433,7 +422,9 @@
                 const name = all[i]['check_list']['name'] != null ? all[i]['check_list']['name'] : "";
                 const note = all[i]['note'] != null ? '<div class="ri2-block ri2-relative ri2-margintop5 ri2-italic ri2-font14"><i class="far fa-comment-dots"></i>' + all[i]['check_list']['note'] + '</div>' : "";
                 const status = all[i]['status'] == 1 ? "<i class='far fa-check-square'></i>" : "<i class='far fa-square'></i>";
-                const image = all[i]['picture'] != null ? '<div class="ri2-block ri2-relative ri2-margintop5"> <buttonclass="ri2-absolute ri2-center ri2-circle ri2-bgwhite1 ri2-txblack3 new-rotate-button ri2-pointer ri2-nopadding ri2-bordernone"> <i class="fas fa-undo"></i> </button> ' +
+                const image = all[i]['picture'] != null ? '<div class="ri2-block ri2-relative ri2-margintop5"> ' +
+                    '<buttonclass="ri2-absolute ri2-center ri2-circle ri2-bgwhite1 ri2-txblack3 new-rotate-button ri2-pointer ri2-nopadding ri2-bordernone"> ' +
+                    '<i class="fas fa-undo"></i> </button> ' +
                     '<img src="' + all[i]['picture'] + '"class="ri2-fullwidth new-rotate-image new-rotate-north"> </div>' : "";
                 html = html + '<div class="ri2-row">' +
                     '<div class="ri2-cell ri2-fit ri2-boxpad10">' + status + '</div>' +
@@ -502,6 +493,7 @@
             $("#nameCheckList").val('');
             $('.ubahchecklistopen').parent().parent().slideUp();
         });
+
         $('.tambahchecklistsave').click(function () {
             $(this).parent().parent().slideUp();
             $(this).parent().parent().siblings().show();
@@ -527,7 +519,7 @@
             $('.ubahchecklistopen').parent().parent().slideDown();
         });
 
-        $(document).on("click", "a.ubahchecklistopen" , function() {
+        $(document).on("click", "a.ubahchecklistopen", function () {
             $(this).parent().parent().siblings().slideDown();
             $(this).parent().parent().slideUp();
             $("#editIdCheckList").val($(this).attr("data-id"));
@@ -543,7 +535,7 @@
                 url: "{{url('/site/updateCheckList') }}/" + $("#editIdCheckList").val(),
                 data: {
                     '_token': "{{  csrf_token() }}",
-                    'name' : $("#editNameCheckList").val()
+                    'name': $("#editNameCheckList").val()
                 },
                 success: function (data) {
                     $('.ubahchecklistopen').parent().parent().slideDown();
@@ -669,6 +661,7 @@
                 success: function (data) {
                     $('.modaltambahtugas').css('display', 'none');
                     $('body', 'html').css('overflow', 'auto');
+                    getUserEmployeeDontHaveCheckList();
                     popUpMessage('Success Tambah Checklist');
                 },
             });
@@ -692,27 +685,131 @@
             });
         });
 
-        function getChecklist() {
+        function getChecklist(editDatachecklist) {
+            editDatachecklist = editDatachecklist || 0;
+            console.log(editDatachecklist);
             $.ajax({
                 type: 'get',
                 url: "{{url('/site/getCheckList') }}",
                 success: function (data) {
                     let tambahTugasCheckList = '';
                     let crudCheckListIndex = '';
+                    let editTugasCheckList = '';
+                    let editTugasChecked = [];
+
+                    if (editDatachecklist != 0) {
+                        console.log(JSON.parse(editDatachecklist));
+                        for (var i in editDatachecklist) {
+                            editTugasChecked[i] = editDatachecklist[i]['check_list_id'];
+                        }
+                    }
+
                     for (i = 0; i < data.length; i++) {
                         tambahTugasCheckList = tambahTugasCheckList + ' <div class="ri2-block ri2-relative"> ' +
-                            ' <div class="ri2-block ri2-relative ri2-checkbox ri2-marginbottom5"> <label class="ri2-checkbox-container ri2-txblack3 ri2-paddingleft30 ri2-pointer ri2-font14 ri2-line14"> ' +
+                            ' <div class="ri2-block ri2-relative ri2-checkbox ri2-marginbottom5">' +
+                            ' <label class="ri2-checkbox-container ri2-txblack3 ri2-paddingleft30 ri2-pointer ri2-font14 ri2-line14"> ' +
                             '<input type="checkbox" name="check_list_ids" id="check_list_ids" checked="" value="' + data[i]["id"] + '"> ' +
                             '<span class="ri2-checkmark-text">' + data[i]["name"] + ' </span> <span class="ri2-checkmark"></span> </label> </div> </div>';
 
-                        crudCheckListIndex = crudCheckListIndex + '<li> <a class="ubahchecklistopen ri2-pointer ri2-linkhover" data-id="'+ data[i]['id']+'" data-name="'+ data[i]['name']+'">' + data[i]["name"] + '</a> </li>';
+                        crudCheckListIndex = crudCheckListIndex + '<li> <a class="ubahchecklistopen ri2-pointer ri2-linkhover" data-id="' + data[i]['id'] + '" data-name="' + data[i]['name'] + '">' + data[i]["name"] + '</a> </li>';
+
+                        if (editTugasChecked.indexOf(data[i]["id"]) > -1) {
+                            checkChecked = 'checked=""';
+                        } else {
+                            checkChecked = "";
+                        }
+
+                        editTugasCheckList = editTugasCheckList + ' <div class="ri2-block ri2-relative"> ' +
+                            ' <div class="ri2-block ri2-relative ri2-checkbox ri2-marginbottom5"> <label class="ri2-checkbox-container ri2-txblack3 ri2-paddingleft30 ri2-pointer ri2-font14 ri2-line14"> ' +
+                            '<input type="checkbox" name="edit_check_list_ids" id="edit_check_list_ids" value="' + data[i]["id"] + '"' + checkChecked + '> ' +
+                            '<span class="ri2-checkmark-text">' + data[i]["name"] + ' </span> <span class="ri2-checkmark"></span> </label> </div> </div>';
                     }
+
                     $('#tambahTugasCheckList').html(tambahTugasCheckList);
+                    $('#editTugasCheckList').html(editTugasCheckList);
                     $('#crudCheckListIndex').html(crudCheckListIndex);
                 },
             });
         }
 
-        getChecklist();
+        function getUserEmployeeData() {
+            $.ajax({
+                type: 'get',
+                url: "{{url('/site/getUserEmployee') }}",
+                success: function (data) {
+                    let getUserEmployee = '<option value="" selected>Pilih Personel</option>';
+                    for (i = 0; i < data.length; i++) {
+                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["nik"] + '">' + data[i]["name"] + '</option>';
+                    }
+
+                    $('#to_user_id').html(getUserEmployee);
+                },
+            });
+        }
+
+        function getUserEmployeeHaveCheckList() {
+            $.ajax({
+                type: 'get',
+                url: "{{url('/site/getUserEmployeeHaveCheckList') }}",
+                success: function (data) {
+                    let getUserEmployee = '<option value="" selected>Pilih Personel</option>';
+                    for (i = 0; i < data.length; i++) {
+                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["nik"] + '">' + data[i]["name"] + '</option>';
+                    }
+
+                    $('#from_user_id').html(getUserEmployee);
+                },
+            });
+        }
+
+        function getUserEmployeeDontHaveCheckList() {
+            $.ajax({
+                type: 'get',
+                url: "{{url('/site/getUserEmployeeDontHaveCheckList') }}",
+                success: function (data) {
+                    let getUserEmployee = '<option value="" selected>Pilih Personel</option>';
+                    for (i = 0; i < data.length; i++) {
+                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["nik"] + '">' + data[i]["name"] + '</option>';
+                    }
+
+                    $('#user_id').html(getUserEmployee);
+                },
+            });
+        }
+
+        function getCheckListEmployeeByUserId(id) {
+            $.ajax({
+                type: 'get',
+                url: "{{url('/site/getCheckListEmployeeByUserId') }}" + '/' + id,
+                success: function (data) {
+                    $('#oper_tugas_location_id').val(data['location']['name']);
+                },
+            });
+        }
+
+
+        function getOnDutyData() {
+            $.ajax({
+                type: 'get',
+                url: "{{url('/site/getOnDutyData') }}",
+                success: function (data) {
+                    let onDuty = '';
+                    for (var i in data) {
+                        onDuty = onDuty + '<div class="modaledittugasopen ri2-floatleft ' +
+                            'new-onduty-list new-child ri2-vtop ri2-boxpad15 ri2-box ri2-borderradius5 ri2-borderfull1 ri2-borderwhite3 ri2-pointer" data-id="' + data[i]["id"] + '"' +
+                            ' data-name="' + data[i]["name"] + '" data-location="' + data[i]["location_id"] + '" data-checklist=' + JSON.stringify(data[i]["check_list_progress_detail"]) + ' ' +
+                            'data-note="' + data[i]["note"] + '">' +
+                            '<div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">' +
+                            '<div class="ri2-inlineblock ri2-relative"><img src="{{ asset("admin/image/user1.jpg") }}" class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">' +
+                            '</div></div><div class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16">' + data[i]["name"] + '</div>' +
+                            '<div class="ri2-block ri2-relative ri2-center ri2-txgrey1 ri2-font14">' + data[i]["location"]["name"] + '</div></div>';
+                    }
+                    $("#onDutyData").html(onDuty);
+                },
+            });
+        }
+
+        getOnDutyData();
+        getUserEmployeeData();
     </script>
 @endsection

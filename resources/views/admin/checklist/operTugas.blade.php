@@ -22,17 +22,15 @@
                                     <div class="ri2-cell ri2-vmid ri2-halfwidth">
                                         <select
                                             class="basic-single ri2-block ri2-relative ri2-input40 ri2-input-greyholder ri2-box ri2-bgwhite4 ri2-fullwidth"
-                                            name="select">
-                                            <option value="" selected>Pilih Personel</option>
-                                            <option value="JKT">Personel 1</option>
-                                            <option value="SBY">Personel 2</option>
+                                            name="from_user_id" id="from_user_id" onchange="        getCheckListEmployeeByUserId(this.value);"
+                                            >
                                         </select>
                                     </div>
                                     <div
                                         class="ri2-cell ri2-vmid ri2-paddingleft10 ri2-halfwidth">
                                         <input type="text"
                                                class="ri2-input40 ri2-paddingleft10 ri2-paddingright10 ri2-box ri2-bgwhite2 ri2-borderradius2 ri2-borderfull1 ri2-borderwhite5 ri2-fullwidth ri2-input-greyholder ri2-font14"
-                                               placeholder="Lokasi">
+                                               placeholder="Lokasi" id='oper_tugas_location_id' name='oper_tugas_location_id' readonly>
                                     </div>
                                 </div>
                             </div>
@@ -45,10 +43,7 @@
                             <div class="ri2-block ri2-relative">
                                 <select
                                     class="basic-single ri2-block ri2-relative ri2-input40 ri2-input-greyholder ri2-box ri2-bgwhite4 ri2-fullwidth"
-                                    name="select">
-                                    <option value="" selected>Pilih Personel</option>
-                                    <option value="JKT">Personel 1</option>
-                                    <option value="SBY">Personel 2</option>
+                                    name="to_user_id" id="to_user_id">
                                 </select>
                             </div>
                         </div>
@@ -61,7 +56,7 @@
                                     </div>
                                     <input type="text"
                                            class="ri2-input40 ri2-box ri2-fullwidth ri2-paddingleft10 ri2-paddingright10 ri2-bgwhite2 ri2-borderradius2 ri2-borderfull1 ri2-borderwhite5 form-control diss datetimepicker"
-                                           autocomplete="off" name="time" id="time2"
+                                           autocomplete="off" name="start_date" id="start_date"
                                            placeholder="YYYY/MM/DD H:M" maxlength="20" required>
                                 </div>
                                 <div class="ri2-cell ri2-vmid ri2-paddingleft10 ri2-halfwidth">
@@ -71,14 +66,14 @@
                                     </div>
                                     <input type="text"
                                            class="ri2-input40 ri2-box ri2-fullwidth ri2-paddingleft10 ri2-paddingright10 ri2-bgwhite2 ri2-borderradius2 ri2-borderfull1 ri2-borderwhite5 form-control diss datetimepicker"
-                                           autocomplete="off" name="time" id="time2"
+                                           autocomplete="off" name="end_date" id="end_date"
                                            placeholder="YYYY/MM/DD H:M" maxlength="20" required>
                                 </div>
                             </div>
                         </div>
                         <div class="ri2-block ri2-relative ri2-left">
                             <button
-                                class="noty-button modalopertugasclose ri2-inlineblock ri2-bordernone ri2-borderradius2 ri2-boxpad7 ri2-paddingright15 ri2-paddingleft15 ri2-bgblue1 ri2-txwhite1 ri2-hovering ri2-font16 ri2-semibold ri2-pointer">
+                                class="modalopertugassave ri2-inlineblock ri2-bordernone ri2-borderradius2 ri2-boxpad7 ri2-paddingright15 ri2-paddingleft15 ri2-bgblue1 ri2-txwhite1 ri2-hovering ri2-font16 ri2-semibold ri2-pointer">
                                 Share
                             </button>
                         </div>

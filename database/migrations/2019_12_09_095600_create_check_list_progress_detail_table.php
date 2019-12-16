@@ -31,6 +31,6 @@ class CreateCheckListProgressDetailTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('checklist_progress_list');
+        Schema::dropIfExists('check_list_progress_detail');
     }
 }
