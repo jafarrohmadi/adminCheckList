@@ -20,6 +20,7 @@ class CreateCheckListProgressDetailTable extends Migration
             $table->string('picture')->nullable();
             $table->string('note')->nullable();
             $table->boolean('status')->default(0);
+            $table->unsignedBigInteger('check_list_oper_tugas_id')->nullable();
             $table->timestamps();
         });
     }

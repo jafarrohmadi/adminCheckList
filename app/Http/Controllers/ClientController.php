@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
 
 class ClientController extends Controller
 {
@@ -50,6 +52,7 @@ class ClientController extends Controller
         Cookie::queue('bearer', $at, 60);
 
         $response = json_decode((string) $response->getBody(), true);
+        Session::put('user', $response);
         return $response;
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\ClientController;
@@ -14,16 +15,16 @@ use DB;
 
 class CheckListController extends ClientController
 {
-    public function index ()
+    public function index()
     {
-        $location          = Location::all();
+        $location = Location::all();
         $checkListProgress = CheckListProgress::with('checkListProgressDetail.checkList')->withCount([
                 'checkListProgressDetail',
                 'checkListProgressDetail as activeCheckListProgressDetail' => function ($query) {
                     $query->where('status', 1)->orderBy('date', 'desc');
                 },
             ]
-        )->get()->map(function($item) {
+        )->get()->map(function ($item) {
             $item['name'] = $this->getUserEmployeeNameById($item['user_id']);
             return $item;
         });
@@ -32,13 +33,12 @@ class CheckListController extends ClientController
         return view('admin.checklist.index', compact('location', 'checkListProgress', 'onDutyData'));
     }
 
-    public function getUserEmployee ()
+    public function getUserEmployee()
     {
         $data = parent::getUserEmployee();
         $value = [];
-        foreach ($data['data'] as $datas){
-            if(stristr($datas['designation'], 'Office Boy' ))
-            {
+        foreach ($data['data'] as $datas) {
+            if (stristr($datas['designation'], 'Office Boy')) {
                 $value[] = $datas;
             }
         }
@@ -46,14 +46,13 @@ class CheckListController extends ClientController
         return $value;
     }
 
-    public function getUserEmployeeHaveCheckList ()
+    public function getUserEmployeeHaveCheckList()
     {
         $data = parent::getUserEmployee();
         $value = [];
         $checkListEmp = CheckListEmployee::pluck('user_id')->toArray();
-        foreach ($data['data'] as $datas){
-            if(stristr($datas['designation'], 'Office Boy' ) && in_array($datas['nik'] , $checkListEmp))
-            {
+        foreach ($data['data'] as $datas) {
+            if (stristr($datas['designation'], 'Office Boy') && in_array($datas['nik'], $checkListEmp)) {
                 $value[] = $datas;
             }
         }
@@ -61,14 +60,13 @@ class CheckListController extends ClientController
         return $value;
     }
 
-    public function getUserEmployeeDontHaveCheckList ()
+    public function getUserEmployeeDontHaveCheckList()
     {
         $data = parent::getUserEmployee();
         $value = [];
         $checkListEmp = CheckListEmployee::pluck('user_id')->toArray();
-        foreach ($data['data'] as $datas){
-            if(stristr($datas['designation'], 'Office Boy' ) && in_array($datas['nik'] , $checkListEmp) == false)
-            {
+        foreach ($data['data'] as $datas) {
+            if (stristr($datas['designation'], 'Office Boy') && in_array($datas['nik'], $checkListEmp) == false) {
                 $value[] = $datas;
             }
         }
@@ -81,18 +79,18 @@ class CheckListController extends ClientController
         return CheckListEmployee::with('location')->where('user_id', $id)->first();
     }
 
-    public function checkListEmployeeSave (Request $request)
+    public function checkListEmployeeSave(Request $request)
     {
-        $checkListEmployee              = new CheckListEmployee();
-        $checkListEmployee->user_id     = $request->user_id;
+        $checkListEmployee = new CheckListEmployee();
+        $checkListEmployee->user_id = $request->user_id;
         $checkListEmployee->location_id = $request->location_id;
         $checkListEmployee->save();
         foreach ($request->days as $days) {
             foreach ($request->check_list_ids as $check_list_id) {
-                $checkListEmployeeDetail                         = new CheckListEmployeeDetail();
+                $checkListEmployeeDetail = new CheckListEmployeeDetail();
                 $checkListEmployeeDetail->check_list_employee_id = $checkListEmployee->id;
-                $checkListEmployeeDetail->day                    = $days;
-                $checkListEmployeeDetail->check_list_id          = $check_list_id;
+                $checkListEmployeeDetail->day = $days;
+                $checkListEmployeeDetail->check_list_id = $check_list_id;
                 $checkListEmployeeDetail->save();
             }
         }
@@ -103,8 +101,8 @@ class CheckListController extends ClientController
     // public function checkListEmployeeUpdate($id, Request $request)
     // {
     //     CheckListEmployeeDetail::where('check_list_employee_id', $id)->delete();
-        
-    //     $checkListEmployee              = CheckListEmployee::find($id); 
+
+    //     $checkListEmployee              = CheckListEmployee::find($id);
     //     $checkListEmployee->user_id     = $request->user_id;
     //     $checkListEmployee->location_id = $request->location_id;
     //     $checkListEmployee->save();
@@ -116,7 +114,7 @@ class CheckListController extends ClientController
     //             $checkListEmployeeDetail->check_list_id          = $check_list_id;
     //             $checkListEmployeeDetail->save();
     //         }
-    //     }      
+    //     }
     // }
 
     public function checkListProcessDelete($id)
@@ -126,81 +124,81 @@ class CheckListController extends ClientController
         return 'true';
     }
 
-    public function checkListProgressDetailEditById ($id, Request $request)
+    public function checkListProgressDetailEditById($id, Request $request)
     {
-        $checkListProgress       = CheckListProgress::find($id);
+        $checkListProgress = CheckListProgress::find($id);
         $checkListProgress->location_id = $request->location_id;
         $checkListProgress->note = $request->note;
         $checkListProgress->save();
         $checkListProgress->checkListProgressDetail()->delete();
 
         foreach ($request->check_list_ids as $check_list_id) {
-            $CheckListProgressDetail                         = new CheckListProgressDetail();
+            $CheckListProgressDetail = new CheckListProgressDetail();
             $CheckListProgressDetail->check_list_progress_id = $checkListProgress->id;
-            $CheckListProgressDetail->check_list_id          = $check_list_id;
+            $CheckListProgressDetail->check_list_id = $check_list_id;
             $CheckListProgressDetail->save();
         }
-        
+
         return $checkListProgress;
     }
 
-    public function editCheckListProgress ($id, Request $request)
+    public function editCheckListProgress($id, Request $request)
     {
-        $checkListProgress       = CheckListProgress::find($id);
+        $checkListProgress = CheckListProgress::find($id);
         $checkListProgress->note = $request->note;
         $checkListProgress->save();
         return $checkListProgress;
     }
 
-    public function getCheckList ()
+    public function getCheckList()
     {
         return CheckList::all();
     }
 
-    public function storeCheckList (Request $request)
+    public function storeCheckList(Request $request)
     {
-        $checkList       = new CheckList();
+        $checkList = new CheckList();
         $checkList->name = $request->name;
         $checkList->save();
         return $checkList;
     }
 
-    public function updateCheckList ($id, Request $request)
+    public function updateCheckList($id, Request $request)
     {
-        $checkList       = CheckList::find($id);
+        $checkList = CheckList::find($id);
         $checkList->name = $request->name;
         $checkList->save();
         return $checkList;
     }
 
-    public function deleteCheckList ($id)
+    public function deleteCheckList($id)
     {
         CheckList::destroy($id);
         return 'true';
     }
 
-    public function saveOperTugas (Request $request)
+    public function saveOperTugas(Request $request)
     {
         $data = CheckListOperTugas::where(['from_user_id' => $request->from_user_id, 'to_user_id' => $request->to_user_id, 'location_id' => $request->location_id
-         ])->get()->map(function($item, $key) use ($request) {
+        ])->get()->map(function ($item, $key) use ($request) {
 
             $itemStartDate = strtotime($item->start_date);
             $itemEndDate = strtotime($item->end_date);
             $requestStartDate = strtotime($request->start_date);
             $requestEndDate = strtotime($request->end_date);
 
-            if( $requestStartDate >= $itemStartDate && $requestEndDate <= $itemEndDate ){
-               return $item;
+            if ($requestStartDate >= $itemStartDate && $requestEndDate <= $itemEndDate) {
+                return $item;
             }
         });
-        
-        if(count($data) == 0 ){
-            $checkListOperTugas               = new CheckListOperTugas();
+
+        if (count($data) == 0) {
+            $checkListOperTugas = new CheckListOperTugas();
             $checkListOperTugas->from_user_id = $request->from_user_id;
-            $checkListOperTugas->to_user_id   = $request->to_user_id;
-            $checkListOperTugas->location_id  = $request->location_id;
-            $checkListOperTugas->start_date   = $request->start_date;
-            $checkListOperTugas->end_date     = $request->end_date;
+            $checkListOperTugas->to_user_id = $request->to_user_id;
+            $checkListOperTugas->location_id = $request->location_id;
+            $checkListOperTugas->start_date = $request->start_date;
+            $checkListOperTugas->end_date = $request->end_date;
             $checkListOperTugas->save();
 
             return $checkListOperTugas;
@@ -209,7 +207,7 @@ class CheckListController extends ClientController
 
     public function getOnDutyData()
     {
-        $checkListProgress = CheckListProgress::with('location')->where('date', date('Y-m-d'))->get()->map(function($item, $key) {
+        $checkListProgress = CheckListProgress::with('location')->where('date', date('Y-m-d'))->get()->map(function ($item, $key) {
             $item['name'] = $this->getUserEmployeeNameById($item['user_id']);
             return $item;
         });
@@ -217,53 +215,8 @@ class CheckListController extends ClientController
         return $checkListProgress;
     }
 
-    function tanggal_indo ($tanggal, $cetak_hari = true)
+    public function getCheckListProgressDetailByCheckListProgressId($id)
     {
-        $hari     = [
-            1 => 'Senin',
-            'Selasa',
-            'Rabu',
-            'Kamis',
-            'Jumat',
-            'Sabtu',
-            'Minggu',
-        ];
-        $bulan    = [
-            1 => 'Januari',
-            'Februari',
-            'Maret',
-            'April',
-            'Mei',
-            'Juni',
-            'Juli',
-            'Agustus',
-            'September',
-            'Oktober',
-            'November',
-            'Desember',
-        ];
-        $split    = explode('-', $tanggal);
-        $tgl_indo = $split[2] . ' ' . $bulan[(int)$split[1]] . ' ' . $split[0];
-        if ($cetak_hari) {
-            $num = date('N', strtotime($tanggal));
-            return $hari[$num] . ', ' . $tgl_indo;
-        }
-        return $tgl_indo;
-    }
-
-    function getThisDay()
-    {
-        $hari     = [
-            1 => 'Senin',
-            'Selasa',
-            'Rabu',
-            'Kamis',
-            'Jumat',
-            'Sabtu',
-            'Minggu',
-        ];
-
-        $num = date('N');
-        return $hari[$num];
+        return CheckListProgressDetail::where('check_list_progress_id', $id)->get();
     }
 }

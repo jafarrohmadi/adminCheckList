@@ -132,7 +132,7 @@
                                                     {{ $checkListProgres->name }}
                                                 </span>
                                             </td>
-                                            <td>{{ (new App\Http\Controllers\Admin\CheckListController)->tanggal_indo(date('Y-m-d', strtotime($checkListProgres->date))) }}</td>
+                                            <td>{{ (new Helper)->tanggal_indo(date('Y-m-d', strtotime($checkListProgres->date))) }}</td>
                                             <td>{{ $checkListProgres->location->name }}</td>
                                             <td>{{ $checkListProgres->activeCheckListProgressDetail }}
                                                 /{{ $checkListProgres->check_list_progress_detail_count }}
@@ -171,6 +171,7 @@
 
 @section('js')
     <script type="text/javascript">
+        let editOperTugasCheckList;
         //datatable
         $('.datatable-table').DataTable();
         //date
@@ -243,15 +244,15 @@
             let id = $(this).attr("data-id");
             let name = $(this).attr("data-name");
             let locationId = $(this).attr("data-location");
-            let datachecklist = $(this).attr("data-checklist");
             let editTugasNote = $(this).attr("data-note");
             $('#editTugasId').val(id);
             $('#editTugasUserName').val(name);
             $('#editTugasLocationId').val(locationId);
-            $('#editTugasNote').val(locationId);
+            $('#editTugasNote').val(editTugasNote);
             $('.modaledittugas').css('display', 'block');
             $('body', 'html').css('overflow', 'hidden');
-            getChecklist(datachecklist);
+            edit = getCheckListProgressDetailByCheckListProgressId(id);
+            getChecklist(edit);
         });
 
         $(modaledittugasback).on('click', function () {
@@ -786,6 +787,15 @@
                 },
             });
         }
+        function getCheckListProgressDetailByCheckListProgressId(id) {
+            $.ajax({
+                type: 'get',
+                url: "{{url('/site/getCheckListProgressDetailByCheckListProgressId') }}" + '/' + id,
+                success: function (data) {
+                    return data;
+                },
+            });
+        }
 
 
         function getOnDutyData() {
@@ -797,7 +807,7 @@
                     for (var i in data) {
                         onDuty = onDuty + '<div class="modaledittugasopen ri2-floatleft ' +
                             'new-onduty-list new-child ri2-vtop ri2-boxpad15 ri2-box ri2-borderradius5 ri2-borderfull1 ri2-borderwhite3 ri2-pointer" data-id="' + data[i]["id"] + '"' +
-                            ' data-name="' + data[i]["name"] + '" data-location="' + data[i]["location_id"] + '" data-checklist=' + JSON.stringify(data[i]["check_list_progress_detail"]) + ' ' +
+                            ' data-name="' + data[i]["name"] + '" data-location="' + data[i]["location_id"] + '"' +
                             'data-note="' + data[i]["note"] + '">' +
                             '<div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">' +
                             '<div class="ri2-inlineblock ri2-relative"><img src="{{ asset("admin/image/user1.jpg") }}" class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">' +

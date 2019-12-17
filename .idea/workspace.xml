@@ -2,25 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ce8d682-b236-4736-9d99-6b5ac6b37df5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/CheckListEmployeeDetail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/CheckListOperTugas.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Helpers/Helper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/user/checklist/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/site.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/site.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CheckListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CheckListController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CheckListEmployee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CheckListEmployee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CheckListProgress.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CheckListProgress.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_09_092858_create_check_list_employee_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_09_092858_create_check_list_employee_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CheckListEmployeeDetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CheckListEmployeeDetail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CheckListProgressDetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CheckListProgressDetail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_09_095600_create_check_list_progress_detail_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_09_095600_create_check_list_progress_detail_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_10_105527_create_oper_check_list_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_10_105527_create_check_list_oper_tugas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/Dear Pak Gita Pak Dito dan team," beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/editTugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/editTugas.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/operTugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/operTugas.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/tambahTugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/tambahTugas.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -141,40 +140,48 @@
       <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
       <path value="$PROJECT_DIR$/vendor/league/oauth2-server" />
       <path value="$PROJECT_DIR$/vendor/league/event" />
+      <path value="$PROJECT_DIR$/vendor/intervention/image" />
     </include_path>
   </component>
   <component name="ProjectId" id="1UjJWXHwuRnsW3jY8SPChjCFUt8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ship" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\site\resources\views\user\checklist" />
       <recent name="C:\laragon\www\site\app\Models" />
       <recent name="C:\laragon\www\site\app\Http\Controllers\Admin" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -193,6 +200,10 @@
       <workItem from="1575985165929" duration="592000" />
       <workItem from="1576032026054" duration="14937000" />
       <workItem from="1576244569401" duration="222000" />
+      <workItem from="1576464966789" duration="344000" />
+      <workItem from="1576465336827" duration="20700000" />
+      <workItem from="1576505709813" duration="19000" />
+      <workItem from="1576550103108" duration="264000" />
     </task>
     <servers />
   </component>
@@ -211,6 +222,36 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1576466801362">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1576466801362" />
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1576505724711">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1576505724711" />
+    <state x="517" y="287" key="NewPhpFileDialog" timestamp="1576488112330">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1576488112330" />
+    <state x="184" y="6" key="SettingsEditor" timestamp="1576465304533">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1576465304533" />
+    <state x="384" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1576465378566">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="384" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1576465378566" />
+    <state x="379" y="0" width="607" height="728" key="find.popup" timestamp="1576477786005">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="379" y="0" width="607" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1576477786005" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1576488639637">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1576488639637" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

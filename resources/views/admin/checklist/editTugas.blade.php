@@ -9,7 +9,7 @@
                     class="ri2-modal-body ri2-block ri2-relative ri2-bgwhite1 ri2-marginbottom15 ri2-borderradius2 ri2-overflowhidden">
                     <div
                         class="ri2-block ri2-relative ri2-left new-blackoutgradient ri2-txwhite1 ri2-font20 ri2-boxpad10 ri2-box">
-                        Edit Tugas {{ (new App\Http\Controllers\Admin\CheckListController)->tanggal_indo(date('Y-m-d')) }}
+                        Edit Tugas {{ (new Helper)->tanggal_indo(date('Y-m-d')) }}
                     </div>
                     <div
                         class="ri2-block ri2-relative ri2-boxpad40 ri2-mobileboxpad20 ri2-box">
