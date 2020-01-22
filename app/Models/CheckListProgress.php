@@ -12,13 +12,20 @@ class CheckListProgress extends Model
         'date',
         'location_id',
         'note',
+        'check_list_oper_tugas_id',
         'created_at',
         'updated_at',
+        'userUpdate'
     ];
 
     public function checkListProgressDetail ()
     {
         return $this->hasMany(CheckListProgressDetail::class);
+    }
+
+    public function checkListOperTugas ()
+    {
+        return $this->belongsTo(CheckListOperTugas::class);
     }
 
     public function checkListEmployee ()
@@ -30,5 +37,11 @@ class CheckListProgress extends Model
     {
         return $this->belongsTo(Location::class, 'location_id');
     }
+
+    public function checkListUser()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'nik');
+    }
+
 
 }

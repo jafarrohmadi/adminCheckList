@@ -19,6 +19,7 @@ class CreateCheckListProgressTable extends Migration
             $table->date('date');
             $table->integer('location_id');
             $table->text('note')->nullable();
+            $table->unsignedBigInteger('check_list_oper_tugas_id')->nullable();
             $table->timestamps();
         });
     }

@@ -24,4 +24,9 @@ class CheckListEmployee extends Model
         return $this->hasMany(CheckListEmployeeDetail::class);
     }
 
+    public function operTugasFromUser()
+    {
+        return $this->hasOne(CheckListOperTugas::class, 'from_user_id', 'user_id');
+    }
+
 }

@@ -13,7 +13,6 @@ class CheckListProgressDetail extends Model
         'picture',
         'note',
         'status',
-        'check_list_oper_tugas_id',
         'created_at',
         'updated_at',
     ];

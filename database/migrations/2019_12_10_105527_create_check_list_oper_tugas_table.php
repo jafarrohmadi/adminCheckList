@@ -18,8 +18,9 @@ class CreateCheckListOperTugasTable extends Migration
             $table->string('from_user_id');
             $table->string('to_user_id');
             $table->string('location_id');
-            $table->datetime('start_date');
-            $table->datetime('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->text('reason')->nullable();
             $table->timestamps();
         });
     }

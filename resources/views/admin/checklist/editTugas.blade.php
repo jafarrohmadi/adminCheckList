@@ -56,10 +56,10 @@
                                 class="modaledittugassave ri2-inlineblock ri2-bordernone ri2-borderradius2 ri2-boxpad7 ri2-paddingright15 ri2-paddingleft15 ri2-bgblue1 ri2-txwhite1 ri2-hovering ri2-font16 ri2-semibold ri2-pointer">
                                 Simpan
                             </button>
-                            <button
-                                class="modaledittugasdelete ri2-inlineblock ri2-bordernone ri2-borderradius2 ri2-boxpad7 ri2-paddingright15 ri2-paddingleft15 ri2-bgyellow1 ri2-txblack3 ri2-hovering ri2-font16 ri2-semibold ri2-pointer">
-                                Hapus
-                            </button>
+{{--                            <button--}}
+{{--                                class="modaledittugasdelete ri2-inlineblock ri2-bordernone ri2-borderradius2 ri2-boxpad7 ri2-paddingright15 ri2-paddingleft15 ri2-bgyellow1 ri2-txblack3 ri2-hovering ri2-font16 ri2-semibold ri2-pointer">--}}
+{{--                                Batalkan--}}
+{{--                            </button>--}}
                         </div>
                     </div>
                 </div>

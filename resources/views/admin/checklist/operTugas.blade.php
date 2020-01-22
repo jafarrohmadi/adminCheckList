@@ -9,28 +9,31 @@
                     class="ri2-modal-body ri2-block ri2-relative ri2-bgwhite1 ri2-marginbottom15 ri2-borderradius2 ri2-overflowhidden">
                     <div
                         class="ri2-block ri2-relative ri2-left new-blackoutgradient ri2-txwhite1 ri2-font20 ri2-boxpad10 ri2-box">
-                        Oper Tugas
+                        Mengalih Tugaskan
                     </div>
                     <div class="ri2-block ri2-relative ri2-boxpad40 ri2-mobileboxpad20 ri2-box">
                         <div class="ri2-block ri2-relative ri2-marginbottom20 ri2-left">
                             <div
                                 class="ri2-block ri2-relative ri2-marginbottom5 ri2-font14 ri2-txgrey1 ri2-semibold">
-                                Oper Dari
+                                Mengalih Tugaskan Dari
                             </div>
                             <div class="ri2-block ri2-relative">
                                 <div class="ri2-table ri2-relative ri2-fullwidth">
                                     <div class="ri2-cell ri2-vmid ri2-halfwidth">
                                         <select
                                             class="basic-single ri2-block ri2-relative ri2-input40 ri2-input-greyholder ri2-box ri2-bgwhite4 ri2-fullwidth"
-                                            name="from_user_id" id="from_user_id" onchange="        getCheckListEmployeeByUserId(this.value);"
-                                            >
+                                            name="from_user_id" id="from_user_id"
+                                            onchange="getCheckListEmployeeByUserId(this.value);"
+                                        >
                                         </select>
                                     </div>
                                     <div
                                         class="ri2-cell ri2-vmid ri2-paddingleft10 ri2-halfwidth">
+                                        <input type="hidden" id="oper_tugas_location_id" name="oper_tugas_location_id">
                                         <input type="text"
                                                class="ri2-input40 ri2-paddingleft10 ri2-paddingright10 ri2-box ri2-bgwhite2 ri2-borderradius2 ri2-borderfull1 ri2-borderwhite5 ri2-fullwidth ri2-input-greyholder ri2-font14"
-                                               placeholder="Lokasi" id='oper_tugas_location_id' name='oper_tugas_location_id' readonly>
+                                               placeholder="Lokasi" id='oper_tugas_location_name'
+                                               name='oper_tugas_location_name' readonly>
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +41,7 @@
                         <div class="ri2-block ri2-relative ri2-marginbottom20 ri2-left">
                             <div
                                 class="ri2-block ri2-relative ri2-marginbottom5 ri2-font14 ri2-txgrey1 ri2-semibold">
-                                Oper Kepada
+                                Mengalih Tugaskan Kepada
                             </div>
                             <div class="ri2-block ri2-relative">
                                 <select
@@ -69,6 +72,18 @@
                                            autocomplete="off" name="end_date" id="end_date"
                                            placeholder="YYYY/MM/DD H:M" maxlength="20" required>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="ri2-block ri2-relative ri2-marginbottom20 ri2-left">
+                            <div
+                                class="ri2-block ri2-relative ri2-marginbottom5 ri2-font14 ri2-txgrey1 ri2-semibold">
+                                Reason
+                            </div>
+                            <div class="ri2-block ri2-relative">
+                                <textarea
+                                    class="ri2-textarea100 ri2-noresize ri2-boxpad10 ri2-box ri2-bgwhite2 ri2-borderradius3 ri2-borderfull1 ri2-borderwhite5 ri2-fullwidth ri2-input-greyholder ri2-font14"
+                                    placeholder="Reason" name="operTugasReason" id="operTugasReason" required></textarea>
+
                             </div>
                         </div>
                         <div class="ri2-block ri2-relative ri2-left">

@@ -18,7 +18,7 @@
                                 Pilih Personel
                             </div>
                             <div class="ri2-block ri2-relative">
-                                <select class="basic-single ri2-block ri2-relative ri2-input40 ri2-input-greyholder ri2-box ri2-bgwhite4 ri2-fullwidth"name="user_id" id="user_id" > 
+                                <select class="basic-single ri2-block ri2-relative ri2-input40 ri2-input-greyholder ri2-box ri2-bgwhite4 ri2-fullwidth"name="tambahTugasUserId" id="tambahTugasUserId" >
                                 </select>
                             </div>
                         </div>

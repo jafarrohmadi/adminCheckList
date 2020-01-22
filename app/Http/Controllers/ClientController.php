@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Session;
 
 class ClientController extends Controller
 {
@@ -19,7 +19,7 @@ class ClientController extends Controller
             'scope' => '',
         ]);
 
-        return redirect(config('app.client_url').'oauth/authorize?'.$query);
+        return redirect(config('app.client_url') . 'oauth/authorize?' . $query);
     }
 
     public function callback(Request $request)
@@ -48,24 +48,25 @@ class ClientController extends Controller
                 'Authorization' => 'Bearer '.$at,
             ],
         ]);
-
+        $response = json_decode((string)$response->getBody(), true);
+        $user = (new Helper)->admin__add_user($response['data']);
         Cookie::queue('bearer', $at, 60);
 
-        $response = json_decode((string) $response->getBody(), true);
-        Session::put('user', $response);
-        return $response;
+        Auth::login($user);
+
+        return redirect('/checklist');
     }
 
     public function getUserEmployee()
     {
-        if(Cookie::has('bearer')) {
-            $client   = new Client();
+        if (Cookie::has('bearer')) {
+            $client = new Client();
             $response = $client->request('POST', config('app.client_url') . 'api/data/users', [
-                'headers' => [
-                    'Accept' => 'application/json',
-                    'Authorization' => 'Bearer ' . Cookie::get('bearer'),
-                ],
-            ]
+                    'headers' => [
+                        'Accept' => 'application/json',
+                        'Authorization' => 'Bearer ' . Cookie::get('bearer'),
+                    ],
+                ]
             );
             $response = json_decode((string)$response->getBody(), true);
             return $response;
@@ -77,7 +78,7 @@ class ClientController extends Controller
     {
         $data = [];
         foreach ($this->getUserEmployee() as $item) {
-            $data[$item['nik']] =  $item ;
+            $data[$item['nik']] = $item;
         }
 
         return $data[$id]['name'];

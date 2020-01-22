@@ -16,19 +16,18 @@
                         <div class="ri2-block ri2-relative ri2-marginbottom20">
                             <div
                                 class="ri2-block ri2-relative ri2-center ri2-marginbottom10">
-                                <img src="{{ asset('admin/image/user1.jpg') }}"
-                                     class="ri2-circle new-user-mthumbnail ri2-vmid">
+                                <img src="" class="ri2-circle new-user-mthumbnail ri2-vmid photoCheckList">
                             </div>
                             <div
-                                class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16">
-                                Samuel Jordan
+                                class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16 nameUser">
                             </div>
                             <div
-                                class="ri2-block ri2-relative ri2-center ri2-txgrey1 ri2-font14">
-                                Lt.1 Ayookopi <a
+                                class="ri2-block ri2-relative ri2-center ri2-txgrey1 ri2-font14 ">
+                                <span class="nameLocation"></span>
+                                <a
                                     class="ri2-relative ri2-inlineblock ri2-nowrap ri2-tooltip"><span
-                                        class="ri2-tooltiptext ri2-normal ri2-linenormal">Operan dari Richard Jones</span><i
-                                        class="fas fa-exchange-alt ri2-rotate-45 ri2-txgreen1"></i></a>
+                                        class="ri2-tooltiptext ri2-normal ri2-linenormal nameOperanTugasUser"> </span><i
+                                        class="fas fa-exchange-alt ri2-rotate-45 ri2-txgreen1 nameOperanTugasIcon" style="display: none"></i></a>
                             </div>
                         </div>
                         <div class="ri2-block ri2-relative">

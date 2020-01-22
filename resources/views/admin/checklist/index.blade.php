@@ -49,7 +49,7 @@
                 @include('admin.checklist.checklist')
                 <button
                     class="modalopertugasopen new-ba-toolbar ri2-inlineblock ri2-vmid ri2-circle ri2-borderfull1 ri2-bordergreen1 ri2-circle ri2-bgwhite1 ri2-txblack3 ri2-center ri2-font16 ri2-nopadding ri2-pointer ri2-tooltip ri2-relative ri2-nowrap ri2-linkhover">
-                    <span class="ri2-lefttooltiptext ri2-normal ri2-linenormal">Oper Tugas</span><i
+                    <span class="ri2-lefttooltiptext ri2-normal ri2-linenormal">Mengalih Tugaskan</span><i
                         class="fas fa-exchange-alt ri2-rotate-45"></i>
                 </button>
                 @include('admin.checklist.operTugas')
@@ -107,56 +107,17 @@
                         <div class="ri2-block ri2-relative ri2-boxpad40 ri2-mobileboxpad20 ri2-box">
                             <div class="ri2-block ri2-relative ri2-overflowauto ri2-paddingbottom20"
                                  data-simplebar data-simplebar-auto-hide="false">
-                                <table class="display datatable-table" style="width:100%">
-                                    <thead>
-                                    <tr>
-                                        <th class="fit">No</th>
-                                        <th>Nama</th>
-                                        <th>Tanggal</th>
-                                        <th>Lokasi</th>
-                                        <th>Progress</th>
-                                        <th>Note</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($checkListProgress as $checkListProgres)
-                                        <tr>
-                                            <td>{{ $checkListProgres->id }}</td>
-                                            <td>
-                                                <div class="ri2-inlineblock ri2-relative ri2-vmid ri2-marginright7">
-                                                    <img src="{{ asset('admin/image/user1.jpg') }}"
-                                                         class="new-user-sthumbnail ri2-inlineblock ri2-circle ri2-vmid">
-                                                </div>
-                                                <span
-                                                    class="new-datatable-nowrap new-datatable-male">
-                                                    {{ $checkListProgres->name }}
-                                                </span>
-                                            </td>
-                                            <td>{{ (new Helper)->tanggal_indo(date('Y-m-d', strtotime($checkListProgres->date))) }}</td>
-                                            <td>{{ $checkListProgres->location->name }}</td>
-                                            <td>{{ $checkListProgres->activeCheckListProgressDetail }}
-                                                /{{ $checkListProgres->check_list_progress_detail_count }}
-                                                <a
-                                                    class="modalchecklistprogressopen ri2-txgrey1 ri2-marginleft5 ri2-pointer ri2-linkhover ri2-relative ri2-nowrap ri2-tooltip"
-                                                    data-active-check-list="{{ $checkListProgres->activeCheckListProgressDetail }}"
-                                                    data-check-list-all="{{ $checkListProgres->check_list_progress_detail_count }}"
-                                                    data-all="{{ $checkListProgres->checkListProgressDetail }}"
-                                                ><span
-                                                        class="ri2-lefttooltiptext">Detail Checklist</span><i
-                                                        class="fas fa-search"></i></a></td>
-                                            <td>
-                                                <a class="modaltugasnoteopen ri2-pointer ri2-linkhover ri2-relative ri2-nowrap ri2-tooltip ri2-txgrey1"
-                                                   data-id="{{$checkListProgres->id}}"
-                                                   data-location="{{ $checkListProgres->location->name }}"
-                                                   data-note="{{$checkListProgres->note}}"><span
-                                                        class="ri2-lefttooltiptext">Berikan Catatan</span><i
-                                                        class="fas fa-pen"></i></a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                                </a>
+                                <div class="dataTables_wrapper">
+                                    <div class="dataTables_filter">
+                                        Search Tanggal : <input type="text" name="filterChecklistProgressDate"
+                                                                id="filterChecklistProgressDate" class="form-control"/>
+                                    </div>
+                                </div>
+                                <span id="searchOutput" style="display: none"></span>
+                                <span id="allOutput">
+                                    @include('admin.checklist.checklistProgressList', ['checkListProgress' => $checkListProgress])
+                                </span>
+
                             </div>
                         </div>
                     </div>
@@ -172,10 +133,39 @@
 @section('js')
     <script type="text/javascript">
         let editOperTugasCheckList;
+
         //datatable
-        $('.datatable-table').DataTable();
+        var table = $('.datatable-table').DataTable();
+
         //date
-        $('.datetimepicker').datetimepicker();
+        $('.datetimepicker').datetimepicker({
+            minDate: 0,
+            format: 'Y-m-d',
+            timepicker: false,
+        });
+
+        $('#editOperTugasStartDate').datetimepicker("option", "disabled", true);
+        var current = new Date();
+
+        $('#editOperTugasStartDate').datetimepicker({
+            minDate: new Date(current.getTime()),
+            format: 'Y-m-d',
+            timepicker: false,
+            onClose: function (selectedDate) {
+                $("#editOperTugasEndDate").datetimepicker("option", "minDate", selectedDate);
+                $(this).parent().next().children().focus();
+            }
+        });
+
+        $('#editOperTugasEndDate').datetimepicker({
+            minDate: new Date(current.getTime()),
+            format: 'Y-m-d',
+            timepicker: false,
+            onClose: function (selectedDate) {
+                $("#editOperTugasStartDate").datetimepicker("option", "maxDate", selectedDate);
+            }
+        });
+
 
         function popUpMessage(message) {
             var simpan = {
@@ -220,7 +210,7 @@
         $(modaltambahtugasopen).on('click', function () {
             $('.modaltambahtugas').css('display', 'block');
             $('body', 'html').css('overflow', 'hidden');
-            getUserEmployeeDontHaveCheckList();
+            getUserEmployeeData();
             getChecklist();
         });
 
@@ -247,12 +237,11 @@
             let editTugasNote = $(this).attr("data-note");
             $('#editTugasId').val(id);
             $('#editTugasUserName').val(name);
-            $('#editTugasLocationId').val(locationId);
+            $('#editTugasLocationId').val(locationId).change();
             $('#editTugasNote').val(editTugasNote);
             $('.modaledittugas').css('display', 'block');
             $('body', 'html').css('overflow', 'hidden');
-            edit = getCheckListProgressDetailByCheckListProgressId(id);
-            getChecklist(edit);
+            getChecklist(id);
         });
 
         $(modaledittugasback).on('click', function () {
@@ -277,7 +266,7 @@
 
             $.ajax({
                 type: 'put',
-                url: "{{url('/site/checkListProgressDetailEditById') }}/" + $('#editTugasId').val(),
+                url: "{{url('/checkListProgressDetailEditById') }}/" + $('#editTugasId').val(),
                 data: {
                     '_token': "{{  csrf_token() }}",
                     'location_id': $('#editTugasLocationId').val(),
@@ -288,7 +277,7 @@
                     $('.modaledittugas').css('display', 'none');
                     $('body', 'html').css('overflow', 'auto');
                     getOnDutyData();
-                    popUpMessage('Success Tambah CheckList');
+                    popUpMessage('Success Edit CheckList');
                 },
             })
         });
@@ -296,7 +285,7 @@
         $('.modaledittugasdelete').on('click', function () {
             $.ajax({
                 type: 'delete',
-                url: "{{url('/site/checkListProcessDelete') }}/" + $('#editTugasId').val(),
+                url: "{{url('/checkListProcessDelete') }}/" + $('#editTugasId').val(),
                 data: {
                     '_token': "{{  csrf_token() }}"
                 },
@@ -314,12 +303,28 @@
         var modaleditopertugasopen = $('.modaleditopertugasopen');
         var modaleditopertugasback = $('.modaleditopertugasback');
         var modaleditopertugasclose = $('.modaleditopertugasclose');
+        $(document).on("click", ".modaleditopertugasopen", function () {
+            let id = $(this).attr("data-id");
+            let end_date = $(this).attr("data-endDate");
+            let start_date = $(this).attr("data-startDate");
+            let to_user = $(this).attr("data-touser");
+            let from_user = $(this).attr("data-fromuser");
+            let from_user_id = $(this).attr("data-from-user-id");
+            let location = $(this).attr("data-location");
+            let location_id = $(this).attr("data-location-id");
+            let reason = $(this).attr("data-reason");
 
-        $(modaleditopertugasopen).on('click', function () {
             $('.modaleditopertugas').css('display', 'block');
-            $('#start_date').val();
-            $('#end_date').val();
-            $('#oper_tugas_location_id').val();
+            $('#editOperTugasFrom').val(from_user);
+            $('#editOperTugasLocation').val(location);
+            $('#editOperTugasLocationId').val(location_id);
+            getUserCheckListOperTugasToById(from_user_id, to_user);
+
+            $('#editOperTugasStartDate').val(start_date);
+            $('#editOperTugasEndDate').val(end_date);
+            $('#editOperTugasReason').val(reason);
+            $('#editOperTugasId').val(id);
+            $('#editOperTugasFromUserId').val(from_user_id);
 
             $('body', 'html').css('overflow', 'hidden');
         });
@@ -327,6 +332,28 @@
         $(modaleditopertugasback).on('click', function () {
             $('.modaleditopertugas').css('display', 'none');
             $('body', 'html').css('overflow', 'auto');
+        });
+
+        $('.modaleditopertugassave').on('click', function () {
+            $('.modaleditopertugas').css('display', 'none');
+            $('body', 'html').css('overflow', 'auto');
+            $.ajax({
+                type: 'put',
+                url: "{{ url('/updateOperTugas/') }}/" + $("#editOperTugasId").val(),
+                data: {
+                    '_token': "{{  csrf_token() }}",
+                    'from_user_id': $("#editOperTugasFromUserId").val(),
+                    'to_user_id': $("#editOperTugasToUserId").val(),
+                    'location_id': $("#editOperTugasLocationId").val(),
+                    'reason': $("#editOperTugasReason").val()
+                },
+                success: function (data) {
+                    $('.ubahchecklistopen').parent().parent().slideDown();
+                    getChecklist();
+                    popUpMessage('Success Edit Mengalih Tugaskan');
+                    getOnDutyData();
+                },
+            });
         });
 
         $(modaleditopertugasclose).on('click', function () {
@@ -383,11 +410,9 @@
         });
 
         $('.modalopertugassave').on('click', function () {
-            $('.modalopertugas').css('display', 'none');
-            $('body', 'html').css('overflow', 'auto');
             $.ajax({
                 type: 'post',
-                url: "{{url('/site/saveOperTugas') }}",
+                url: "{{url('/saveOperTugas') }}",
                 data: {
                     '_token': "{{  csrf_token() }}",
                     'from_user_id': $("#from_user_id").val(),
@@ -395,12 +420,13 @@
                     'location_id': $("#oper_tugas_location_id").val(),
                     'start_date': $("#start_date").val(),
                     'end_date': $("#end_date").val(),
+                    'reason': $("#operTugasReason").val(),
                 },
                 success: function (data) {
-                    $('.ubahchecklistopen').parent().parent().slideDown();
-                    getChecklist();
-                    popUpMessage('Success Tambah CheckList');
-                },
+                    $('.modalopertugas').css('display', 'none');
+                    $('body', 'html').css('overflow', 'auto');
+                    popUpMessage('Success Mengalih Tugaskan');
+                }
             });
         });
 
@@ -411,25 +437,51 @@
         var modalchecklistprogressclose = $('.modalchecklistprogressclose');
 
         $(modalchecklistprogressopen).on('click', function () {
-            const activeCheckList = $(".modalchecklistprogressopen").data("active-check-list");
-            const checkListAll = $(".modalchecklistprogressopen").data("check-list-all");
-            const all = $(".modalchecklistprogressopen").data("all");
+            const activeCheckList = $(this).data("active-check-list");
+            const checkListAll = $(this).data("check-list-all");
+            const all = $(this).data("all");
+
+            const nameUser = $(this).data("name-user");
+            const nameLocation = $(this).data("name-location");
+            const photoCheckList = $(this).data("photo");
+            const nameOperanTugasUser = $(this).data("name-operan-tugas-user");
+
+            if (nameOperanTugasUser != undefined) {
+                $(".nameOperanTugasUser").html('Mengalih Tugaskan dari ' + nameOperanTugasUser);
+                $(".nameOperanTugasIcon").show();
+            } else {
+                $(".nameOperanTugasIcon").hide();
+            }
+
+            $(".nameUser").html(nameUser);
+            $(".nameLocation").html(nameLocation);
+            $(".photoCheckList").attr('src', photoCheckList);
 
             $("#checkListAllProgress").text(checkListAll);
             $("#activeCheckListProgress").text(activeCheckList);
+
             var html = '';
 
             for (var i = 0; i < all.length; i++) {
+                let images = '';
+                for (let pic in JSON.parse(all[i]['picture'])) {
+                    images += '<div class="ri2-block ri2-relative ri2-margintop5"> ' +
+                        '<button class="ri2-absolute ri2-center ri2-circle ri2-bgwhite1 ri2-txblack3 new-rotate-button ri2-pointer ri2-nopadding ri2-bordernone"> ' +
+                        '<i class="fas fa-undo"></i> </button> ' +
+                        '<img src="' + JSON.parse(all[i]['picture'])[pic] + '"class="ri2-fullwidth new-rotate-image new-rotate-north"> </div>'
+                }
+                const date = new Date(all[i]['updated_at']);
                 const name = all[i]['check_list']['name'] != null ? all[i]['check_list']['name'] : "";
-                const note = all[i]['note'] != null ? '<div class="ri2-block ri2-relative ri2-margintop5 ri2-italic ri2-font14"><i class="far fa-comment-dots"></i>' + all[i]['check_list']['note'] + '</div>' : "";
+                const note = all[i]['note'] != null ? '<div class="ri2-block ri2-relative ri2-margintop5 ri2-italic ri2-font14"><i class="far fa-comment-dots"></i>' + all[i]['note'] + '</div>' : "";
                 const status = all[i]['status'] == 1 ? "<i class='far fa-check-square'></i>" : "<i class='far fa-square'></i>";
-                const image = all[i]['picture'] != null ? '<div class="ri2-block ri2-relative ri2-margintop5"> ' +
-                    '<buttonclass="ri2-absolute ri2-center ri2-circle ri2-bgwhite1 ri2-txblack3 new-rotate-button ri2-pointer ri2-nopadding ri2-bordernone"> ' +
-                    '<i class="fas fa-undo"></i> </button> ' +
-                    '<img src="' + all[i]['picture'] + '"class="ri2-fullwidth new-rotate-image new-rotate-north"> </div>' : "";
+                const image = all[i]['picture'] != null ? images : "";
+                let lastUpdate = '<div class="ri2-block ri2-relative ri2-margintop5 ri2-font14"><i class="far fa-clock"></i> Last updated :' + date.toLocaleString() + '</div>';
+                if (all[i]['status'] != 1) {
+                    lastUpdate = '';
+                }
                 html = html + '<div class="ri2-row">' +
                     '<div class="ri2-cell ri2-fit ri2-boxpad10">' + status + '</div>' +
-                    '<div class="ri2-cell ri2-boxpad10">' + name + note + image +
+                    '<div class="ri2-cell ri2-boxpad10">' + name + note + image + lastUpdate +
                     '</div></div>';
             }
             $('#checkListProgressAll').html(html);
@@ -453,10 +505,26 @@
         var modaltugasnoteback = $('.modaltugasnoteback');
         var modaltugasnoteclose = $('.modaltugasnoteclose');
 
-        $(modaltugasnoteopen).on('click', function () {
-            const checkListProgressId = $(".modaltugasnoteopen").data("id");
-            const locationId = $(".modaltugasnoteopen").data("location");
-            const note = $(".modaltugasnoteopen").data("note");
+        $('.modaltugasnoteopen').on('click', function () {
+            const checkListProgressId = $(this).attr("data-id");
+            const locationId = $(this).data("location");
+            const note = $(this).data("note");
+
+            const nameUser = $(this).data("name-user");
+            const nameLocation = $(this).data("name-location");
+            const photoCheckList = $(this).data("photo");
+            const nameOperanTugasUser = $(this).data("name-operan-tugas-user");
+
+            if (nameOperanTugasUser != undefined) {
+                $(".nameOperanTugasUser").html('Mengalih Tugaskan dari ' + nameOperanTugasUser);
+                $(".nameOperanTugasIcon").show();
+            } else {
+                $(".nameOperanTugasIcon").hide();
+            }
+
+            $(".nameUser").html(nameUser);
+            $(".nameLocation").html(nameLocation);
+            $(".photoCheckList").attr('src', photoCheckList);
             $("#tugasNoteId").val(checkListProgressId);
             $("#tugasNoteLocation").text(locationId);
             $("#note").text(note);
@@ -501,7 +569,7 @@
 
             $.ajax({
                 type: 'post',
-                url: "{{url('/site/storeCheckList') }}",
+                url: "{{url('/storeCheckList') }}",
                 data: {
                     '_token': "{{  csrf_token() }}",
                     'name': $("#nameCheckList").val(),
@@ -533,7 +601,7 @@
             $('.ubahchecklistopen').parent().parent().slideDown();
             $.ajax({
                 type: 'put',
-                url: "{{url('/site/updateCheckList') }}/" + $("#editIdCheckList").val(),
+                url: "{{url('/updateCheckList') }}/" + $("#editIdCheckList").val(),
                 data: {
                     '_token': "{{  csrf_token() }}",
                     'name': $("#editNameCheckList").val()
@@ -552,7 +620,7 @@
             $(this).parent().parent().slideUp();
             $.ajax({
                 type: 'delete',
-                url: "{{url('/site/deleteCheckList') }}/" + $("#editIdCheckList").val(),
+                url: "{{url('/deleteCheckList') }}/" + $("#editIdCheckList").val(),
                 data: {
                     '_token': "{{  csrf_token() }}"
                 },
@@ -571,7 +639,7 @@
         });
 
         //rotate image
-        $('.new-rotate-button').click(function () {
+        $(document).on("click", ".new-rotate-button", function () {
             //var img = $('.new-rotate-image');
             if ($(this).next('.new-rotate-image').hasClass('new-rotate-north')) {
                 $(this).next('.new-rotate-image').removeClass('new-rotate-north');
@@ -609,7 +677,6 @@
 
             // missing options such as Theme!!
             $('.noty-button').click(function (e) {
-                console.log(simpan);
                 e.preventDefault();
                 noty(simpan);
             });
@@ -632,10 +699,34 @@
 
             // missing options such as Theme!!
             $('.noty-button-hapus').click(function (e) {
-                console.log(hapus);
                 e.preventDefault();
                 noty(hapus);
             });
+        });
+        $(document).on("change", "#tambahTugasUserId", function () {
+            let id = $(this).val();
+            $.ajax({
+                type: 'get',
+                url: "{{url('/getCheckListEmployeeByUserId') }}/" + id,
+                success: function (data) {
+                    if (data) {
+                        $('input[name="days"]').prop('checked', false);
+                        $('input[name="check_list_ids"]').prop('checked', false);
+                        $("#location_id").val(data['location_id']).change();
+                        for (let i in data['checkListEmployeeDetail']) {
+                            $('input[name="check_list_ids"][value="' + i + '"]').prop('checked', true);
+                            for (let j in data['checkListEmployeeDetail'][i]) {
+                                $('input[name="days"][value="' + data['checkListEmployeeDetail'][i][j] + '"]').prop('checked', true);
+                            }
+                        }
+                    } else {
+                        $("#location_id").val('').change();
+                        $('input[name="days"]').prop('checked', true);
+                        $('input[name="check_list_ids"]').prop('checked', true);
+                    }
+                },
+            });
+
         });
 
         $("#modaltambahtugassave").click(function () {
@@ -651,10 +742,10 @@
 
             $.ajax({
                 type: 'post',
-                url: "{{url('/site/checkListEmployeeSave') }}",
+                url: "{{url('/checkListEmployeeSave') }}",
                 data: {
                     '_token': "{{  csrf_token() }}",
-                    'user_id': $("#user_id").val(),
+                    'user_id': $("#tambahTugasUserId").val(),
                     'check_list_ids': check_list_ids,
                     'days': days,
                     'location_id': $("#location_id").val(),
@@ -662,8 +753,8 @@
                 success: function (data) {
                     $('.modaltambahtugas').css('display', 'none');
                     $('body', 'html').css('overflow', 'auto');
-                    getUserEmployeeDontHaveCheckList();
-                    popUpMessage('Success Tambah Checklist');
+                    getUserEmployeeData();
+                    popUpMessage('Success Tambah Tugas');
                 },
             });
         });
@@ -673,7 +764,7 @@
             const id = $("#tugasNoteId").val();
             $.ajax({
                 type: 'put',
-                url: "{{url('/site/editCheckListProgress') }}/" + id,
+                url: "{{url('/editCheckListProgress') }}/" + id,
                 data: {
                     '_token': "{{  csrf_token() }}",
                     'note': note,
@@ -686,23 +777,50 @@
             });
         });
 
+        function in_array_js(array, id) {
+            for (let i in array) {
+                if (array[i] == id) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         function getChecklist(editDatachecklist) {
             editDatachecklist = editDatachecklist || 0;
-            console.log(editDatachecklist);
+
             $.ajax({
                 type: 'get',
-                url: "{{url('/site/getCheckList') }}",
+                url: "{{url('/getCheckList') }}",
                 success: function (data) {
+                    let checkChecked = '';
                     let tambahTugasCheckList = '';
                     let crudCheckListIndex = '';
                     let editTugasCheckList = '';
-                    let editTugasChecked = [];
-
+                    const editTugasChecked = [];
                     if (editDatachecklist != 0) {
-                        console.log(JSON.parse(editDatachecklist));
-                        for (var i in editDatachecklist) {
-                            editTugasChecked[i] = editDatachecklist[i]['check_list_id'];
-                        }
+                        $.ajax({
+                            type: 'get',
+                            url: "{{url('/getCheckListProgressDetailByCheckListProgressId') }}/" + editDatachecklist,
+                            success: function (datassss) {
+                                for (var i in datassss) {
+                                    editTugasChecked[editTugasChecked.length] = datassss[i]['check_list_id'];
+                                }
+                                for (i = 0; i < data.length; i++) {
+                                    if (in_array_js(editTugasChecked, data[i]["id"])) {
+                                        checkChecked = 'checked';
+                                    } else {
+                                        checkChecked = "";
+                                    }
+
+                                    editTugasCheckList = editTugasCheckList + ' <div class="ri2-block ri2-relative"> ' +
+                                        ' <div class="ri2-block ri2-relative ri2-checkbox ri2-marginbottom5"> <label class="ri2-checkbox-container ri2-txblack3 ri2-paddingleft30 ri2-pointer ri2-font14 ri2-line14"> ' +
+                                        '<input type="checkbox" name="edit_check_list_ids" id="edit_check_list_ids" value="' + data[i]["id"] + '"' + checkChecked + '> ' +
+                                        '<span class="ri2-checkmark-text">' + data[i]["name"] + ' </span> <span class="ri2-checkmark"></span> </label> </div> </div>';
+                                }
+                                $('#editTugasCheckList').html(editTugasCheckList);
+                            },
+                        });
                     }
 
                     for (i = 0; i < data.length; i++) {
@@ -713,21 +831,10 @@
                             '<span class="ri2-checkmark-text">' + data[i]["name"] + ' </span> <span class="ri2-checkmark"></span> </label> </div> </div>';
 
                         crudCheckListIndex = crudCheckListIndex + '<li> <a class="ubahchecklistopen ri2-pointer ri2-linkhover" data-id="' + data[i]['id'] + '" data-name="' + data[i]['name'] + '">' + data[i]["name"] + '</a> </li>';
-
-                        if (editTugasChecked.indexOf(data[i]["id"]) > -1) {
-                            checkChecked = 'checked=""';
-                        } else {
-                            checkChecked = "";
-                        }
-
-                        editTugasCheckList = editTugasCheckList + ' <div class="ri2-block ri2-relative"> ' +
-                            ' <div class="ri2-block ri2-relative ri2-checkbox ri2-marginbottom5"> <label class="ri2-checkbox-container ri2-txblack3 ri2-paddingleft30 ri2-pointer ri2-font14 ri2-line14"> ' +
-                            '<input type="checkbox" name="edit_check_list_ids" id="edit_check_list_ids" value="' + data[i]["id"] + '"' + checkChecked + '> ' +
-                            '<span class="ri2-checkmark-text">' + data[i]["name"] + ' </span> <span class="ri2-checkmark"></span> </label> </div> </div>';
                     }
 
                     $('#tambahTugasCheckList').html(tambahTugasCheckList);
-                    $('#editTugasCheckList').html(editTugasCheckList);
+
                     $('#crudCheckListIndex').html(crudCheckListIndex);
                 },
             });
@@ -736,14 +843,13 @@
         function getUserEmployeeData() {
             $.ajax({
                 type: 'get',
-                url: "{{url('/site/getUserEmployee') }}",
+                url: "{{url('/getUserEmployee') }}",
                 success: function (data) {
                     let getUserEmployee = '<option value="" selected>Pilih Personel</option>';
                     for (i = 0; i < data.length; i++) {
                         getUserEmployee = getUserEmployee + '<option value="' + data[i]["nik"] + '">' + data[i]["name"] + '</option>';
                     }
-
-                    $('#to_user_id').html(getUserEmployee);
+                    $('#tambahTugasUserId').html(getUserEmployee);
                 },
             });
         }
@@ -751,7 +857,7 @@
         function getUserEmployeeHaveCheckList() {
             $.ajax({
                 type: 'get',
-                url: "{{url('/site/getUserEmployeeHaveCheckList') }}",
+                url: "{{url('/getUserEmployeeHaveCheckList') }}",
                 success: function (data) {
                     let getUserEmployee = '<option value="" selected>Pilih Personel</option>';
                     for (i = 0; i < data.length; i++) {
@@ -766,14 +872,14 @@
         function getUserEmployeeDontHaveCheckList() {
             $.ajax({
                 type: 'get',
-                url: "{{url('/site/getUserEmployeeDontHaveCheckList') }}",
+                url: "{{url('/getUserEmployeeDontHaveCheckList') }}",
                 success: function (data) {
                     let getUserEmployee = '<option value="" selected>Pilih Personel</option>';
                     for (i = 0; i < data.length; i++) {
                         getUserEmployee = getUserEmployee + '<option value="' + data[i]["nik"] + '">' + data[i]["name"] + '</option>';
                     }
 
-                    $('#user_id').html(getUserEmployee);
+//                    $('#user_id').html(getUserEmployee);
                 },
             });
         }
@@ -781,38 +887,84 @@
         function getCheckListEmployeeByUserId(id) {
             $.ajax({
                 type: 'get',
-                url: "{{url('/site/getCheckListEmployeeByUserId') }}" + '/' + id,
+                url: "{{url('/getCheckListEmployeeByUserId') }}" + '/' + id,
                 success: function (data) {
-                    $('#oper_tugas_location_id').val(data['location']['name']);
+                    $('#oper_tugas_location_id').val(data['location']['id']);
+                    $('#oper_tugas_location_name').val(data['location']['name']);
+                    if (data['oper_tugas_from_user']) {
+                        getUserCheckListOperTugasToById(id, data['oper_tugas_from_user']['to_user_id']);
+                        $('#operTugasReason').val(data['oper_tugas_from_user']['reason']);
+                        $('#start_date').val(data['oper_tugas_from_user']['start_date']);
+                        $('#end_date').val(data['oper_tugas_from_user']['end_date']);
+                    } else {
+                        getUserCheckListOperTugasToById(id);
+                    }
                 },
             });
+
         }
+
+        function getUserCheckListOperTugasToById(id, selectedUser = null) {
+            $.ajax({
+                type: 'get',
+                url: "{{url('/getUserCheckListOperTugasToById') }}" + '/' + id,
+                success: function (data) {
+                    let getUserEmployee = '<option value="" selected>Pilih Personel</option>';
+                    let select = '';
+                    for (i = 0; i < data.length; i++) {
+                        if (selectedUser != null && selectedUser === data[i]["nik"]) {
+                            select = 'selected';
+                        } else {
+                            select = '';
+                        }
+                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["nik"] + '" ' + select + '>' + data[i]["name"] + '</option>';
+                    }
+                    $('#to_user_id').html(getUserEmployee);
+                    $('#editOperTugasToUserId').html(getUserEmployee);
+                },
+            });
+
+        }
+
         function getCheckListProgressDetailByCheckListProgressId(id) {
             $.ajax({
                 type: 'get',
-                url: "{{url('/site/getCheckListProgressDetailByCheckListProgressId') }}" + '/' + id,
+                url: "{{url('/getCheckListProgressDetailByCheckListProgressId') }}" + '/' + id,
                 success: function (data) {
                     return data;
                 },
             });
         }
 
-
         function getOnDutyData() {
             $.ajax({
                 type: 'get',
-                url: "{{url('/site/getOnDutyData') }}",
+                url: "{{url('/getOnDutyData') }}",
                 success: function (data) {
                     let onDuty = '';
                     for (var i in data) {
-                        onDuty = onDuty + '<div class="modaledittugasopen ri2-floatleft ' +
-                            'new-onduty-list new-child ri2-vtop ri2-boxpad15 ri2-box ri2-borderradius5 ri2-borderfull1 ri2-borderwhite3 ri2-pointer" data-id="' + data[i]["id"] + '"' +
-                            ' data-name="' + data[i]["name"] + '" data-location="' + data[i]["location_id"] + '"' +
-                            'data-note="' + data[i]["note"] + '">' +
-                            '<div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">' +
-                            '<div class="ri2-inlineblock ri2-relative"><img src="{{ asset("admin/image/user1.jpg") }}" class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">' +
-                            '</div></div><div class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16">' + data[i]["name"] + '</div>' +
-                            '<div class="ri2-block ri2-relative ri2-center ri2-txgrey1 ri2-font14">' + data[i]["location"]["name"] + '</div></div>';
+                        if (data[i]["check_list_oper_tugas_id"] !== null && data[i]["check_list_oper_tugas_id"] !== '') {
+                            onDuty = onDuty + '<div class="modaleditopertugasopen ri2-floatleft ' +
+                                'new-onduty-list new-child ri2-vtop ri2-boxpad15 ri2-box ri2-borderradius5 ri2-borderfull1 ri2-borderwhite3 ri2-pointer" data-id="' + data[i]["check_list_oper_tugas_id"] + '"' +
+                                'data-fromUser="' + data[i]["check_list_oper_tugas"]["from_user"]["name"] +
+                                '"data-location="' + data[i]["location"]["name"] + '" data-location-id="' + data[i]["location"]["id"] + '" data-from-user-id="' + data[i]["check_list_oper_tugas"]["from_user_id"] + '" data-toUser = "' + data[i]["check_list_oper_tugas"]["to_user_id"] + '"' +
+                                ' data-reason ="' + data[i]["check_list_oper_tugas"]["reason"] + '" data-startDate ="' + data[i]["check_list_oper_tugas"]["start_date"] + '" data-endDate = "' + data[i]["check_list_oper_tugas"]["end_date"] + '">' +
+                                ' <div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">' +
+                                '<div class="ri2-inlineblock ri2-relative"><img src="' + data[i]["check_list_user"]["photo"] + '" class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">' +
+                                '</div></div><div class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16">' + data[i]["check_list_user"]["name"] + '</div>' +
+                                '<div class="ri2-block ri2-relative ri2-center ri2-txgrey1 ri2-font14">' + data[i]["location"]["name"] + ' ' +
+                                '<a class="ri2-relative ri2-inlineblock ri2-nowrap ri2-tooltip">' +
+                                '<span class="ri2-tooltiptext ri2-normal ri2-linenormal">Mengalih Tugaskan dari ' + data[i]["check_list_oper_tugas"]["from_user"]["name"] + '</span><i class="fas fa-exchange-alt ri2-rotate-45 ri2-txgreen1"></i></a></div></div>';
+                        } else {
+                            onDuty = onDuty + '<div class="modaledittugasopen ri2-floatleft ' +
+                                'new-onduty-list new-child ri2-vtop ri2-boxpad15 ri2-box ri2-borderradius5 ri2-borderfull1 ri2-borderwhite3 ri2-pointer" data-id="' + data[i]["id"] + '"' +
+                                ' data-name="' + data[i]["check_list_user"]["name"] + '" data-location="' + data[i]["location_id"] + '"' +
+                                'data-note="' + data[i]["note"] + '">' +
+                                '<div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">' +
+                                '<div class="ri2-inlineblock ri2-relative"><img src="' + data[i]["check_list_user"]["photo"] + '" class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">' +
+                                '</div></div><div class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16">' + data[i]["check_list_user"]["name"] + '</div>' +
+                                '<div class="ri2-block ri2-relative ri2-center ri2-txgrey1 ri2-font14">' + data[i]["location"]["name"] + '</div></div>';
+                        }
                     }
                     $("#onDutyData").html(onDuty);
                 },
@@ -821,5 +973,52 @@
 
         getOnDutyData();
         getUserEmployeeData();
+
+        $(function () {
+
+            $('#filterChecklistProgressDate').datetimepicker({
+                timepicker: false,
+                format: 'Y-m-d',
+                onSelectDate: function () {
+                    let date = $('#filterChecklistProgressDate').val();
+                    if (date != "{{ date('Y-m-d') }}") {
+                        $.ajax({
+                            type: 'get',
+                            url: "{{url('/filterChecklistProgressDate') }}/" + date,
+                            success: function (data) {
+                                if (data) {
+                                    $('#allOutput').hide();
+                                    $('#searchOutput').show();
+                                    $('#searchOutput').html(data);
+
+                                    if (date != "{{ date('Y-m-d') }}") {
+                                        $('.modaltugasnoteopen').hide();
+                                        $('.notetable').hide();
+                                    } else {
+                                        $('.modaltugasnoteopen').show();
+                                        $('.notetable').show();
+                                    }
+
+                                    $('.datatable-table').DataTable();
+                                } else {
+                                    popUpMessage('Tidak ada Data');
+                                    $('#searchOutput').hide();
+                                    $('#allOutput').show();
+                                    $('.modaltugasnoteopen').show();
+                                    $('.notetable').show();
+                                }
+
+                            },
+                        });
+                    } else {
+                        $('#searchOutput').hide();
+                        $('#allOutput').show();
+                        $('.modaltugasnoteopen').show();
+                        $('.notetable').show();
+                    }
+
+                }
+            });
+        });
     </script>
 @endsection

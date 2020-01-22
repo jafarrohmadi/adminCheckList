@@ -2,22 +2,185 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ce8d682-b236-4736-9d99-6b5ac6b37df5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Helpers/Helper.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/user/checklist/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/site.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/site.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helpers/Helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/Helper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CheckListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CheckListController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/CheckListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/CheckListController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CheckListEmployee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CheckListEmployee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/CheckListEmployeeDetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CheckListEmployeeDetail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CheckListOperTugas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CheckListOperTugas.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CheckListProgress.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CheckListProgress.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/CheckListProgressDetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CheckListProgressDetail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_09_094324_create_check_list_progress_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_09_094324_create_check_list_progress_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_09_095600_create_check_list_progress_detail_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_09_095600_create_check_list_progress_detail_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/Dear Pak Gita Pak Dito dan team," beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_10_105527_create_check_list_oper_tugas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_10_105527_create_check_list_oper_tugas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/css/c3.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/css/croppie.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/css/introjs.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/css/jquery.datetimepicker.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/css/noty-animate.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/css/noty-buttons.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/css/otherstyles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/css/ri2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/Icon-Menu_Cuti.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/Icon-Menu_HR.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/Icon-Menu_Konsultasi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/Icon-Menu_Meeting.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/Icon-Menu_Payroll.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/Icon-Menu_Profile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/Icon-Menu_Recruitment.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/Icon-Menu_Training-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/Logo-AyooHRIS-White.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/airmasperkasa-birth-bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/airmasperkasa-late-bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/android.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/apple.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/ayoohris2019.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/ayoohris2019w.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/ayoomall1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/ayoomall2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/ayoomall3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/ayoomall4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/ayooworld.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/berita1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/berita1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/berita2.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/berita3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/cleaning1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/cleaning2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/cleaning3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/cobaz.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/frontpage-icon1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/frontpage-icon2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/frontpage-icon3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/frontpage-icon4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/frontpage-image1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/frontpage-image2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/frontpage-image3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/frontpage-image4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/frontpage-image5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/frontpage-image6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/frontpage-wallpaper.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/frontpage-wallpaper2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/frontpage-wallpaper2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/frontpage-wallpaper3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/frontpage-wallpaper3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/frontpage-wallpaper4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/hr-organization.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/hr-pray.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/karyawan-bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/logo-airmas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/logo-hris.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/men-avatar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/nodata.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/partner-birth-bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/partner-icon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/payroll-bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/personil-bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/pp.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/profile-background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/qrcode.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/qrscan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/red-expired.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/sort_asc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/sort_asc_disabled.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/sort_both.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/sort_desc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/sort_desc_disabled.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/tanda-tangan.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/task.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/training-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/training-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/training-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/training-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/training-5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/training-banner.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/training-banner2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/undermaintenance.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/user1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/user10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/user11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/user2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/user3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/user4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/user5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/user6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/user7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/user8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/user9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/image/userdefault.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/c3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/croppie.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/datatable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/foot.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/hopscotch.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/intro.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/jPages.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/jquery-min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/jquery.datetimepicker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/jquery.mousewheel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/jquery.noty.packaged.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/php-date-formatter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/select2.full.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/simplebar.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/apple-touch-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/history.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/avatars/man.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/icons/large-bell.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/icons/large-calendar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/icons/large-history.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/icons/large-home.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/icons/large-logout.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/icons/large-share-job.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/icons/large-writing.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/icons/small-bell.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/icons/small-calendar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/icons/small-history.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/icons/small-home.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/icons/small-logout.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/icons/small-share-job.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/icons/small-writing.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/large-dot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/placeit-7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/images/small-dot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/scripts/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/scripts/modernizr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/scripts/vendor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/user/styles/fd-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/checklistProgress.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/checklistProgress.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/editOperTugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/editOperTugas.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/editTugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/editTugas.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/operTugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/operTugas.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/tambahTugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/tambahTugas.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/tugasNote.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/tugasNote.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/checklist/history.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/checklist/history.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/checklist/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/checklist/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +193,20 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -130,16 +307,6 @@
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
-      <path value="$PROJECT_DIR$/vendor/symfony/psr-http-message-bridge" />
-      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
-      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
-      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
-      <path value="$PROJECT_DIR$/vendor/laravel/passport" />
-      <path value="$PROJECT_DIR$/vendor/zendframework/zend-diactoros" />
-      <path value="$PROJECT_DIR$/vendor/defuse/php-encryption" />
-      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
-      <path value="$PROJECT_DIR$/vendor/league/oauth2-server" />
-      <path value="$PROJECT_DIR$/vendor/league/event" />
       <path value="$PROJECT_DIR$/vendor/intervention/image" />
     </include_path>
   </component>
@@ -157,6 +324,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
+    <property name="settings.editor.splitter.proportion" value="0.24057084" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -203,7 +371,42 @@
       <workItem from="1576464966789" duration="344000" />
       <workItem from="1576465336827" duration="20700000" />
       <workItem from="1576505709813" duration="19000" />
-      <workItem from="1576550103108" duration="264000" />
+      <workItem from="1576550103108" duration="21855000" />
+      <workItem from="1576594400508" duration="289000" />
+      <workItem from="1576635569524" duration="23224000" />
+      <workItem from="1576678005357" duration="612000" />
+      <workItem from="1576724690608" duration="20581000" />
+      <workItem from="1576765277994" duration="540000" />
+      <workItem from="1576808623519" duration="10913000" />
+      <workItem from="1576828362049" duration="3469000" />
+      <workItem from="1576835254057" duration="1604000" />
+      <workItem from="1577067154389" duration="22901000" />
+      <workItem from="1577148366249" duration="367000" />
+      <workItem from="1577326511634" duration="17113000" />
+      <workItem from="1577373887658" duration="21000" />
+      <workItem from="1577415063006" duration="16179000" />
+      <workItem from="1577673487849" duration="8462000" />
+      <workItem from="1577696914287" duration="11000" />
+      <workItem from="1577697897043" duration="2911000" />
+      <workItem from="1577946279434" duration="12092000" />
+      <workItem from="1578276776432" duration="1174000" />
+      <workItem from="1578278243774" duration="638000" />
+      <workItem from="1578281040112" duration="653000" />
+      <workItem from="1578282960059" duration="544000" />
+      <workItem from="1578283843568" duration="5928000" />
+      <workItem from="1578363992952" duration="15868000" />
+      <workItem from="1578451841741" duration="6474000" />
+      <workItem from="1578536832822" duration="2122000" />
+      <workItem from="1578552818414" duration="726000" />
+      <workItem from="1578555984364" duration="1000" />
+      <workItem from="1578880930942" duration="13736000" />
+      <workItem from="1578970140955" duration="2994000" />
+      <workItem from="1578997313091" duration="2500000" />
+      <workItem from="1579144107075" duration="618000" />
+      <workItem from="1579156374820" duration="1449000" />
+      <workItem from="1579164581796" duration="1225000" />
+      <workItem from="1579228702208" duration="1458000" />
+      <workItem from="1579676364433" duration="2090000" />
     </task>
     <servers />
   </component>
@@ -228,30 +431,60 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1576466801362" />
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1576505724711">
+    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1578380418321">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1576505724711" />
-    <state x="517" y="287" key="NewPhpFileDialog" timestamp="1576488112330">
+    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1578380418321" />
+    <state x="367" y="18" width="645" height="691" key="#phpunit.xml" timestamp="1576741369748">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1576488112330" />
-    <state x="184" y="6" key="SettingsEditor" timestamp="1576465304533">
+    <state x="367" y="18" width="645" height="691" key="#phpunit.xml/0.0.1366.728@0.0.1366.728" timestamp="1576741369748" />
+    <state x="100" y="100" width="1166" height="528" key="DiffContextDialog" timestamp="1577081890346">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1576465304533" />
-    <state x="384" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1576465378566">
+    <state x="100" y="100" width="1166" height="528" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1577081890346" />
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1579234282889">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="384" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1576465378566" />
-    <state x="379" y="0" width="607" height="728" key="find.popup" timestamp="1576477786005">
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1579234282889" />
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1579144125083" />
+    <state x="517" y="287" key="NewPhpFileDialog" timestamp="1578378323393">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="0" width="607" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1576477786005" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1576488639637">
+    <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1578378323393" />
+    <state x="184" y="6" key="SettingsEditor" timestamp="1577418569950">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1576488639637" />
+    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1577418569950" />
+    <state x="100" y="100" width="1166" height="528" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578997580392">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="100" y="100" width="1166" height="528" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1578997580392" />
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1578997580392">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1578997580392" />
+    <state x="384" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1579156376199">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="384" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1579156376199" />
+    <state x="384" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1579144110277" />
+    <state x="379" y="0" width="607" height="728" key="find.popup" timestamp="1578972892476">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="379" y="0" width="607" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1578972892476" />
+    <state x="406" y="6" key="refactoring.ChangeSignatureDialog" timestamp="1576555203923">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="406" y="6" key="refactoring.ChangeSignatureDialog/0.0.1366.728@0.0.1366.728" timestamp="1576555203923" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1578912227271">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1578912227271" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1579677341443">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1579677341443" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
