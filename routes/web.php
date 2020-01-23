@@ -42,4 +42,5 @@ Route::get('/getCheckListProgressDetailByCheckListProgressId/{id}', 'Admin\Check
 
 Route::get('/getOnDutyData', 'Admin\CheckListController@getOnDutyData');
 
+
 Route::get('/filterChecklistProgressDate/{date}', 'Admin\CheckListController@filterChecklistProgressDate');
