@@ -202,11 +202,11 @@ return [
         'Image' => Intervention\Image\Facades\Image::class
     ],
 
-    'client_id' => env('CLIENT_ID', '15'),
+    'client_id' => env('CLIENT_ID', '18'),
 
-    'redirect_uri' => env('REDIRECT_URI', 'https://site.test/site/callback'),
+    'redirect_uri' => env('REDIRECT_URI', 'https://checklist.ayooproject.com/adminCheckList/callback'),
 
     'client_url' => env('CLIENT_URL', 'https://ayoohris.id/main/'),
 
-    'client_secret' => env('CLIENT_SECRET', 'thU6sciqJ501xXnRN32QBEByaMOKaIKVs9632IrQ'),
+    'client_secret' => env('CLIENT_SECRET', 'pG4y1ajfrBLBV3r7ubtZRaofyuqoZxceWMp06uuF'),
 ];

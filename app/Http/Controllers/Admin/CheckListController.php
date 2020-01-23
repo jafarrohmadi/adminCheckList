@@ -145,8 +145,8 @@ class CheckListController extends ClientController
         $checkListProgress->location_id = $request->location_id;
         if ($request->note != 'null') {
             $checkListProgress->note = $request->note;
+            $checkListProgress->userUpdate = Auth::id();
         }
-        $checkListProgress->userUpdate = Auth::id();
         $checkListProgress->save();
         $checkListProgress->checkListProgressDetail()->delete();
 
@@ -165,6 +165,8 @@ class CheckListController extends ClientController
         $checkListProgress = CheckListProgress::find($id);
         if ($request->note != 'null') {
             $checkListProgress->note = $request->note;
+//            $checkListProgress->userUpdate = Auth::id();
+            $checkListProgress->userUpdate = 1;
         }
         $checkListProgress->save();
         return $checkListProgress;
