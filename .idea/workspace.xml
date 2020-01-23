@@ -252,7 +252,7 @@
       <workItem from="1579228702208" duration="1458000" />
       <workItem from="1579676364433" duration="3046000" />
       <workItem from="1579706861604" duration="40000" />
-      <workItem from="1579754058815" duration="5300000" />
+      <workItem from="1579754058815" duration="5378000" />
     </task>
     <servers />
   </component>
@@ -307,10 +307,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1577418569950" />
-    <state x="513" y="73" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1579775041689">
+    <state x="513" y="73" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1579775146560">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="513" y="73" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1579775041689" />
+    <state x="513" y="73" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1579775146560" />
     <state x="100" y="100" width="1166" height="528" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578997580392">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
