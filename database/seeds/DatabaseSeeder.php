@@ -10,8 +10,7 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run ()
-    {
-        $this->call(UserSeeder::class);
+    {g
         $this->call(LocationSeeder::class);
         $this->call(checkListSeeder::class);
     }
