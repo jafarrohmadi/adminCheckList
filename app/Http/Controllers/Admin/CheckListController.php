@@ -52,7 +52,7 @@ class CheckListController extends ClientController
                     $user              = new User();
                     $user->email       = $faker->email;
                     $user->password    = Hash::make('jafar123');
-                    $user->nik         = $datas['nik'];
+                    $user->nik         = $datas['nik'] ??  random_int(1000000000, 9000000000);
                     $user->name        = $datas['name'];
                     $user->division    = $datas['division'];
                     $user->department  = $datas['department'];
