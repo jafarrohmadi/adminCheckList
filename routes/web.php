@@ -13,33 +13,33 @@
 
 Auth::routes();
 
-Route::get('/checklist', 'Admin\ChecklistController@index');
-Route::post('/checkListEmployeeSave', 'Admin\ChecklistController@checkListEmployeeSave');
-Route::put('/editCheckListProgress/{id}', 'Admin\ChecklistController@editCheckListProgress');
-Route::get('/getCheckList/', 'Admin\ChecklistController@getCheckList');
-Route::post('/storeCheckList/', 'Admin\ChecklistController@storeCheckList');
-Route::put('/updateCheckList/{id}', 'Admin\ChecklistController@updateCheckList');
-Route::delete('/deleteCheckList/{id}', 'Admin\ChecklistController@deleteCheckList');
-Route::get('/getDataCheckListProgress/{id}', 'Admin\ChecklistController@getDataCheckListProgress');
+Route::get('/checklist', 'Admin\CheckListController@index');
+Route::post('/checkListEmployeeSave', 'Admin\CheckListController@checkListEmployeeSave');
+Route::put('/editCheckListProgress/{id}', 'Admin\CheckListController@editCheckListProgress');
+Route::get('/getCheckList/', 'Admin\CheckListController@getCheckList');
+Route::post('/storeCheckList/', 'Admin\CheckListController@storeCheckList');
+Route::put('/updateCheckList/{id}', 'Admin\CheckListController@updateCheckList');
+Route::delete('/deleteCheckList/{id}', 'Admin\CheckListController@deleteCheckList');
+Route::get('/getDataCheckListProgress/{id}', 'Admin\CheckListController@getDataCheckListProgress');
 
 Route::get('/login', 'ClientController@redirect')->name('get.token');
 
 Route::get('/callback', 'ClientController@callback')->name('callback');
 
-Route::get('/getUserEmployee', 'Admin\ChecklistController@getUserEmployee');
+Route::get('/getUserEmployee', 'Admin\CheckListController@getUserEmployee');
 
-Route::get('/getUserEmployeeHaveCheckList', 'Admin\ChecklistController@getUserEmployeeHaveCheckList');
+Route::get('/getUserEmployeeHaveCheckList', 'Admin\CheckListController@getUserEmployeeHaveCheckList');
 
-Route::get('/getUserEmployeeDontHaveCheckList', 'Admin\ChecklistController@getUserEmployeeDontHaveCheckList');
+Route::get('/getUserEmployeeDontHaveCheckList', 'Admin\CheckListController@getUserEmployeeDontHaveCheckList');
 
-Route::get('/getCheckListEmployeeByUserId/{id}', 'Admin\ChecklistController@getCheckListEmployeeByUserId');
-Route::post('/saveOperTugas', 'Admin\ChecklistController@saveOperTugas');
+Route::get('/getCheckListEmployeeByUserId/{id}', 'Admin\CheckListController@getCheckListEmployeeByUserId');
+Route::post('/saveOperTugas', 'Admin\CheckListController@saveOperTugas');
 Route::put('/updateOperTugas/{id}', 'Admin\CheckListController@updateOperTugas');
-Route::delete('/checkListProcessDelete/{id}', 'Admin\ChecklistController@checkListProcessDelete');
+Route::delete('/checkListProcessDelete/{id}', 'Admin\CheckListController@checkListProcessDelete');
 Route::get('/getUserCheckListOperTugasToById/{id}', 'Admin\CheckListController@getUserCheckListOperTugasToById');
-Route::put('/checkListProgressDetailEditById/{id}', 'Admin\ChecklistController@checkListProgressDetailEditById');
-Route::get('/getCheckListProgressDetailByCheckListProgressId/{id}', 'Admin\ChecklistController@getCheckListProgressDetailByCheckListProgressId');
+Route::put('/checkListProgressDetailEditById/{id}', 'Admin\CheckListController@checkListProgressDetailEditById');
+Route::get('/getCheckListProgressDetailByCheckListProgressId/{id}', 'Admin\CheckListController@getCheckListProgressDetailByCheckListProgressId');
 
-Route::get('/getOnDutyData', 'Admin\ChecklistController@getOnDutyData');
+Route::get('/getOnDutyData', 'Admin\CheckListController@getOnDutyData');
 
-Route::get('/filterChecklistProgressDate/{date}', 'Admin\ChecklistController@filterChecklistProgressDate');
+Route::get('/filterChecklistProgressDate/{date}', 'Admin\CheckListController@filterChecklistProgressDate');
