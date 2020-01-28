@@ -14,7 +14,7 @@ class AddUserUpdateToCheckListProgressTable extends Migration
     public function up()
     {
         Schema::table('check_list_progress', function (Blueprint $table) {
-            $table->integer('userUpdate')->nullable();
+            $table->string('userUpdate')->nullable();
         });
     }
 

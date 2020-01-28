@@ -21,7 +21,7 @@
                                 <div class="ri2-table ri2-relative ri2-fullwidth">
                                     <div class="ri2-cell ri2-vmid ri2-halfwidth">
                                         <select
-                                            class="basic-single ri2-block ri2-relative ri2-input40 ri2-input-greyholder ri2-box ri2-bgwhite4 ri2-fullwidth"
+                                            class="basic-twolines_designation ri2-block ri2-relative ri2-input40 ri2-input-greyholder ri2-box ri2-bgwhite4 ri2-fullwidth"
                                             name="from_user_id" id="from_user_id"
                                             onchange="getCheckListEmployeeByUserId(this.value);"
                                         >
@@ -45,7 +45,7 @@
                             </div>
                             <div class="ri2-block ri2-relative">
                                 <select
-                                    class="basic-single ri2-block ri2-relative ri2-input40 ri2-input-greyholder ri2-box ri2-bgwhite4 ri2-fullwidth"
+                                    class="basic-twolines_designation ri2-block ri2-relative ri2-input40 ri2-input-greyholder ri2-box ri2-bgwhite4 ri2-fullwidth"
                                     name="to_user_id" id="to_user_id">
                                 </select>
                             </div>

@@ -75,7 +75,7 @@ class Helper
                 'nik' => $response['nik'],
                 'email' => $response['email'],
                 'password' => Hash::make('jafar123'),
-            //    'photo' => $filename,
+                'photo' => $response['photo'],
                 'grade' => $response['grade'],
                 'division' => $response['division'],
                 'department' => $response['department'],
@@ -95,7 +95,7 @@ class Helper
             //Image::make($path)->save($storage_path . $filename);
             $user->nik = $response['nik'];
             $user->name = $response['name'];
-            //$user->photo = $filename;
+            $user->photo = $response['photo'];
             $user->grade = $response['grade'];
             $user->division = $response['division'];
             $user->department = $response['department'];

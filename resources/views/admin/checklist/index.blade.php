@@ -42,6 +42,12 @@
             </div>
             <div class="ri2-cell ri2-vmid ri2-right">
                 <button
+                    class="modallocationopen new-ba-toolbar ri2-inlineblock ri2-vmid ri2-circle ri2-borderfull1 ri2-bordergreen1 ri2-circle ri2-bgwhite1 ri2-txblack3 ri2-center ri2-font16 ri2-nopadding ri2-pointer ri2-tooltip ri2-relative ri2-nowrap ri2-linkhover">
+                    <span class="ri2-lefttooltiptext ri2-normal ri2-linenormal">Location</span><i
+                        class="fas fa-tasks"></i>
+                </button>
+                @include('admin.checklist.lokasi')
+                <button
                     class="modalchecklistopen new-ba-toolbar ri2-inlineblock ri2-vmid ri2-circle ri2-borderfull1 ri2-bordergreen1 ri2-circle ri2-bgwhite1 ri2-txblack3 ri2-center ri2-font16 ri2-nopadding ri2-pointer ri2-tooltip ri2-relative ri2-nowrap ri2-linkhover">
                     <span class="ri2-lefttooltiptext ri2-normal ri2-linenormal">Checklist</span><i
                         class="fas fa-tasks"></i>
@@ -94,10 +100,8 @@
             </div>
             <div class="ri2-block ri2-relative new-content-space">
                 <div class="ri2-block ri2-relative">
-                    <div
-                        class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-shadow"></div>
-                    <div
-                        class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-white"></div>
+                    <div class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-shadow"></div>
+                    <div class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-white"></div>
                     <div class="ri2-block ri2-relative">
                         <div class="ri2-block ri2-font16 ri2-txblack5 ri2-semibold ri2-bgwhite3 ri2-boxpad7">
                             Checklist Progress
@@ -132,6 +136,17 @@
 
 @section('js')
     <script type="text/javascript">
+        String.prototype.escape = function() {
+            var tagsToReplace = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;'
+            };
+            return this.replace(/[&<>]/g, function(tag) {
+                return tagsToReplace[tag] || tag;
+            });
+        };
+
         let editOperTugasCheckList;
 
         //datatable
@@ -383,6 +398,28 @@
             $('body', 'html').css('overflow', 'auto');
         });
 
+        //edit location
+        var modallocation = $('.modallocation');
+        var modallocationopen = $('.modallocationopen');
+        var modallocationback = $('.modallocationback');
+        var modallocationclose = $('.modallocationclose');
+
+        $(modallocationopen).on('click', function () {
+            $('.modallocation').css('display', 'block');
+            $('body', 'html').css('overflow', 'hidden');
+            getLocation();
+        });
+
+        $(modallocationback).on('click', function () {
+            $('.modallocation').css('display', 'none');
+            $('body', 'html').css('overflow', 'auto');
+        });
+
+        $(modallocationclose).on('click', function () {
+            $('.modallocation').css('display', 'none');
+            $('body', 'html').css('overflow', 'auto');
+        });
+
         //edit opertugas
         var modalopertugas = $('.modalopertugas');
         var modalopertugasopen = $('.modalopertugasopen');
@@ -436,7 +473,7 @@
         var modalchecklistprogressback = $('.modalchecklistprogressback');
         var modalchecklistprogressclose = $('.modalchecklistprogressclose');
 
-        $(modalchecklistprogressopen).on('click', function () {
+        $(document).on("click", "a.modalchecklistprogressopen", function () {
             const activeCheckList = $(this).data("active-check-list");
             const checkListAll = $(this).data("check-list-all");
             const all = $(this).data("all");
@@ -505,7 +542,7 @@
         var modaltugasnoteback = $('.modaltugasnoteback');
         var modaltugasnoteclose = $('.modaltugasnoteclose');
 
-        $('.modaltugasnoteopen').on('click', function () {
+        $(document).on("click", "a.modaltugasnoteopen", function () {
             const checkListProgressId = $(this).attr("data-id");
             const locationId = $(this).data("location");
             const note = $(this).data("note");
@@ -564,9 +601,6 @@
         });
 
         $('.tambahchecklistsave').click(function () {
-            $(this).parent().parent().slideUp();
-            $(this).parent().parent().siblings().show();
-
             $.ajax({
                 type: 'post',
                 url: "{{url('/storeCheckList') }}",
@@ -575,6 +609,9 @@
                     'name': $("#nameCheckList").val(),
                 },
                 success: function (data) {
+                    $('.tambahchecklistsave').parent().parent().slideUp();
+                    $('.tambahchecklistsave').parent().parent().siblings().show();
+
                     $('.ubahchecklistopen').parent().parent().slideDown();
                     getChecklist();
                     popUpMessage('Success Tambah CheckList');
@@ -597,8 +634,6 @@
         });
 
         $('.ubahchecklistsave').click(function () {
-            $(this).parent().parent().slideUp();
-            $('.ubahchecklistopen').parent().parent().slideDown();
             $.ajax({
                 type: 'put',
                 url: "{{url('/updateCheckList') }}/" + $("#editIdCheckList").val(),
@@ -607,6 +642,7 @@
                     'name': $("#editNameCheckList").val()
                 },
                 success: function (data) {
+                    $('.ubahchecklistsave').parent().parent().slideUp();
                     $('.ubahchecklistopen').parent().parent().slideDown();
                     $('.tambahchecklistopen').show();
                     getChecklist();
@@ -638,6 +674,86 @@
             $('.tambahchecklistopen').show();
         });
 
+        // tambah location
+        $('.tambahlocationopen').click(function () {
+            $(this).hide();
+            $(this).siblings().slideDown();
+            $("#namelocation").val('');
+            $('.ubahlocationopen').parent().parent().slideUp();
+        });
+
+        $('.tambahlocationsave').click(function () {
+            $.ajax({
+                type: 'post',
+                url: "{{url('/storeLocation') }}",
+                data: {
+                    '_token': "{{  csrf_token() }}",
+                    'name': $("#namelocation").val(),
+                },
+                success: function (data) {
+                    $('.tambahlocationsave').parent().parent().slideUp();
+                    $('.tambahlocationsave').parent().parent().siblings().show();
+                    $('.ubahlocationopen').parent().parent().slideDown();
+                    getLocation();
+                    popUpMessage('Success Tambah location');
+                },
+            });
+        });
+
+        $('.tambahlocationclose').click(function () {
+            $(this).parent().parent().slideUp();
+            $(this).parent().parent().siblings().show();
+            $('.ubahlocationopen').parent().parent().slideDown();
+        });
+
+        $(document).on("click", "a.ubahlocationopen", function () {
+            $(this).parent().parent().siblings().slideDown();
+            $(this).parent().parent().slideUp();
+            $("#editIdlocation").val($(this).attr("data-id"));
+            $("#editNamelocation").val($(this).attr("data-name"));
+            $('.tambahlocationopen').hide();
+        });
+
+        $('.ubahlocationsave').click(function () {
+            $.ajax({
+                type: 'put',
+                url: "{{url('/updateLocation') }}/" + $("#editIdlocation").val(),
+                data: {
+                    '_token': "{{  csrf_token() }}",
+                    'name': $("#editNamelocation").val()
+                },
+                success: function (data) {
+                    $('.ubahlocationsave').parent().parent().slideUp();
+                    $('.ubahlocationopen').parent().parent().slideDown();
+                    $('.tambahlocationopen').show();
+                    getLocation();
+                    popUpMessage('Success Edit location');
+                    $('.tambahlocationopen').show();
+                },
+            });
+        });
+
+        $('.ubahlocationhapus').click(function () {
+            $(this).parent().parent().slideUp();
+            $.ajax({
+                type: 'delete',
+                url: "{{url('/deleteLocation') }}/" + $("#editIdlocation").val(),
+                data: {
+                    '_token': "{{  csrf_token() }}"
+                },
+                success: function (data) {
+                    $('.ubahlocationopen').parent().parent().slideDown();
+                    $('.tambahlocationopen').show();
+                    getLocation();
+                    popUpMessage('Success Hapus location');
+                },
+            });
+        });
+        $('.ubahlocationclose').click(function () {
+            $(this).parent().parent().slideUp();
+            $('.ubahlocationopen').parent().parent().slideDown();
+            $('.tambahlocationopen').show();
+        });
         //rotate image
         $(document).on("click", ".new-rotate-button", function () {
             //var img = $('.new-rotate-image');
@@ -777,6 +893,21 @@
             });
         });
 
+        function getLocation() {
+            $.ajax({
+                type: 'get',
+                url: "{!! url('/getLocation') !!}",
+                success: function (data) {
+                    var crudLocationIndex = '';
+                    for (i = 0; i < data.length; i++) {
+                        crudLocationIndex = crudLocationIndex + '<li> <a class="ubahlocationopen ri2-pointer ri2-linkhover" data-id="' + data[i]['id'] + '" data-name="' + data[i]['name'].escape() + '">' + data[i]["name"].escape() + '</a> </li>';
+                    }
+
+                    $('#crudLocationIndex').html(crudLocationIndex);
+                },
+            });
+        }
+
         function in_array_js(array, id) {
             for (let i in array) {
                 if (array[i] == id) {
@@ -816,7 +947,7 @@
                                     editTugasCheckList = editTugasCheckList + ' <div class="ri2-block ri2-relative"> ' +
                                         ' <div class="ri2-block ri2-relative ri2-checkbox ri2-marginbottom5"> <label class="ri2-checkbox-container ri2-txblack3 ri2-paddingleft30 ri2-pointer ri2-font14 ri2-line14"> ' +
                                         '<input type="checkbox" name="edit_check_list_ids" id="edit_check_list_ids" value="' + data[i]["id"] + '"' + checkChecked + '> ' +
-                                        '<span class="ri2-checkmark-text">' + data[i]["name"] + ' </span> <span class="ri2-checkmark"></span> </label> </div> </div>';
+                                        '<span class="ri2-checkmark-text">' + data[i]["name"].escape() + ' </span> <span class="ri2-checkmark"></span> </label> </div> </div>';
                                 }
                                 $('#editTugasCheckList').html(editTugasCheckList);
                             },
@@ -828,9 +959,9 @@
                             ' <div class="ri2-block ri2-relative ri2-checkbox ri2-marginbottom5">' +
                             ' <label class="ri2-checkbox-container ri2-txblack3 ri2-paddingleft30 ri2-pointer ri2-font14 ri2-line14"> ' +
                             '<input type="checkbox" name="check_list_ids" id="check_list_ids" checked="" value="' + data[i]["id"] + '"> ' +
-                            '<span class="ri2-checkmark-text">' + data[i]["name"] + ' </span> <span class="ri2-checkmark"></span> </label> </div> </div>';
+                            '<span class="ri2-checkmark-text">' + data[i]["name"].escape() + ' </span> <span class="ri2-checkmark"></span> </label> </div> </div>';
 
-                        crudCheckListIndex = crudCheckListIndex + '<li> <a class="ubahchecklistopen ri2-pointer ri2-linkhover" data-id="' + data[i]['id'] + '" data-name="' + data[i]['name'] + '">' + data[i]["name"] + '</a> </li>';
+                        crudCheckListIndex = crudCheckListIndex + '<li> <a class="ubahchecklistopen ri2-pointer ri2-linkhover" data-id="' + data[i]['id'] + '" data-name="' + data[i]['name'].escape() + '">' + data[i]["name"].escape() + '</a> </li>';
                     }
 
                     $('#tambahTugasCheckList').html(tambahTugasCheckList);
@@ -847,7 +978,7 @@
                 success: function (data) {
                     let getUserEmployee = '<option value="" selected>Pilih Personel</option>';
                     for (i = 0; i < data.length; i++) {
-                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["nik"] + '">' + data[i]["name"] + '</option>';
+                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + '" data-designation="'+data[i]["designation"] +'">' + data[i]["name"] + '</option>';
                     }
                     $('#tambahTugasUserId').html(getUserEmployee);
                 },
@@ -861,7 +992,7 @@
                 success: function (data) {
                     let getUserEmployee = '<option value="" selected>Pilih Personel</option>';
                     for (i = 0; i < data.length; i++) {
-                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["nik"] + '">' + data[i]["name"] + '</option>';
+                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + '" data-designation="'+data[i]["designation"] +'">' + data[i]["name"] + '</option>';
                     }
 
                     $('#from_user_id').html(getUserEmployee);
@@ -876,7 +1007,7 @@
                 success: function (data) {
                     let getUserEmployee = '<option value="" selected>Pilih Personel</option>';
                     for (i = 0; i < data.length; i++) {
-                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["nik"] + '">' + data[i]["name"] + '</option>';
+                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + '" data-designation="'+data[i]["designation"] +'">' + data[i]["name"] + '</option>';
                     }
 
 //                    $('#user_id').html(getUserEmployee);
@@ -912,12 +1043,12 @@
                     let getUserEmployee = '<option value="" selected>Pilih Personel</option>';
                     let select = '';
                     for (i = 0; i < data.length; i++) {
-                        if (selectedUser != null && selectedUser === data[i]["nik"]) {
+                        if (selectedUser != null && selectedUser === data[i]["id"]) {
                             select = 'selected';
                         } else {
                             select = '';
                         }
-                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["nik"] + '" ' + select + '>' + data[i]["name"] + '</option>';
+                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + '" ' + select + ' data-designation="'+data[i]["designation"] +'">' + data[i]["name"] + '</option>';
                     }
                     $('#to_user_id').html(getUserEmployee);
                     $('#editOperTugasToUserId').html(getUserEmployee);
@@ -990,22 +1121,15 @@
                                     $('#allOutput').hide();
                                     $('#searchOutput').show();
                                     $('#searchOutput').html(data);
-
-                                    if (date != "{{ date('Y-m-d') }}") {
-                                        $('.modaltugasnoteopen').hide();
-                                        $('.notetable').hide();
-                                    } else {
-                                        $('.modaltugasnoteopen').show();
-                                        $('.notetable').show();
-                                    }
-
+                                    $('.sendNote').hide();
+                                    $('.noteInput').prop('readonly', true);
                                     $('.datatable-table').DataTable();
                                 } else {
                                     popUpMessage('Tidak ada Data');
                                     $('#searchOutput').hide();
+                                    $('.sendNote').show();
+                                    $('.noteInput').prop('readonly', false);
                                     $('#allOutput').show();
-                                    $('.modaltugasnoteopen').show();
-                                    $('.notetable').show();
                                 }
 
                             },
@@ -1013,12 +1137,27 @@
                     } else {
                         $('#searchOutput').hide();
                         $('#allOutput').show();
-                        $('.modaltugasnoteopen').show();
-                        $('.notetable').show();
+                        $('.noteInput').prop('readonly', false);
+                        $('.sendNote').show();
                     }
 
                 }
             });
         });
+        $('.basic-twolines_designation').select2({
+            templateResult: format_select_designation,
+            templateSelection: format_select_designation
+        });
+
+
+        function format_select_designation(opt) {
+            var optidesignation = $(opt.element).attr('data-designation');
+            if(optidesignation){
+                var $opt = $(
+                    '<div class="main" style="font-size:14px">'+opt.text+' - <span class="sub" style="font-size:10px; opacity:0.75;">'+optidesignation+'</span></div>'
+                );
+                return $opt;
+            }
+        };
     </script>
 @endsection

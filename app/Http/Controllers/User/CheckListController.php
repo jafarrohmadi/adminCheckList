@@ -33,7 +33,7 @@ class CheckListController extends ClientController
             abort(404);
         }
 
-        $this->user             = $user->nik;
+        $this->user             = $user->id;
         $findCheckListProgress  =
             CheckListProgress::where([ 'date' => $this->dateNow, 'user_id' => $this->user , 'check_list_oper_tugas_id' => null ])->first();
         $countHaveOperTugasUser = $this->haveOperTugasUser() ? count($this->haveOperTugasUser()) : 0;
@@ -170,7 +170,7 @@ class CheckListController extends ClientController
             abort(404);
         }
 
-        $this->user = $user->nik;
+        $this->user = $user->id;
 
         $checkListProgress = CheckListProgress::with([ 'checkListProgressDetail', 'location' ])
             ->withCount([
@@ -196,7 +196,7 @@ class CheckListController extends ClientController
             abort(404);
         }
 
-        $this->user = $user->nik;
+        $this->user = $user->id;
 
         $checkListProgress = CheckListProgress::with([ 'checkListProgressDetail', 'location' ])
             ->withCount([
@@ -221,7 +221,7 @@ class CheckListController extends ClientController
             abort(404);
         }
 
-        $this->user = $user->nik;
+        $this->user = $user->id;
 
         $notif = CheckListProgress::where([ 'user_id' => $this->user ])
             ->whereDate('date', '=', Carbon::now())

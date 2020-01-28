@@ -40,6 +40,6 @@ class User extends Authenticatable
 
     public function checkListEmployee()
     {
-        return $this->hasMany(CheckListEmployee::class, 'user_id', 'nik');
+        return $this->hasMany(CheckListEmployee::class, 'user_id', 'email');
     }
 }

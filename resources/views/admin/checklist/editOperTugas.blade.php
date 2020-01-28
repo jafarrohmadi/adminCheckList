@@ -45,7 +45,7 @@
                             </div>
                             <div class="ri2-block ri2-relative">
                                 <select
-                                    class="basic-single ri2-block ri2-relative ri2-input40 ri2-input-greyholder ri2-box ri2-bgwhite4 ri2-fullwidth"
+                                    class="basic-twolines_designation ri2-block ri2-relative ri2-input40 ri2-input-greyholder ri2-box ri2-bgwhite4 ri2-fullwidth"
                                     name="editOperTugasToUserId" id="editOperTugasToUserId">
                                 </select>
                             </div>

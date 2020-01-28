@@ -40,7 +40,7 @@ class CheckListProgress extends Model
 
     public function checkListUser()
     {
-        return $this->belongsTo(User::class, 'user_id', 'nik');
+        return $this->belongsTo(User::class, 'user_id', 'email');
     }
 
 
