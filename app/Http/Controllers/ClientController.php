@@ -17,10 +17,10 @@ class ClientController extends Controller
     public function redirect()
     {
         $query = http_build_query([
-            'client_id' => config('app.client_id'),
-            'redirect_uri' => config('app.redirect_uri'),
+            'client_id'     => config('app.client_id'),
+            'redirect_uri'  => config('app.redirect_uri'),
             'response_type' => 'code',
-            'scope' => '',
+            'scope'         => '',
         ]);
 
         return redirect(config('app.client_url') . 'oauth/authorize?' . $query);
@@ -28,42 +28,46 @@ class ClientController extends Controller
 
     public function callback(Request $request)
     {
-        if(isset($_GET['error'])){
+        if (isset($_GET['error'])) {
             return redirect('/');
         }
 
         $client = new Client;
 
-        $res = $client->request('POST', config('app.client_url').'oauth/token', [
+        $res = $client->request('POST', config('app.client_url') . 'oauth/token', [
             'form_params' => [
-                'grant_type' => 'authorization_code',
-                'client_id' => config('app.client_id'),
+                'grant_type'    => 'authorization_code',
+                'client_id'     => config('app.client_id'),
                 'client_secret' => config('app.client_secret'),
-                'redirect_uri' => config('app.redirect_uri'),
-                'code' => $request->code,
+                'redirect_uri'  => config('app.redirect_uri'),
+                'code'          => $request->code,
             ],
         ]);
 
-        $resp = json_decode($res->getBody(), true);
-        $at = $resp["access_token"];
-        $response = $client->request('GET', config('app.client_url').'api/user', [
+        $resp     = json_decode($res->getBody(), true);
+        $at       = $resp["access_token"];
+        $response = $client->request('GET', config('app.client_url') . 'api/user', [
             'headers' => [
-                'Accept' => 'application/json',
-                'Authorization' => 'Bearer '.$at,
+                'Accept'        => 'application/json',
+                'Authorization' => 'Bearer ' . $at,
             ],
         ]);
 
         $response = json_decode((string)$response->getBody(), true);
-        $user = (new Helper)->admin__add_user($response['data']);
         Cookie::queue('bearer', $at, 60);
+        $allUser = User::count();
+        $data    = $this->getUserEmployeeData($at);
 
-        $data         = $this->getUserEmployee();
-        if (count($user) !== count($data['data'])) {
+        if ($allUser !== count($data['data'])) {
+            User::truncate();
             foreach ($data['data'] as $datas) {
+                $faker             = Faker::create();
                 $user              = new User();
-                $user->email       = $datas['email'];
+                $user->email       = $faker->email;
+//                $user              = new User();
+//                $user->email       = $datas['email'];
                 $user->password    = Hash::make('jafar123');
-                $user->nik         = $datas['nik'] ??  random_int(1000000000, 9000000000);
+                $user->nik         = $datas['nik'] ?? random_int(1000000000, 9000000000);
                 $user->name        = $datas['name'];
                 $user->division    = $datas['division'];
                 $user->department  = $datas['department'];
@@ -72,19 +76,22 @@ class ClientController extends Controller
                 $user->save();
             }
         }
+
+        $user     = (new Helper)->admin__add_user($response['data']);
+
         Auth::login($user);
 
         return redirect('/checklist');
     }
 
-    public function getUserEmployee()
+    public function getUserEmployeeData($at = null)
     {
-        if (Cookie::has('bearer')) {
-            $client = new Client();
+        if (Cookie::has('bearer') || $at) {
+            $client   = new Client();
             $response = $client->request('POST', config('app.client_url') . 'api/data/users', [
                     'headers' => [
-                        'Accept' => 'application/json',
-                        'Authorization' => 'Bearer ' . Cookie::get('bearer'),
+                        'Accept'        => 'application/json',
+                        'Authorization' => 'Bearer ' . $at ?? Cookie::get('bearer')  ,
                     ],
                 ]
             );

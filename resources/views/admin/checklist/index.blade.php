@@ -508,8 +508,8 @@
                         '<img src="' + JSON.parse(all[i]['picture'])[pic] + '"class="ri2-fullwidth new-rotate-image new-rotate-north"> </div>'
                 }
                 const date = new Date(all[i]['updated_at']);
-                const name = all[i]['check_list']['name'] != null ? all[i]['check_list']['name'] : "";
-                const note = all[i]['note'] != null ? '<div class="ri2-block ri2-relative ri2-margintop5 ri2-italic ri2-font14"><i class="far fa-comment-dots"></i>' + all[i]['note'] + '</div>' : "";
+                const name = all[i]['check_list']['name'] != null ? all[i]['check_list']['name'].escape() : "";
+                const note = all[i]['note'] != null ? '<div class="ri2-block ri2-relative ri2-margintop5 ri2-italic ri2-font14"><i class="far fa-comment-dots"></i>' + all[i]['note'].escape() + '</div>' : "";
                 const status = all[i]['status'] == 1 ? "<i class='far fa-check-square'></i>" : "<i class='far fa-square'></i>";
                 const image = all[i]['picture'] != null ? images : "";
                 let lastUpdate = '<div class="ri2-block ri2-relative ri2-margintop5 ri2-font14"><i class="far fa-clock"></i> Last updated :' + date.toLocaleString() + '</div>';
@@ -1048,9 +1048,9 @@
                         } else {
                             select = '';
                         }
-                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + '" ' + select + ' data-designation="'+data[i]["designation"] +'">' + data[i]["name"] + '</option>';
-                    }
-                    $('#to_user_id').html(getUserEmployee);
+                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + '" data-designation="'+data[i]["designation"] +'" '+ select +'>' + data[i]["name"] + '</option>';
+                    };
+                    $('#to_user_id').html(getUserEmployee).val(selectedUser).trigger('change');
                     $('#editOperTugasToUserId').html(getUserEmployee);
                 },
             });

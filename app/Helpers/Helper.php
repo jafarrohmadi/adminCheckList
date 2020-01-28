@@ -62,7 +62,7 @@ class Helper
 
     function admin__add_user($response)
     {
-        $user = User::where('email', $response['email'])->first();
+        $user = User::where('name','like', '%'.$response['name'].'%')->first();
         //$storage_path = 'clouds/avatars/';
         //$path = $response['photo'];
 
@@ -83,17 +83,17 @@ class Helper
             ]);
         }
 
-        $user = User::where('email', $response['email'])->first();
+        $user = User::where('name','like', '%'.$response['name'].'%')->first();
 
         if (!$user) {
 
             // sync update
-            $user = User::where('email', $response['email'])->first();
+            $user = User::where('name','like', '%'.$response['name'].'%')->first();
             if (isset($user->photo)) {
                 //File::delete($storage_path . $user->photo);
             }
             //Image::make($path)->save($storage_path . $filename);
-            $user->nik = $response['nik'];
+            $user->nik = $response['nik'] ?? random(10000, 90000);
             $user->name = $response['name'];
             $user->photo = $response['photo'];
             $user->grade = $response['grade'];

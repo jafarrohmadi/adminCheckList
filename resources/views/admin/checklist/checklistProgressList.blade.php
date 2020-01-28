@@ -12,6 +12,7 @@
     <tbody>
     <?php $i = 0; ?>
     @foreach($checkListProgress as $checkListProgres)
+        @if($checkListProgres->checkListUser)
         <tr>
             <td>{{ ++$i }}</td>
             <td>
@@ -67,6 +68,7 @@
                         class="fas fa-pen"></i></a>
             </td>
         </tr>
+        @endif
     @endforeach
 
     </tbody>
