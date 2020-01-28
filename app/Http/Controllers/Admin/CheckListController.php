@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\ClientController;
 use App\Http\Requests\CheckListEmployeeSaveRequest;
+use App\Http\Requests\LocationRequest;
 use App\Http\Requests\SaveOperTugasRequest;
 use App\Models\CheckList;
 use App\Models\CheckListEmployee;
@@ -39,30 +40,7 @@ class CheckListController extends ClientController
 
     public function getUserEmployee()
     {
-        $user  = User::where('designation', 'like', '%Office Boy%')->get();
-        $value = [];
-        if (count($user) === 0) {
-            $data         = parent::getUserEmployee();
-            $value        = [];
-            $checkListEmp = CheckListEmployee::pluck('user_id')->toArray();
-            foreach ($data['data'] as $datas) {
-                if (stristr($datas['designation'], 'Office Boy') && in_array($datas['nik'], $checkListEmp) == false) {
-                    $value[]           = $datas;
-                    $faker             = Faker::create();
-                    $user              = new User();
-                    $user->email       = $faker->email;
-                    $user->password    = Hash::make('jafar123');
-                    $user->nik         = $datas['nik'] ??  random_int(1000000000, 9000000000);
-                    $user->name        = $datas['name'];
-                    $user->division    = $datas['division'];
-                    $user->department  = $datas['department'];
-                    $user->photo       = $datas['photo'];
-                    $user->designation = 'Office Boy';
-                    $user->save();
-                }
-            }
-            return $value;
-        }
+        $user = User::all();
 
         return $user;
     }
@@ -71,21 +49,21 @@ class CheckListController extends ClientController
     {
         return User::has('checkListEmployee')
             ->with('checkListEmployee')
-            ->where('designation', 'like', '%Office Boy%')
+            //->where('designation', 'like', '%Office Boy%')
             ->get();
     }
 
     public function getUserEmployeeDontHaveCheckList()
     {
         return User::doesnthave('checkListEmployee')
-            ->where('designation', 'like', '%Office Boy%')
+            //->where('designation', 'like', '%Office Boy%')
             ->get();
     }
 
     public function getUserCheckListOperTugasToById($id)
     {
-        return User::where('designation', 'like', '%Office Boy%')
-            ->where('nik', '!=', $id)
+        return User::where('email', '!=', $id)
+//        ->where('designation', 'like', '%Office Boy%')
             ->get();
     }
 
@@ -144,8 +122,8 @@ class CheckListController extends ClientController
         $checkListProgress              = CheckListProgress::find($id);
         $checkListProgress->location_id = $request->location_id;
         if ($request->note != 'null') {
-            $checkListProgress->note = $request->note;
-            $checkListProgress->userUpdate = Auth::id();
+            $checkListProgress->note       = $request->note;
+            $checkListProgress->userUpdate = Auth::user()->email;
         }
         $checkListProgress->save();
         $checkListProgress->checkListProgressDetail()->delete();
@@ -164,11 +142,42 @@ class CheckListController extends ClientController
     {
         $checkListProgress = CheckListProgress::find($id);
         if ($request->note != 'null') {
-            $checkListProgress->note = $request->note;
-            $checkListProgress->userUpdate = Auth::id();
+            $checkListProgress->note       = $request->note;
+            $checkListProgress->userUpdate = Auth::user()->email;
         }
         $checkListProgress->save();
         return $checkListProgress;
+    }
+
+    public function getLocation()
+    {
+        return Location::where('status', 1)->get();
+    }
+
+    public function storeLocation(LocationRequest $request)
+    {
+        $location       = new Location();
+        $location->name = $request->name;
+        $location->save();
+        return $location;
+    }
+
+    public function updateLocation($id, LocationRequest $request)
+    {
+        $location       = Location::find($id);
+        $location->name = $request->name;
+        $location->save();
+        return $location;
+    }
+
+    public function deleteLocation($id)
+    {
+        $location         = Location::find($id);
+        $location->status = 0;
+        $location->save();
+
+        CheckListEmployeeDetail::where('check_list_id', $id)->delete();
+        return 'true';
     }
 
     public function getCheckList()

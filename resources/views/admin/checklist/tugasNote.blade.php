@@ -28,10 +28,10 @@
                         </div>
                         <div class="ri2-block ri2-relative ri2-marginbottom20">
                             <textarea
-                                class="ri2-textarea100 ri2-boxpad10 ri2-box ri2-font14 ri2-txblack3 ri2-fullwidth ri2-bgwhite2 ri2-borderfull1 ri2-borderwhite5 ri2-borderradius2 ri2-noresize"
+                                class="noteInput ri2-textarea100 ri2-boxpad10 ri2-box ri2-font14 ri2-txblack3 ri2-fullwidth ri2-bgwhite2 ri2-borderfull1 ri2-borderwhite5 ri2-borderradius2 ri2-noresize"
                                 name='note' id='note' placeholder="Catatan"></textarea>
                         </div>
-                        <div class="ri2-block ri2-relative ri2-left">
+                        <div class="ri2-block ri2-relative ri2-left sendNote">
                             <button
                                 class="modaltugasnoteedit ri2-inlineblock ri2-bordernone ri2-borderradius2 ri2-boxpad7 ri2-paddingright15 ri2-paddingleft15 ri2-bgblue1 ri2-txwhite1 ri2-hovering ri2-font16 ri2-semibold ri2-pointer"
                                 id="modaltugasnoteedit">

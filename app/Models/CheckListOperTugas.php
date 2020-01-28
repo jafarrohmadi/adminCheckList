@@ -20,7 +20,7 @@ class CheckListOperTugas extends Model
 
     public function fromUser()
     {
-        return $this->belongsTo(User::class, 'from_user_id', 'nik');
+        return $this->belongsTo(User::class, 'from_user_id', 'email');
     }
 
 }
