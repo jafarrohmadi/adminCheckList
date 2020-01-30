@@ -2,7 +2,6 @@
 
 namespace App\Helpers;
 
-
 use App\Models\User;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Hash;
@@ -12,7 +11,7 @@ class Helper
 {
     function tanggal_indo($tanggal, $cetak_hari = true)
     {
-        $hari = [
+        $hari     = [
             1 => 'Senin',
             'Selasa',
             'Rabu',
@@ -21,7 +20,7 @@ class Helper
             'Sabtu',
             'Minggu',
         ];
-        $bulan = [
+        $bulan    = [
             1 => 'Januari',
             'Februari',
             'Maret',
@@ -35,7 +34,7 @@ class Helper
             'November',
             'Desember',
         ];
-        $split = explode('-', $tanggal);
+        $split    = explode('-', $tanggal);
         $tgl_indo = $split[2] . ' ' . $bulan[(int)$split[1]] . ' ' . $split[0];
         if ($cetak_hari) {
             $num = date('N', strtotime($tanggal));
@@ -62,45 +61,20 @@ class Helper
 
     function admin__add_user($response)
     {
-        $user = User::where('name','like', '%'.$response['name'].'%')->first();
-        //$storage_path = 'clouds/avatars/';
-        //$path = $response['photo'];
-
-        //$filename = strtotime(date('YmdHis')) . basename($path);
+        $user = User::where('email', $response['email'])->first();
         if (!$user) {
-          //  Image::make($path)->save($storage_path . $filename);
-            // register
-            User::create([
-                'name' => $response['name'],
-                'nik' => $response['nik'],
-                'email' => $response['email'],
-                'password' => Hash::make('jafar123'),
-                'photo' => $response['photo'],
-                'grade' => $response['grade'],
-                'division' => $response['division'],
-                'department' => $response['department'],
-                'designation' => $response['designation']
+
+            $user = User::create([
+                'name'        => $response['name'],
+                'nik'         => $response['nik'],
+                'email'       => $response['email'],
+                'password'    => Hash::make('jafar123'),
+                'photo'       => $response['photo'],
+                'grade'       => $response['grade'],
+                'division'    => $response['division'],
+                'department'  => $response['department'],
+                'designation' => $response['designation'],
             ]);
-        }
-
-        $user = User::where('name','like', '%'.$response['name'].'%')->first();
-
-        if (!$user) {
-
-            // sync update
-            $user = User::where('name','like', '%'.$response['name'].'%')->first();
-            if (isset($user->photo)) {
-                //File::delete($storage_path . $user->photo);
-            }
-            //Image::make($path)->save($storage_path . $filename);
-            $user->nik = $response['nik'] ?? random(10000, 90000);
-            $user->name = $response['name'];
-            $user->photo = $response['photo'];
-            $user->grade = $response['grade'];
-            $user->division = $response['division'];
-            $user->department = $response['department'];
-            $user->designation = $response['designation'];
-            $user->save();
         }
 
         return $user;

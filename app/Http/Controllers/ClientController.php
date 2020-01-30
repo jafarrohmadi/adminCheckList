@@ -61,11 +61,11 @@ class ClientController extends Controller
         if ($allUser !== count($data['data'])) {
             User::truncate();
             foreach ($data['data'] as $datas) {
-                $faker             = Faker::create();
-                $user              = new User();
-                $user->email       = $faker->email;
+//                $faker             = Faker::create();
 //                $user              = new User();
-//                $user->email       = $datas['email'];
+//                $user->email       = $faker->email;
+                $user              = new User();
+                $user->email       = $datas['email'];
                 $user->password    = Hash::make('jafar123');
                 $user->nik         = $datas['nik'] ?? random_int(1000000000, 9000000000);
                 $user->name        = $datas['name'];
