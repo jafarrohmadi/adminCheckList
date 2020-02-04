@@ -122,16 +122,19 @@ class CheckListController extends ClientController
         $checkListProgress              = CheckListProgress::find($id);
         $checkListProgress->location_id = $request->location_id;
         if ($request->note != 'null') {
-            $checkListProgress->note       = $request->note;
-            $checkListProgress->userUpdate = Auth::user()->email;
+            $checkListProgress->note        = $request->note;
+            $checkListProgress->note_status = 0;
+            $checkListProgress->userUpdate  = Auth::user()->email;
         }
         $checkListProgress->save();
 
         foreach ($request->check_list_ids as $check_list_id) {
-            $checklist = CheckListProgressDetail::where(['check_list_progress_id' => $checkListProgress->id,
-                'check_list_id' => $check_list_id])
+            $checklist = CheckListProgressDetail::where([
+                'check_list_progress_id' => $checkListProgress->id,
+                'check_list_id'          => $check_list_id,
+            ])
                 ->first();
-            if(!$checklist) {
+            if (!$checklist) {
                 $CheckListProgressDetail                         = new CheckListProgressDetail();
                 $CheckListProgressDetail->check_list_progress_id = $checkListProgress->id;
                 $CheckListProgressDetail->check_list_id          = $check_list_id;
@@ -146,8 +149,9 @@ class CheckListController extends ClientController
     {
         $checkListProgress = CheckListProgress::find($id);
         if ($request->note != 'null') {
-            $checkListProgress->note       = $request->note;
-            $checkListProgress->userUpdate = Auth::user()->email;
+            $checkListProgress->note        = $request->note;
+            $checkListProgress->note_status = 0;
+            $checkListProgress->userUpdate  = Auth::user()->email;
         }
         $checkListProgress->save();
         return $checkListProgress;

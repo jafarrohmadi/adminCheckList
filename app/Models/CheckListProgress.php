@@ -13,6 +13,7 @@ class CheckListProgress extends Model
         'location_id',
         'note',
         'check_list_oper_tugas_id',
+        'note_status',
         'created_at',
         'updated_at',
         'userUpdate'
