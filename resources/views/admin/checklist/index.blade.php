@@ -136,13 +136,13 @@
 
 @section('js')
     <script type="text/javascript">
-        String.prototype.escape = function() {
+        String.prototype.escape = function () {
             var tagsToReplace = {
                 '&': '&amp;',
                 '<': '&lt;',
                 '>': '&gt;'
             };
-            return this.replace(/[&<>]/g, function(tag) {
+            return this.replace(/[&<>]/g, function (tag) {
                 return tagsToReplace[tag] || tag;
             });
         };
@@ -903,13 +903,16 @@
                     for (i = 0; i < data.length; i++) {
                         crudLocationIndex = crudLocationIndex + '<li> <a class="ubahlocationopen ri2-pointer ri2-linkhover" data-id="' + data[i]['id'] + '" data-name="' + data[i]['name'].escape() + '">' + data[i]["name"].escape() + '</a> </li>';
                         getLocationlocal = getLocationlocal + '<option value="' + data[i]['id'] + '">' + data[i]['name'].escape() + '</option>';
-                    };
+                    }
+                    ;
                     $('#crudLocationIndex').html(crudLocationIndex);
                     $('#location_id').html(getLocationlocal);
                 },
             });
         }
+
         getLocation();
+
         function in_array_js(array, id) {
             for (let i in array) {
                 if (array[i] == id) {
@@ -980,7 +983,7 @@
                 success: function (data) {
                     let getUserEmployee = '<option value="" selected>Pilih Personel</option>';
                     for (i = 0; i < data.length; i++) {
-                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + '" data-designation="'+data[i]["designation"] +'">' + data[i]["name"] + '</option>';
+                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + '" data-designation="' + data[i]["designation"] + '">' + data[i]["name"] + '</option>';
                     }
                     $('#tambahTugasUserId').html(getUserEmployee);
                 },
@@ -994,7 +997,7 @@
                 success: function (data) {
                     let getUserEmployee = '<option value="" selected>Pilih Personel</option>';
                     for (i = 0; i < data.length; i++) {
-                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + '" data-designation="'+data[i]["designation"] +'">' + data[i]["name"] + '</option>';
+                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + '" data-designation="' + data[i]["designation"] + '">' + data[i]["name"] + '</option>';
                     }
 
                     $('#from_user_id').html(getUserEmployee);
@@ -1009,7 +1012,7 @@
                 success: function (data) {
                     let getUserEmployee = '<option value="" selected>Pilih Personel</option>';
                     for (i = 0; i < data.length; i++) {
-                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + '" data-designation="'+data[i]["designation"] +'">' + data[i]["name"] + '</option>';
+                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + '" data-designation="' + data[i]["designation"] + '">' + data[i]["name"] + '</option>';
                     }
 
 //                    $('#user_id').html(getUserEmployee);
@@ -1050,8 +1053,9 @@
                         } else {
                             select = '';
                         }
-                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + '" data-designation="'+data[i]["designation"] +'" '+ select +'>' + data[i]["name"] + '</option>';
-                    };
+                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + '" data-designation="' + data[i]["designation"] + '" ' + select + '>' + data[i]["name"] + '</option>';
+                    }
+                    ;
                     $('#to_user_id').html(getUserEmployee).val(selectedUser).trigger('change');
                     $('#editOperTugasToUserId').html(getUserEmployee);
                 },
@@ -1154,9 +1158,9 @@
 
         function format_select_designation(opt) {
             var optidesignation = $(opt.element).attr('data-designation');
-            if(optidesignation){
+            if (optidesignation) {
                 var $opt = $(
-                    '<div class="main" style="font-size:14px">'+opt.text+' - <span class="sub" style="font-size:10px; opacity:0.75;">'+optidesignation+'</span></div>'
+                    '<div class="main" style="font-size:14px">' + opt.text + ' - <span class="sub" style="font-size:10px; opacity:0.75;">' + optidesignation + '</span></div>'
                 );
                 return $opt;
             }
