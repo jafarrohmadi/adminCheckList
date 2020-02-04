@@ -126,13 +126,17 @@ class CheckListController extends ClientController
             $checkListProgress->userUpdate = Auth::user()->email;
         }
         $checkListProgress->save();
-        $checkListProgress->checkListProgressDetail()->delete();
 
         foreach ($request->check_list_ids as $check_list_id) {
-            $CheckListProgressDetail                         = new CheckListProgressDetail();
-            $CheckListProgressDetail->check_list_progress_id = $checkListProgress->id;
-            $CheckListProgressDetail->check_list_id          = $check_list_id;
-            $CheckListProgressDetail->save();
+            $checklist = CheckListProgressDetail::where(['check_list_progress_id' => $checkListProgress->id,
+                'check_list_id' => $check_list_id])
+                ->first();
+            if(!$checklist) {
+                $CheckListProgressDetail                         = new CheckListProgressDetail();
+                $CheckListProgressDetail->check_list_progress_id = $checkListProgress->id;
+                $CheckListProgressDetail->check_list_id          = $check_list_id;
+                $CheckListProgressDetail->save();
+            }
         }
 
         return $checkListProgress;
