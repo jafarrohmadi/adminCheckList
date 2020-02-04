@@ -128,10 +128,18 @@ class CheckListController extends ClientController
         }
         $checkListProgress->save();
 
+        CheckListProgressDetail::where([
+            'check_list_progress_id' => $checkListProgress->id,
+            'picture'                => null,
+            'note'                   => null,
+            'status'                 => 0,
+        ])->delete();
+
         foreach ($request->check_list_ids as $check_list_id) {
             $checklist = CheckListProgressDetail::where([
                 'check_list_progress_id' => $checkListProgress->id,
                 'check_list_id'          => $check_list_id,
+                'status'                 => 1,
             ])
                 ->first();
             if (!$checklist) {
