@@ -899,15 +899,17 @@
                 url: "{!! url('/getLocation') !!}",
                 success: function (data) {
                     var crudLocationIndex = '';
+                    let getLocationlocal = '<option value="" selected>Pilih Lokasi</option>';
                     for (i = 0; i < data.length; i++) {
                         crudLocationIndex = crudLocationIndex + '<li> <a class="ubahlocationopen ri2-pointer ri2-linkhover" data-id="' + data[i]['id'] + '" data-name="' + data[i]['name'].escape() + '">' + data[i]["name"].escape() + '</a> </li>';
-                    }
-
+                        getLocationlocal = getLocationlocal + '<option value="' + data[i]['id'] + '">' + data[i]['name'].escape() + '</option>';
+                    };
                     $('#crudLocationIndex').html(crudLocationIndex);
+                    $('#location_id').html(getLocationlocal);
                 },
             });
         }
-
+        getLocation();
         function in_array_js(array, id) {
             for (let i in array) {
                 if (array[i] == id) {

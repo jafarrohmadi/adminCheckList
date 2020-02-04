@@ -31,10 +31,6 @@
                                 <select
                                     class="basic-single ri2-block ri2-relative ri2-input40 ri2-input-greyholder ri2-box ri2-bgwhite4 ri2-fullwidth"
                                     name="location_id" id="location_id">
-                                    <option value="" selected>Pilih Lokasi</option>
-                                    @foreach($location as $locations)
-                                        <option value="{{ $locations->id ?? '' }}">{{ $locations->name ?? '' }}</option>
-                                    @endforeach
                                 </select>
                             </div>
                         </div>
