@@ -10,12 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::redirect('/', '/adminCheckList/login');
 Route::get('/login', ['as' =>'login' ,'uses' =>'ClientController@redirect']);
 
+#Route::redirect('/', '/site/login');
+#Route::get('/login', [ 'as' => 'login', 'uses' => 'ClientController@redirect' ]);
+
 Route::get('/callback', 'ClientController@callback')->name('callback');
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group([ 'middleware' => [ 'auth' ] ], function () {
     Route::get('/checklist', 'Admin\CheckListController@index')->name('checklist');
     Route::post('/checkListEmployeeSave', 'Admin\CheckListController@checkListEmployeeSave');
     Route::put('/editCheckListProgress/{id}', 'Admin\CheckListController@editCheckListProgress');
@@ -38,6 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/getUserCheckListOperTugasToById/{id}', 'Admin\CheckListController@getUserCheckListOperTugasToById');
     Route::put('/checkListProgressDetailEditById/{id}', 'Admin\CheckListController@checkListProgressDetailEditById');
     Route::get('/getCheckListProgressDetailByCheckListProgressId/{id}', 'Admin\CheckListController@getCheckListProgressDetailByCheckListProgressId');
+    Route::get('/getCheckListEmployeeDetail/{id}', 'Admin\CheckListController@getCheckListEmployeeDetail');
 
     Route::get('/getOnDutyData', 'Admin\CheckListController@getOnDutyData');
 
@@ -47,4 +52,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/storeLocation/', 'Admin\CheckListController@storeLocation');
     Route::put('/updateLocation/{id}', 'Admin\CheckListController@updateLocation');
     Route::delete('/deleteLocation/{id}', 'Admin\CheckListController@deleteLocation');
+    Route::get('/getTugasList/', 'Admin\CheckListController@getTugasList');
+    Route::delete('/checkListEmployeeDelete/{id}', 'Admin\CheckListController@checkListEmployeeDelete');
 });

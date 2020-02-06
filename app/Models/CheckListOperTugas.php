@@ -23,4 +23,13 @@ class CheckListOperTugas extends Model
         return $this->belongsTo(User::class, 'from_user_id', 'email');
     }
 
+    public function toUser()
+    {
+        return $this->belongsTo(User::class, 'to_user_id', 'email');
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
 }
