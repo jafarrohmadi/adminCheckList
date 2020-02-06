@@ -54,7 +54,7 @@ class ClientController extends Controller
         ]);
 
         $response = json_decode((string)$response->getBody(), true);
-        if (isset($response['data']['access']['checklist']['admin'])) {
+        if (!isset($response['data']['access']['checklist']['admin'])) {
             abort(403);
         }
         Cookie::queue('bearer', $at, 60);
@@ -81,7 +81,7 @@ class ClientController extends Controller
                     $user->department  = $datas['department'];
                     $user->photo       = $datas['photo'];
                     $user->designation = $datas['designation'];
-                    $user->access      = isset($datas['access']['checklist']['admin']) ? 'admin': 'user';
+                    $user->access      = isset($datas['access']['checklist']['admin']) ? 'admin' : 'user';
                     $user->save();
                 }
             }

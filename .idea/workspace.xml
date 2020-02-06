@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ce8d682-b236-4736-9d99-6b5ac6b37df5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_02_05_113136_add_day_and_checklist_to_check_list_employee_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_02_06_110155_add_access_to_users_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/checklist/editListTugas.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/checklist/operTugasList.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/checklist/tugasList.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/errors/403.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CheckListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CheckListController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CheckListEmployee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CheckListEmployee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CheckListOperTugas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CheckListOperTugas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/editTugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/editTugas.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +263,7 @@
       <workItem from="1580805421041" duration="4358000" />
       <workItem from="1580828675311" duration="54000" />
       <workItem from="1580874290524" duration="22901000" />
-      <workItem from="1580957844429" duration="9971000" />
+      <workItem from="1580957844429" duration="10459000" />
     </task>
     <task id="LOCAL-00001" summary="Change Commit">
       <created>1580356488345</created>
