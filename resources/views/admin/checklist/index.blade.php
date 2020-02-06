@@ -72,6 +72,38 @@
                         class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-white"></div>
                     <div class="ri2-block ri2-relative">
                         <div class="ri2-block ri2-font16 ri2-txblack5 ri2-semibold ri2-bgwhite3 ri2-boxpad7">
+                            Tugas List
+                        </div>
+                    </div>
+                    <div class="ri2-block ri2-relative ri2-boxpad20 ri2-box" id="tugasListIndex">
+                        @include('admin.checklist.tugasList')
+                    </div>
+                </div>
+            </div>
+{{--            <div class="ri2-block ri2-relative new-content-space">--}}
+{{--                <div class="ri2-block ri2-relative">--}}
+{{--                    <div--}}
+{{--                        class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-shadow"></div>--}}
+{{--                    <div--}}
+{{--                        class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-white"></div>--}}
+{{--                    <div class="ri2-block ri2-relative">--}}
+{{--                        <div class="ri2-block ri2-font16 ri2-txblack5 ri2-semibold ri2-bgwhite3 ri2-boxpad7">--}}
+{{--                            Mengalih Tugaskan List--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="ri2-block ri2-relative ri2-boxpad20 ri2-box" id="operTugasListIndex">--}}
+{{--                        @include('admin.checklist.operTugasList')--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+            <div class="ri2-block ri2-relative new-content-space">
+                <div class="ri2-block ri2-relative">
+                    <div
+                        class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-shadow"></div>
+                    <div
+                        class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-white"></div>
+                    <div class="ri2-block ri2-relative">
+                        <div class="ri2-block ri2-font16 ri2-txblack5 ri2-semibold ri2-bgwhite3 ri2-boxpad7">
                             On Duty
                         </div>
                     </div>
@@ -129,6 +161,7 @@
                     @include('admin.checklist.tugasNote')
                 </div>
             </div>
+            @include('admin.checklist.editListTugas')
         </div>
     </div>
     @include('layouts.admin.copyright')
@@ -238,6 +271,71 @@
             $('.modaltambahtugas').css('display', 'none');
             $('body', 'html').css('overflow', 'auto');
         });
+
+        $(document).on("click", ".modaledittugaslistopen", function () {
+            let id = $(this).attr("data-id");
+            let name = $(this).attr("data-name");
+            let userId = $(this).attr("data-user_id");
+            let locationId = $(this).attr("data-location");
+            let dataList = $(this).attr("data-list");
+            let dataDay = $(this).attr("data-day");
+            let AllData = ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu'];
+            $('#editTugasListId').val(id);
+            $('#editTugasListUserName').val(name);
+            $('#editTugasListUserId').val(userId);
+            $('#editTugasListLocationId').val(locationId).change();
+            $('.modaledittugaslist').css('display', 'block');
+            $('body', 'html').css('overflow', 'hidden');
+            let dayCheckList = '';
+            for (let i in AllData) {
+                if (in_array_js(JSON.parse(dataDay), AllData[i])) {
+                    checkChecked = 'checked';
+                } else {
+                    checkChecked = "";
+                }
+                dayCheckList = dayCheckList + '<div class="ri2-block ri2-relative ri2-checkbox ri2-marginbottom5">' +
+                    '<label class="ri2-checkbox-container ri2-txblack3 ri2-paddingleft30 ri2-pointer ri2-font14 ri2-line14">' +
+                    '<input type="checkbox" name="edit_days" id="edit_days" value="' + AllData[i] + '" ' + checkChecked + '>' +
+                    '<span class="ri2-checkmark-text">' + AllData[i] + '</span>' +
+                    '<span class="ri2-checkmark"></span>' +
+                    '</label>' +
+                    '</div>';
+            }
+            $('#editDayCheckList').html(dayCheckList);
+            let editTugasCheckList = '';
+            $.ajax({
+                type: 'get',
+                url: "{{url('/getCheckList') }}",
+                success: function (data) {
+                    for (i = 0; i < data.length; i++) {
+                        if (in_array_js(JSON.parse(dataList), data[i]["id"])) {
+                            checkChecked = 'checked';
+                        } else {
+                            checkChecked = "";
+                        }
+                        editTugasCheckList = editTugasCheckList + ' <div class="ri2-block ri2-relative"> ' +
+                            ' <div class="ri2-block ri2-relative ri2-checkbox ri2-marginbottom5"> <label class="ri2-checkbox-container ri2-txblack3 ri2-paddingleft30 ri2-pointer ri2-font14 ri2-line14"> ' +
+                            '<input type="checkbox" name="edit_check_list_ids" id="edit_check_list_ids" value="' + data[i]["id"] + '"' + checkChecked + '> ' +
+                            '<span class="ri2-checkmark-text">' + data[i]["name"].escape() + ' </span> <span class="ri2-checkmark"></span> </label> </div> </div>';
+
+                    }
+                    $('#editTugasListCheckList').html(editTugasCheckList);
+                }
+            });
+
+
+        });
+
+        $('.modaledittugaslistback').on('click', function () {
+            $('.modaledittugaslist').css('display', 'none');
+            $('body', 'html').css('overflow', 'auto');
+        });
+
+        $('.modaledittugaslistclose').on('click', function () {
+            $('.modaledittugaslist').css('display', 'none');
+            $('body', 'html').css('overflow', 'auto');
+        });
+
 
         //edit tugas
         var modaledittugas = $('.modaledittugas');
@@ -579,7 +677,7 @@
             $('.modaltugasnote').css('display', 'none');
             $('body', 'html').css('overflow', 'auto');
         });
-
+        $('.new-parent .new-child:nth-child(n+5)').slideUp();
         // open semua on duty
         $('.onduty-open').click(function () {
             $(this).parent().hide();
@@ -589,6 +687,18 @@
         $('.onduty-close').click(function () {
             $(this).parent().hide();
             $('.onduty-open').parent().show();
+            $('.new-parent .new-child:nth-child(n+5)').slideUp();
+        });
+
+        // open semua tugaslist
+        $(document).on("click", ".tugaslist-open", function () {
+            $(this).parent().hide();
+            $('.tugaslist-close').parent().show();
+            $('.new-parent .new-child').slideDown();
+        });
+        $(document).on("click", ".tugaslist-close", function () {
+            $(this).parent().hide();
+            $('.tugaslist-open').parent().show();
             $('.new-parent .new-child:nth-child(n+5)').slideUp();
         });
 
@@ -870,9 +980,60 @@
                     $('.modaltambahtugas').css('display', 'none');
                     $('body', 'html').css('overflow', 'auto');
                     getUserEmployeeData();
+                    getTugasList();
                     popUpMessage('Success Tambah Tugas');
                 },
             });
+        });
+
+        $(".modaledittugaslistsave").click(function () {
+            const days = [];
+            const check_list_ids = [];
+            $("input[name='edit_days']:checked").each(function () {
+                days.push(this.value);
+            });
+
+            $("input[name='edit_check_list_ids']:checked").each(function () {
+                check_list_ids.push(this.value);
+            });
+
+            $.ajax({
+                type: 'post',
+                url: "{{url('/checkListEmployeeSave') }}",
+                data: {
+                    '_token': "{{  csrf_token() }}",
+                    'user_id': $("#editTugasListUserId").val(),
+                    'check_list_ids': check_list_ids,
+                    'days': days,
+                    'location_id': $("#editTugasListLocationId").val(),
+                },
+                success: function (data) {
+                    $('.modaledittugaslist').css('display', 'none');
+                    $('body', 'html').css('overflow', 'auto');
+                    getUserEmployeeData();
+                    getTugasList();
+                    popUpMessage('Success Edit Tugas');
+                },
+            });
+        });
+        $(".modaledittugaslistdelete").click(function () {
+            var confirmation = confirm("are you sure to delete this tugas?");
+            if (confirmation) {
+                $.ajax({
+                    type: 'delete',
+                    url: "{{url('/checkListEmployeeDelete') }}/" + $("#editTugasListId").val() ,
+                    data: {
+                        '_token': "{{  csrf_token() }}"
+                    },
+                    success: function (data) {
+                        $('.modaledittugaslist').css('display', 'none');
+                        $('body', 'html').css('overflow', 'auto');
+                        getUserEmployeeData();
+                        getTugasList();
+                        popUpMessage('Success Delete Tugas');
+                    },
+                });
+            }
         });
 
         $("#modaltugasnoteedit").click(function () {
@@ -907,6 +1068,8 @@
                     ;
                     $('#crudLocationIndex').html(crudLocationIndex);
                     $('#location_id').html(getLocationlocal);
+                    $('#editTugasLocationId').html(getLocationlocal);
+                    $('#editTugasListLocationId').html(getLocationlocal);
                 },
             });
         }
@@ -929,10 +1092,11 @@
                 type: 'get',
                 url: "{{url('/getCheckList') }}",
                 success: function (data) {
-                    let checkChecked = '';
+                    let checkChecked, disabled = '';
                     let tambahTugasCheckList = '';
                     let crudCheckListIndex = '';
                     let editTugasCheckList = '';
+                    let checkTugasCheckList = [];
                     const editTugasChecked = [];
                     if (editDatachecklist != 0) {
                         $.ajax({
@@ -941,6 +1105,9 @@
                             success: function (datassss) {
                                 for (var i in datassss) {
                                     editTugasChecked[editTugasChecked.length] = datassss[i]['check_list_id'];
+                                    if (datassss[i]['status']) {
+                                        checkTugasCheckList[checkTugasCheckList.length] = datassss[i]['check_list_id'];
+                                    }
                                 }
                                 for (i = 0; i < data.length; i++) {
                                     if (in_array_js(editTugasChecked, data[i]["id"])) {
@@ -948,10 +1115,15 @@
                                     } else {
                                         checkChecked = "";
                                     }
+                                    if (in_array_js(checkTugasCheckList, data[i]["id"])) {
+                                        disabled = 'disabled';
+                                    } else {
+                                        disabled = "";
+                                    }
 
                                     editTugasCheckList = editTugasCheckList + ' <div class="ri2-block ri2-relative"> ' +
                                         ' <div class="ri2-block ri2-relative ri2-checkbox ri2-marginbottom5"> <label class="ri2-checkbox-container ri2-txblack3 ri2-paddingleft30 ri2-pointer ri2-font14 ri2-line14"> ' +
-                                        '<input type="checkbox" name="edit_check_list_ids" id="edit_check_list_ids" value="' + data[i]["id"] + '"' + checkChecked + '> ' +
+                                        '<input type="checkbox" name="edit_check_list_ids" id="edit_check_list_ids" value="' + data[i]["id"] + '"' + checkChecked + ' ' + disabled + '> ' +
                                         '<span class="ri2-checkmark-text">' + data[i]["name"].escape() + ' </span> <span class="ri2-checkmark"></span> </label> </div> </div>';
                                 }
                                 $('#editTugasCheckList').html(editTugasCheckList);
@@ -1165,5 +1337,18 @@
                 return $opt;
             }
         };
+
+        function getTugasList() {
+            $.ajax({
+                type: 'get',
+                url: "{{url('/getTugasList') }}/",
+                success: function (data) {
+                    if (data) {
+                        $('#tugasListIndex').html(data);
+                        $('.new-parent .new-child:nth-child(n+5)').slideUp();
+                    }
+                },
+            });
+        }
     </script>
 @endsection

@@ -10,6 +10,8 @@ class CheckListEmployee extends Model
     protected $fillable = [
         'user_id',
         'location_id',
+        'day',
+        'check_list_id',
         'created_at',
         'updated_at',
     ];
@@ -17,6 +19,11 @@ class CheckListEmployee extends Model
     public function location()
     {
     	return $this->belongsTo(Location::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'email');
     }
 
     public function checkListEmployeeDetail()

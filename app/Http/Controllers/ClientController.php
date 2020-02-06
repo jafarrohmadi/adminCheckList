@@ -54,30 +54,40 @@ class ClientController extends Controller
         ]);
 
         $response = json_decode((string)$response->getBody(), true);
+        if (isset($response['data']['access']['checklist']['admin'])) {
+            abort(403);
+        }
         Cookie::queue('bearer', $at, 60);
-        $allUser = User::count();
-        $data    = $this->getUserEmployeeData($at);
+        $allUser             = User::count();
+        $data                = $this->getUserEmployeeData($at);
+        $countDataHaveAccess = 0;
 
-        if ($allUser !== count($data['data'])) {
-            User::truncate();
-            foreach ($data['data'] as $datas) {
-//                $faker             = Faker::create();
-//                $user              = new User();
-//                $user->email       = $faker->email;
-                $user              = new User();
-                $user->email       = $datas['email'];
-                $user->password    = Hash::make('jafar123');
-                $user->nik         = $datas['nik'] ?? random_int(1000000000, 9000000000);
-                $user->name        = $datas['name'];
-                $user->division    = $datas['division'];
-                $user->department  = $datas['department'];
-                $user->photo       = $datas['photo'];
-                $user->designation = $datas['designation'];
-                $user->save();
+        foreach ($data['data'] as $dates) {
+            if (isset($datas['access']['checklist']['admin']) || isset($datas['access']['checklist']['user'])) {
+                $countDataHaveAccess++;
             }
         }
 
-        $user     = (new Helper)->admin__add_user($response['data']);
+        if ($allUser !== $countDataHaveAccess) {
+            User::truncate();
+            foreach ($data['data'] as $datas) {
+                if (isset($datas['access']['checklist']['admin']) || isset($datas['access']['checklist']['user'])) {
+                    $user              = new User();
+                    $user->email       = $datas['email'];
+                    $user->password    = Hash::make('jafar123');
+                    $user->nik         = $datas['nik'] ?? random_int(1000000000, 9000000000);
+                    $user->name        = $datas['name'];
+                    $user->division    = $datas['division'];
+                    $user->department  = $datas['department'];
+                    $user->photo       = $datas['photo'];
+                    $user->designation = $datas['designation'];
+                    $user->access      = isset($datas['access']['checklist']['admin']) ? 'admin': 'user';
+                    $user->save();
+                }
+            }
+        }
+
+        $user = (new Helper)->admin__add_user($response['data']);
 
         Auth::login($user);
 
@@ -91,7 +101,7 @@ class ClientController extends Controller
             $response = $client->request('POST', config('app.client_url') . 'api/data/users', [
                     'headers' => [
                         'Accept'        => 'application/json',
-                        'Authorization' => 'Bearer ' . $at ?? Cookie::get('bearer')  ,
+                        'Authorization' => 'Bearer ' . $at ?? Cookie::get('bearer'),
                     ],
                 ]
             );

@@ -24,7 +24,8 @@ class CheckListController extends ClientController
 {
     public function index()
     {
-        $location          = Location::all();
+        $location = Location::all();
+
         $checkListProgress =
             CheckListProgress::with([ 'checkListProgressDetail.checkList', 'checkListOperTugas.fromUser', 'checkListUser' ])->withCount([
                     'checkListProgressDetail',
@@ -34,36 +35,45 @@ class CheckListController extends ClientController
                 ]
             )->whereDate('date', date('Y-m-d'))->get();
 
-        $onDutyData = $this->getOnDutyData();
-        return view('admin.checklist.index', compact('location', 'checkListProgress', 'onDutyData'));
-    }
+        $checkListEmployee = CheckListEmployee::all();
+        $checkListOperTugas = CheckListOperTugas::whereDate('end_date', '>=', date('Y-m-d'))->get();
 
+        $onDutyData = $this->getOnDutyData();
+
+        return view('admin.checklist.index', compact('location', 'checkListProgress', 'onDutyData', 'checkListEmployee', 'checkListOperTugas'));
+    }
+    public function getTugasList()
+    {
+        $checkListEmployee =  CheckListEmployee::all();
+        return view('admin.checklist.tugasList', compact('checkListEmployee'));
+    }
     public function getUserEmployee()
     {
-        $user = User::all();
+        $user = User::doesnthave('checkListEmployee')->where('access', 'user')->get();
 
         return $user;
     }
 
     public function getUserEmployeeHaveCheckList()
     {
+        $checkListOperTugas  = CheckListOperTugas::whereDate('end_date', '>=', date('Y-m-d'))->pluck('from_user_Id')->toArray();
+
         return User::has('checkListEmployee')
+            ->where('access', 'user')
+            ->whereNotIn('email', $checkListOperTugas)
             ->with('checkListEmployee')
-            //->where('designation', 'like', '%Office Boy%')
             ->get();
     }
 
     public function getUserEmployeeDontHaveCheckList()
     {
-        return User::doesnthave('checkListEmployee')
-            //->where('designation', 'like', '%Office Boy%')
+        return User::doesnthave('checkListEmployee')->where('access', 'user')
             ->get();
     }
 
     public function getUserCheckListOperTugasToById($id)
     {
-        return User::where('email', '!=', $id)
-//        ->where('designation', 'like', '%Office Boy%')
+        return User::where('email', '!=', $id)->where('access', 'user')
             ->get();
     }
 
@@ -94,8 +104,10 @@ class CheckListController extends ClientController
             $checkListEmployee = new CheckListEmployee();
         }
 
-        $checkListEmployee->user_id     = $request->user_id;
-        $checkListEmployee->location_id = $request->location_id;
+        $checkListEmployee->user_id       = $request->user_id;
+        $checkListEmployee->location_id   = $request->location_id;
+        $checkListEmployee->day           = json_encode($request->days);
+        $checkListEmployee->check_list_id = json_encode($request->check_list_ids);
         $checkListEmployee->save();
         foreach ($request->days as $days) {
             foreach ($request->check_list_ids as $check_list_id) {
@@ -108,6 +120,13 @@ class CheckListController extends ClientController
         }
 
         return $checkListEmployee;
+    }
+
+    public function checkListEmployeeDelete($id)
+    {
+        CheckListEmployeeDetail::where('check_list_employee_id', $id)->delete();
+        CheckListEmployee::destroy($id);
+        return 'true';
     }
 
     public function checkListProcessDelete($id)
@@ -291,7 +310,7 @@ class CheckListController extends ClientController
 
     public function getCheckListProgressDetailByCheckListProgressId($id)
     {
-        return CheckListProgressDetail::where('check_list_progress_id', $id)->get();
+        return CheckListProgressDetail::where([ 'check_list_progress_id' => $id ])->get();
     }
 
     public function filterChecklistProgressDate($date = null)
