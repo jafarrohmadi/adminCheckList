@@ -17,8 +17,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Faker\Factory as Faker;
 
 class CheckListController extends ClientController
 {
@@ -33,33 +31,41 @@ class CheckListController extends ClientController
                         $query->where('status', 1)->orderBy('date', 'desc');
                     },
                 ]
-            )->whereDate('date', date('Y-m-d'))->get();
+            )->where('date', date('Y-m-d'))->get();
 
-        $checkListEmployee = CheckListEmployee::all();
-        $checkListOperTugas = CheckListOperTugas::whereDate('end_date', '>=', date('Y-m-d'))->get();
+        $checkListEmployee  = CheckListEmployee::all();
+        $checkListOperTugas = CheckListOperTugas::where('end_date', '>=', date('Y-m-d'))->get();
 
         $onDutyData = $this->getOnDutyData();
 
         return view('admin.checklist.index', compact('location', 'checkListProgress', 'onDutyData', 'checkListEmployee', 'checkListOperTugas'));
     }
+
     public function getTugasList()
     {
-        $checkListEmployee =  CheckListEmployee::all();
+        $checkListEmployee = CheckListEmployee::all();
         return view('admin.checklist.tugasList', compact('checkListEmployee'));
     }
+
+    public function getOperTugasList()
+    {
+        $checkListOperTugas = CheckListOperTugas::where('end_date', '>=', date('Y-m-d'))->get();
+        return view('admin.checklist.operTugasList', compact('checkListOperTugas'));
+    }
+
     public function getUserEmployee()
     {
-        $user = User::doesnthave('checkListEmployee')->where('access', 'user')->get();
+        $user = User::doesnthave('checkListEmployee')->get();
 
         return $user;
     }
 
     public function getUserEmployeeHaveCheckList()
     {
-        $checkListOperTugas  = CheckListOperTugas::whereDate('end_date', '>=', date('Y-m-d'))->pluck('from_user_Id')->toArray();
+        $checkListOperTugas =
+            CheckListOperTugas::where('end_date', '>=', date('Y-m-d'))->pluck('from_user_Id')->toArray();
 
         return User::has('checkListEmployee')
-            ->where('access', 'user')
             ->whereNotIn('email', $checkListOperTugas)
             ->with('checkListEmployee')
             ->get();
@@ -67,13 +73,13 @@ class CheckListController extends ClientController
 
     public function getUserEmployeeDontHaveCheckList()
     {
-        return User::doesnthave('checkListEmployee')->where('access', 'user')
+        return User::doesnthave('checkListEmployee')
             ->get();
     }
 
     public function getUserCheckListOperTugasToById($id)
     {
-        return User::where('email', '!=', $id)->where('access', 'user')
+        return User::where('email', '!=', $id)
             ->get();
     }
 
@@ -246,18 +252,22 @@ class CheckListController extends ClientController
         return 'true';
     }
 
+    public function editOperTugasList(Request $request, $id) {
+        $checkListOperTugas = CheckListOperTugas::find($id);
+        $checkListOperTugas->from_user_id = $request->from_user_id;
+        $checkListOperTugas->to_user_id   = $request->to_user_id;
+        $checkListOperTugas->location_id  = $request->location_id;
+        $checkListOperTugas->start_date   = $request->start_date;
+        $checkListOperTugas->end_date     = $request->end_date;
+        $checkListOperTugas->reason       = $request->reason;
+        $checkListOperTugas->save();
+
+        return $checkListOperTugas;
+    }
+
     public function saveOperTugas(SaveOperTugasRequest $request)
     {
-        $checkListOperTugas = CheckListOperTugas::where([
-            'from_user_id' => $request->from_user_id,
-            'to_user_id'   => $request->to_user_id,
-            'location_id'  => $request->location_id,
-        ])->first();
-
-        if (!$checkListOperTugas) {
-            $checkListOperTugas = new CheckListOperTugas();
-        }
-
+        $checkListOperTugas = new CheckListOperTugas();
         $checkListOperTugas->from_user_id = $request->from_user_id;
         $checkListOperTugas->to_user_id   = $request->to_user_id;
         $checkListOperTugas->location_id  = $request->location_id;
@@ -322,7 +332,7 @@ class CheckListController extends ClientController
                         $query->where('status', 1)->orderBy('date', 'desc');
                     },
                 ]
-            )->whereDate('date', $date)->get();
+            )->where('date', $date)->get();
         if (count($checkListProgress) > 0) {
             return view('admin.checklist.checklistProgressList', compact('checkListProgress'));
         }

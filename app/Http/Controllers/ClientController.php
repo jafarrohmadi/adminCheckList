@@ -57,41 +57,36 @@ class ClientController extends Controller
         if (!isset($response['data']['access']['checklist']['admin'])) {
             abort(403);
         }
+
         Cookie::queue('bearer', $at, 60);
         $allUser             = User::count();
         $data                = $this->getUserEmployeeData($at);
         $countDataHaveAccess = 0;
 
-        foreach ($data['data'] as $dates) {
+        User::truncate();
+        foreach ($data['data'] as $datas) {
             if (isset($datas['access']['checklist']['admin']) || isset($datas['access']['checklist']['user'])) {
-                $countDataHaveAccess++;
+                $user              = new User();
+                $user->email       = $datas['email'];
+                $user->password    = Hash::make('jafar123');
+                $user->nik         = $datas['nik'] ?? random_int(1000000000, 9000000000);
+                $user->name        = $datas['name'];
+                $user->division    = $datas['division'];
+                $user->department  = $datas['department'];
+                $user->photo       = $datas['photo'];
+                $user->designation = $datas['designation'];
+                $user->access      = isset($datas['access']['checklist']['admin']) ? 'admin' : 'user';
+                $user->save();
             }
         }
 
-        if ($allUser !== $countDataHaveAccess) {
-            User::truncate();
-            foreach ($data['data'] as $datas) {
-                if (isset($datas['access']['checklist']['admin']) || isset($datas['access']['checklist']['user'])) {
-                    $user              = new User();
-                    $user->email       = $datas['email'];
-                    $user->password    = Hash::make('jafar123');
-                    $user->nik         = $datas['nik'] ?? random_int(1000000000, 9000000000);
-                    $user->name        = $datas['name'];
-                    $user->division    = $datas['division'];
-                    $user->department  = $datas['department'];
-                    $user->photo       = $datas['photo'];
-                    $user->designation = $datas['designation'];
-                    $user->access      = isset($datas['access']['checklist']['admin']) ? 'admin' : 'user';
-                    $user->save();
-                }
-            }
+        $user = User::where('email', $response['data']['email'])->first();
+        if($user) {
+            Auth::login($user);
+            return redirect('/checklist');
+        }else {
+            return redirect('https://ayoohris.id/main/logout?ref=https://checklist.ayooproject.com/admin/login');
         }
-
-        $user = (new Helper)->admin__add_user($response['data']);
-
-        Auth::login($user);
-
-        return redirect('/checklist');
     }
 
     public function getUserEmployeeData($at = null)

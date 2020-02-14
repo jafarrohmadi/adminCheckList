@@ -49,5 +49,7 @@ Route::group([ 'middleware' => [ 'auth' ] ], function () {
     Route::put('/updateLocation/{id}', 'Admin\CheckListController@updateLocation');
     Route::delete('/deleteLocation/{id}', 'Admin\CheckListController@deleteLocation');
     Route::get('/getTugasList/', 'Admin\CheckListController@getTugasList');
+    Route::get('/getOperTugasList/', 'Admin\CheckListController@getOperTugasList');
     Route::delete('/checkListEmployeeDelete/{id}', 'Admin\CheckListController@checkListEmployeeDelete');
+    Route::put('/editOperTugasList/{id}', 'Admin\CheckListController@editOperTugasList');
 });
