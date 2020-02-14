@@ -80,22 +80,22 @@
                     </div>
                 </div>
             </div>
-{{--            <div class="ri2-block ri2-relative new-content-space">--}}
-{{--                <div class="ri2-block ri2-relative">--}}
-{{--                    <div--}}
-{{--                        class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-shadow"></div>--}}
-{{--                    <div--}}
-{{--                        class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-white"></div>--}}
-{{--                    <div class="ri2-block ri2-relative">--}}
-{{--                        <div class="ri2-block ri2-font16 ri2-txblack5 ri2-semibold ri2-bgwhite3 ri2-boxpad7">--}}
-{{--                            Mengalih Tugaskan List--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="ri2-block ri2-relative ri2-boxpad20 ri2-box" id="operTugasListIndex">--}}
-{{--                        @include('admin.checklist.operTugasList')--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            <div class="ri2-block ri2-relative new-content-space">
+                <div class="ri2-block ri2-relative">
+                    <div
+                        class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-shadow"></div>
+                    <div
+                        class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-white"></div>
+                    <div class="ri2-block ri2-relative">
+                        <div class="ri2-block ri2-font16 ri2-txblack5 ri2-semibold ri2-bgwhite3 ri2-boxpad7">
+                            Mengalih Tugaskan List
+                        </div>
+                    </div>
+                    <div class="ri2-block ri2-relative ri2-boxpad20 ri2-box" id="operTugasListIndex">
+                        @include('admin.checklist.operTugasList')
+                    </div>
+                </div>
+            </div>
             <div class="ri2-block ri2-relative new-content-space">
                 <div class="ri2-block ri2-relative">
                     <div
@@ -127,6 +127,7 @@
                         @endif
                         @include('admin.checklist.editTugas')
                         @include('admin.checklist.editOperTugas')
+                        @include('admin.checklist.editListOperTugas')
                     </div>
                 </div>
             </div>
@@ -279,7 +280,7 @@
             let locationId = $(this).attr("data-location");
             let dataList = $(this).attr("data-list");
             let dataDay = $(this).attr("data-day");
-            let AllData = ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu'];
+            let AllData = ['senin', 'szelasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu'];
             $('#editTugasListId').val(id);
             $('#editTugasListUserName').val(name);
             $('#editTugasListUserId').val(userId);
@@ -448,8 +449,6 @@
         });
 
         $('.modaleditopertugassave').on('click', function () {
-            $('.modaleditopertugas').css('display', 'none');
-            $('body', 'html').css('overflow', 'auto');
             $.ajax({
                 type: 'put',
                 url: "{{ url('/updateOperTugas/') }}/" + $("#editOperTugasId").val(),
@@ -464,7 +463,10 @@
                     $('.ubahchecklistopen').parent().parent().slideDown();
                     getChecklist();
                     popUpMessage('Success Edit Mengalih Tugaskan');
+                    $('.modaleditopertugas').css('display', 'none');
+                    $('body', 'html').css('overflow', 'auto');
                     getOnDutyData();
+                    getOperTugasList();
                 },
             });
         });
@@ -494,6 +496,55 @@
         $(modalchecklistclose).on('click', function () {
             $('.modalchecklist').css('display', 'none');
             $('body', 'html').css('overflow', 'auto');
+        });
+
+        $(document).on("click", "div.modalopertugaseditlistopen", function () {
+            $('#editOperTugasListId').val($(this).attr('data-id'));
+            $('#from_user_id_edit_list').val($(this).attr('data-from_user_id'));
+            $('#from_user_name_edit_list').val($(this).attr('data-from_user_name'));
+            $('#oper_tugas_location_name_edit_list').val($(this).attr('data-location-name'));
+            $('#oper_tugas_location_id_edit_list').val($(this).attr('data-location'));
+            $('#start_date_edit_list').val($(this).attr('data-start_date'));
+            $('#end_date_edit_list').val($(this).attr('data-end_date'));
+            $('#operTugasReasonedit_list').val($(this).attr('data-reason'));
+            getUserCheckListOperTugasToById($(this).attr('data-from_user_id'), $(this).attr('data-to_user_id'));
+            $('.modalopertugaseditlist').css('display', 'block');
+            $('body', 'html').css('overflow', 'hidden');
+        });
+
+        $('.modalopertugaseditlistclose').on('click', function () {
+            $('.modalopertugaseditlist').css('display', 'none');
+            $('body', 'html').css('overflow', 'auto');
+        });
+
+        $('.modalopertugaseditlistback').on('click', function () {
+            $('.modalopertugaseditlist').css('display', 'none');
+            $('body', 'html').css('overflow', 'auto');
+        });
+
+        $('.modalopertugaseditlistsave').on('click', function () {
+            $.ajax({
+                type: 'put',
+                url: "{{ url('/editOperTugasList/') }}/" + $("#editOperTugasListId").val(),
+                data: {
+
+                    '_token': "{{  csrf_token() }}",
+                    'from_user_id': $("#from_user_id_edit_list").val(),
+                    'to_user_id': $("#to_user_id_edit_list").val(),
+                    'start_date' : $('#start_date_edit_list').val(),
+                    'end_date' :$('#end_date_edit_list').val(),
+                    'location_id' : $("#oper_tugas_location_id_edit_list").val(),
+                    'reason': $("#operTugasReasonedit_list").val()
+                },
+                success: function (data) {
+                    $('.ubahchecklistopen').parent().parent().slideDown();
+                    getChecklist();
+                    popUpMessage('Success Edit Mengalih Tugaskan');
+                    $('.modalopertugaseditlist').css('display', 'none');
+                    $('body', 'html').css('overflow', 'auto');
+                    getOperTugasList();
+                },
+            });
         });
 
         //edit location
@@ -561,6 +612,7 @@
                     $('.modalopertugas').css('display', 'none');
                     $('body', 'html').css('overflow', 'auto');
                     popUpMessage('Success Mengalih Tugaskan');
+                    getOperTugasList();
                 }
             });
         });
@@ -691,15 +743,29 @@
         });
 
         // open semua tugaslist
+        $('.tugasListnew-parent .tugasListnew-child:nth-child(n+5)').slideUp();
         $(document).on("click", ".tugaslist-open", function () {
             $(this).parent().hide();
             $('.tugaslist-close').parent().show();
-            $('.new-parent .new-child').slideDown();
+            $('.tugasListnew-parent .tugasListnew-child').slideDown();
         });
         $(document).on("click", ".tugaslist-close", function () {
             $(this).parent().hide();
             $('.tugaslist-open').parent().show();
-            $('.new-parent .new-child:nth-child(n+5)').slideUp();
+            $('.tugasListnew-parent .tugasListnew-child:nth-child(n+5)').slideUp();
+        });
+
+        // open semua opertugaslist
+        $('.operTugasnew-parent .operTugasnew-child:nth-child(n+5)').slideUp();
+        $(document).on("click", ".opertugaslist-open", function () {
+            $(this).parent().hide();
+            $('.opertugaslist-close').parent().show();
+            $('.operTugasnew-parent .operTugasnew-child').slideDown();
+        });
+        $(document).on("click", ".opertugaslist-close", function () {
+            $(this).parent().hide();
+            $('.opertugaslist-open').parent().show();
+            $('.operTugasnew-parent .operTugasnew-child:nth-child(n+5)').slideUp();
         });
 
         // tambah checklist
@@ -1021,7 +1087,7 @@
             if (confirmation) {
                 $.ajax({
                     type: 'delete',
-                    url: "{{url('/checkListEmployeeDelete') }}/" + $("#editTugasListId").val() ,
+                    url: "{{url('/checkListEmployeeDelete') }}/" + $("#editTugasListId").val(),
                     data: {
                         '_token': "{{  csrf_token() }}"
                     },
@@ -1227,7 +1293,8 @@
                         }
                         getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + '" data-designation="' + data[i]["designation"] + '" ' + select + '>' + data[i]["name"] + '</option>';
                     }
-                    ;
+
+                    $('#to_user_id_edit_list').html(getUserEmployee).val(selectedUser).trigger('change');
                     $('#to_user_id').html(getUserEmployee).val(selectedUser).trigger('change');
                     $('#editOperTugasToUserId').html(getUserEmployee);
                 },
@@ -1345,10 +1412,25 @@
                 success: function (data) {
                     if (data) {
                         $('#tugasListIndex').html(data);
-                        $('.new-parent .new-child:nth-child(n+5)').slideUp();
+                        $('.tugasListnew-parent .tugasListnew-child:nth-child(n+5)').slideUp();
                     }
                 },
             });
         }
+
+        function getOperTugasList() {
+            $.ajax({
+                type: 'get',
+                url: "{{url('/getOperTugasList') }}/",
+                success: function (data) {
+                    if (data) {
+                        $('#operTugasListIndex').html(data);
+                        $('.operTugasnew-parent .operTugasnew-child:nth-child(n+5)').slideUp();
+                    }
+                },
+            });
+        }
+
+
     </script>
 @endsection

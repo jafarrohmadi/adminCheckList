@@ -1,76 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Forbidden</title>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 100;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .full-height {
-            height: 100vh;
-        }
-
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .position-ref {
+@extends('layouts.admin.app')
+@section('css')
+    <style type="text/css">
+        .new-errorpage {
+            display: block;
             position: relative;
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            margin: 0 auto;
+            box-sizing: border-box;
         }
 
-        .code {
-            border-right: 2px solid;
-            font-size: 26px;
-            padding: 0 15px 0 15px;
+        .new-errorpage .block {
+            display: block;
+            position: relative;
+            margin-bottom: 20px;
             text-align: center;
         }
 
-        .message {
-            font-size: 18px;
-            text-align: center;
+        .new-errorpage .block:last-child {
+            margin-bottom: 0;
+        }
+
+        .new-errorpage img {
+            display: block;
+            position: relative;
+            width: 100%;
+        }
+
+        .new-errorpage h1 {
+            color: #000;
+        }
+
+        .new-errorpage p {
+            font-size: 14px;
+            line-height: 28px;
+        }
+
+        .new-errorpage a {
+            display: inline-block;
+            position: relative;
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #777;
+            line-height: 40px;
+            padding: 0 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+
+        .new-errorpage a:hover {
+            color: #222;
+            border: 1px solid #ccc;
         }
     </style>
-</head>
-<body>
-<div class="flex-center position-ref full-height">
-    <div class="code">
-        403
+@endsection
+@section('content')
+<div class="new-errorpage">
+    <div class="block">
+        <img src="{{asset('images/error-403.png')}}">
     </div>
-    <div class="message" style="padding: 10px;">
-        Access forbidden
+    <div class="block">
+        <a href="#">Kembali ke Home</a>
     </div>
-    <br>
-    <p>You will be redirected in <span id="counter">10</span> second(s).</p>
 </div>
-<script type="text/javascript">
-    function countdown() {
-        var i = document.getElementById('counter');
-        if (parseInt(i.innerHTML) <= 0) {
-            location.href = 'https://ayoohris.id';
-        }
-        if (parseInt(i.innerHTML) != 0) {
-            i.innerHTML = parseInt(i.innerHTML) - 1;
-        }
-    }
-
-    setInterval(function(){ countdown(); },1000);
-</script>
-</body>
-</html>
+@endsection

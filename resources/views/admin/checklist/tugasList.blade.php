@@ -1,7 +1,7 @@
-<div class="new-parent ri2-inlineblock ri2-fullwidth ri2-relative">
+<div class="tugasListnew-parent ri2-inlineblock ri2-fullwidth ri2-relative">
     @foreach($checkListEmployee as $checkListEmploye)
         <div
-            class="modaledittugaslistopen ri2-floatleft new-onduty-list new-child ri2-vtop ri2-boxpad15 ri2-box ri2-borderradius5 ri2-borderfull1 ri2-borderwhite3 ri2-pointer"
+            class="modaledittugaslistopen ri2-floatleft new-onduty-list tugasListnew-child ri2-vtop ri2-boxpad15 ri2-box ri2-borderradius5 ri2-borderfull1 ri2-borderwhite3 ri2-pointer"
             data-id="{{$checkListEmploye->id}}" data-user_id="{{$checkListEmploye->users['email']}}"
             data-name="{{$checkListEmploye->users['name']}}" data-location="{{$checkListEmploye->location['id']}}"
             data-list="{{$checkListEmploye->check_list_id}}" data-day="{{$checkListEmploye->day}}">
