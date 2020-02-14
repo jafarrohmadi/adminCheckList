@@ -339,5 +339,4 @@ class CheckListController extends ClientController
         return;
 
     }
-
 }

@@ -11,7 +11,7 @@
 |
 */
 
-Route::redirect('/', '/adminCheckList/login');
+Route::redirect('/', '/admin/login');
 Route::get('/login', ['as' =>'login' ,'uses' =>'ClientController@redirect']);
 
 #Route::redirect('/', '/site/login');
