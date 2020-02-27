@@ -2,26 +2,272 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ce8d682-b236-4736-9d99-6b5ac6b37df5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/CheckListRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/SaveOperTugasListRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/checklist/checklist-progress/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/css/c3.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/css/croppie.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/css/introjs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/css/jquery.datetimepicker.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/css/noty-animate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/css/noty-buttons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/css/otherstyles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/css/ri2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/Icon-Menu_Cuti.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/Icon-Menu_HR.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/Icon-Menu_Konsultasi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/Icon-Menu_Meeting.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/Icon-Menu_Payroll.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/Icon-Menu_Profile.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/Icon-Menu_Recruitment.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/Icon-Menu_Training-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/Logo-AyooHRIS-White.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/airmasperkasa-birth-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/airmasperkasa-late-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/android.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/apple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/ayoohris2019.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/ayoohris2019w.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/ayoomall1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/ayoomall2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/ayoomall3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/ayoomall4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/ayooworld.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/berita1.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/berita1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/berita2.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/berita3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/cleaning1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/cleaning2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/cleaning3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/cobaz.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/frontpage-icon1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/frontpage-icon2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/frontpage-icon3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/frontpage-icon4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/frontpage-image1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/frontpage-image2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/frontpage-image3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/frontpage-image4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/frontpage-image5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/frontpage-image6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/frontpage-wallpaper.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/frontpage-wallpaper2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/frontpage-wallpaper2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/frontpage-wallpaper3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/frontpage-wallpaper3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/frontpage-wallpaper4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/hr-organization.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/hr-pray.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/karyawan-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/logo-airmas.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/logo-hris.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/men-avatar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/nodata.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/partner-birth-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/partner-icon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/payroll-bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/personil-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/pp.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/profile-background.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/qrcode.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/qrscan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/red-expired.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/sort_asc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/sort_asc_disabled.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/sort_both.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/sort_desc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/sort_desc_disabled.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/tanda-tangan.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/task.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/training-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/training-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/training-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/training-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/training-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/training-banner.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/training-banner2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/undermaintenance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/user1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/user10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/user11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/user2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/user3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/user4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/user5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/user6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/user7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/user8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/user9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/image/userdefault.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/js/c3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/js/croppie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/js/datatable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/js/foot.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/js/hopscotch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/js/intro.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/js/jPages.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/js/jquery-min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/js/jquery.datetimepicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/js/jquery.mousewheel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/js/jquery.noty.packaged.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/js/php-date-formatter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/js/select2.full.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/js/simplebar.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACL0KMUVN6E0MOD7HV55JWW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACL0YOVKNIV21BAAHBVKLDY.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACL2HIUIXXQ5OSN2XE7TMQB.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACL3E3FH4MMJJKBPHNCLB86.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACL3X87UOZJVW6B1WGZA1IN.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACL6SCDP7KGDF3NZ7Q83TFW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACL7UVQOTW9U6NO76V171CW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACL7XNYR7F5KFJS6WLJLAMB.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACL8F6BZ272TIXBIHTIJGDS.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACL9GKVCG5RT1BKT7WLVQZ9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLAM6DXYCQROTAQHSYAFGH.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLAVSUGR3PFSMMKKPGOEYP.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLAWSLH3AFPE0GZS2WUXFJ.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLAYAH3MATH3WBZTR237CG.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLB5V438ZN1K5TAFZJXUG9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLBEY1AFCQEIGFN1ZYAVOZ.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLC2AGQKAJAWBUZN37GCMW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLCC1NJLAPK9ASIWGMJLRU.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLCL45OGLE8UEXPF2PKQAM.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLDKZBDB49QARPNLVH5A0V.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLDVW8MKFVKDLLYTDLSYNN.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLEDJM0VSRUHWQP5GSQDTJ.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLFNXCKVYLH0RJ9QEV9FJQ.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLGKQSK0IXVNRW4DCKMXUH.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLI9QXAIM7LAWGIS7GSWC5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLIT7YAFTALAKGK7UNDLYL.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLJPGYOK4EJZPL4EFIMME4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLKFR07GKKZUKM1QKPKJZW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLL6OMW92GIF2TCWYWFA3O.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLLAVNS0WNYTTSAOOIGZSR.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLLTZZ3QDSVEAJMSIG6ZLS.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLMB66UPFN4Q3PVKWP1TEK.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLMMFOTYNPDBYJ4SDMDYTJ.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLN0EIR1OXBFHERPROYRUR.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLNJHU4ECHIUZN9CHH48RF.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLOVVIUATBMV5AMCR8OUL3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLOWHH9JDJREYC3YWIEBDY.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLPMR8UNNONXU3QBECOFSS.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLPOMBFSOQOBQNW5NVLU0B.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLPTEUJ4XGNNMMLKYKGHYE.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLRA4STTYKULGRFKSUBRGK.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLROOIKUN2QQF7MRNCNWPN.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLRUCMDHPJYDEV9E00OFJJ.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLRX3JVHRZYHVTGHWASX0T.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLSDFHICKMDJEDB9EJYM0L.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLSGKMZGSAIECXYQMPHY6Y.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLSQPYE4KB6MMYJ4GGNXZX.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLSR4A9M0LCG7AUAKQ7FNA.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLSWWP9AROFIHNXJNCYI4C.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLTAW0COX0LOGN8DTNRYGU.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLTBPEQ48DGYITXSYKNOI8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLTFEYHNJAH4JKA7M4CAIS.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLUP2N2ULTC8JEOECCLGFS.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLVK4GWR3CYULMZWEBDOMY.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLVWLPXJG4AFE4FUZK1GQS.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLWDJ0IVZD2FUGRYKRJLZ1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLWK89PTKTHJVMNVTJT7GU.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLWPWSUAFBWECKZZ8EHCUE.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLWXBVQ9VRLYJ0TPSUFH4D.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLX1Q13ZOMZX2QTE2CVMDX.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLXAL9JPOAODIYDDWOXYHG.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLXUU4YJJ3AK1UNQS45FZH.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLY6RF2KQWJCTAPSXH5HJD.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLYCUJUOO7V01K6GVODKEW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLYRGIMUARR4EGQOJ1UFUO.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/upload/ACL/ACLZTUVJ2CP8XQHIHVNXKRW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/avatars/man.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/icons/large-bell.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/icons/large-calendar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/icons/large-history.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/icons/large-home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/icons/large-logout.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/icons/large-share-job.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/icons/large-writing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/icons/small-bell.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/icons/small-calendar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/icons/small-history.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/icons/small-home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/icons/small-logout.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/icons/small-share-job.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/icons/small-writing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/large-dot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/placeit-7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/small-dot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACL1CKVBMEFVCZ89DJWDO9D.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACL36RV53MXTMSU1QX6739Q.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACL4WAVJZ2XSRJ8OMEHXUBE.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACL4WYDKYGGITSZQMKTH96R.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACL4XAHR5S4WMRANDOCGCL8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACL7FYQVCQR0YE8Q9QSYTCB.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACL7JEQNFIK4JQKVBQ3JM5Y.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACL8Z7EL4BAELSSL7TIM28G.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLAAPMKSB116NLTXFXY7KZ.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLALIZJPNO4HXY5CFDQA8P.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLC1W1HOXEQOBGPQV0SIHD.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLDEYSCEJF03LAFEMII2VD.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLDEZYCSV1J0WCLBENRL45.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLEXODFH4HQ5OTAFIXYUEC.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLFRZPETTY30OU6NEETHBW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLJDVMZNM8UVJCIKIIQXJF.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLJJ8FMFQ824G5EEYOMZF8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLJZDOSYXC6BXINUACMVJI.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLK1DOSCW0MZAEBXXN665A.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLK4FGNOV2DH1QXOWMSLY4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLKP4EDPHODCB7QOA5K7VB.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLLPYAH7OZG7KEOGGGA4OB.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLLTYIGI1EGJNSICJPTFFW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLMEKUTFIZFQM4UVUZE3FO.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLN8T8DCJRCLRZRDF5IGLM.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLNISOLXMSCEZPBL7KWV5O.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLOHX5CUZBBQYEFIS3CAJV.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLOODDSMH8DACPWBWKBSRW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLOYW9Z3O9OXCTDVAK6GCN.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLPBVBIIGKQBQSQJSTG8XV.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLQCTMV60KQDQOBMKEHV7V.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLQHLEZRFCBSEA7PUYGLU8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLQMVDT4E2QVSSPHXGVNVX.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLRCGW3R56OTWYEMJPGDCC.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLRFUDSTORU7PNHFY1CZF7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLRHXXQQOE040EHREU3EKC.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLSQ0IZWJDNMQSDRY3UACU.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLUUEV3MCNNOHKHRIPMEM8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLV2PADDGSIJLRFT3RKZMS.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLV6TYQMFHDTQ0SU7UDATX.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLWG0LVOSM5IKGAWZEOPK5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLXNIKAJZZUQECNXBKFUX3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLXR1SP3HTJFU2VAAWKZN9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLXXBSO28FZOVRZXMLOUG5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLZIHZKFWBXFACEM80OHIK.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLZIVVPDNQ6MTPNAKSZZXC.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/images/upload/ACL/ACLZNCXE9CWU4BD3SUILRRG.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/scripts/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/scripts/modernizr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/scripts/vendor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/user/styles/fd-style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/web.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CheckListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CheckListController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CheckListEmployeeSaveRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CheckListEmployeeSaveRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/SaveOperTugasRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/SaveOperTugasRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CheckListOperTugas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CheckListOperTugas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/checklist.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/checklist.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/checklistProgressList.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/checklistProgressList.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/editListOperTugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/editListOperTugas.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/editListTugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/editListTugas.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/editOperTugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/editOperTugas.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/editTugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/editTugas.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/lokasi.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/lokasi.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/operTugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/operTugas.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/checklist/tambahTugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/checklist/tambahTugas.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/app/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/app/public/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/app/public/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/cache/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/cache/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/cache/data/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/cache/data/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/sessions/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/testing/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/testing/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/logs/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -305,6 +551,7 @@
       <workItem from="1582206535755" duration="46000" />
       <workItem from="1582597193475" duration="22770000" />
       <workItem from="1582683386192" duration="7857000" />
+      <workItem from="1582788918269" duration="399000" />
     </task>
     <task id="LOCAL-00001" summary="Change Commit">
       <created>1580356488345</created>

@@ -10,8 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::redirect('/', '/site/login');
-Route::get('/login', [ 'as' => 'login', 'uses' => 'ClientController@redirect' ]);
+
+Route::redirect('/', '/admin/login');
+Route::get('/login', ['as' =>'login' ,'uses' =>'ClientController@redirect']);
+
+#Route::redirect('/', '/site/login');
+#Route::get('/login', [ 'as' => 'login', 'uses' => 'ClientController@redirect' ]);
 
 Route::get('/callback', 'ClientController@callback')->name('callback');
 

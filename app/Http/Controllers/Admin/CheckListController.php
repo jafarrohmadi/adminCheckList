@@ -359,16 +359,16 @@ class CheckListController extends ClientController
     public function getCheckListProgress($id)
     {
         $checkListProgress = CheckListProgress::with([
-        'checkListProgressDetail.checkList',
-        'checkListOperTugas.fromUser',
-        'checkListUser',
-    ])->withCount([
-            'checkListProgressDetail',
-            'checkListProgressDetail as activeCheckListProgressDetail' => function ($query) {
-                $query->where('status', 1)->orderBy('date', 'desc');
-            },
-        ]
-    )->find($id);
+            'checkListProgressDetail.checkList',
+            'checkListOperTugas.fromUser',
+            'checkListUser',
+        ])->withCount([
+                'checkListProgressDetail',
+                'checkListProgressDetail as activeCheckListProgressDetail' => function ($query) {
+                    $query->where('status', 1)->orderBy('date', 'desc');
+                },
+            ]
+        )->find($id);
 
         return view('admin.checklist.checklist-progress.index', compact('checkListProgress'));
     }
