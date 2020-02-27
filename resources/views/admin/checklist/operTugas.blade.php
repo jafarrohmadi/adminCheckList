@@ -13,6 +13,10 @@
                     </div>
                     <div class="ri2-block ri2-relative ri2-boxpad40 ri2-mobileboxpad20 ri2-box">
                         <div class="ri2-block ri2-relative ri2-marginbottom20 ri2-left">
+                            <ul id="add-task-errors-opertugas" style="padding: 0px">
+                            </ul>
+                        </div>
+                        <div class="ri2-block ri2-relative ri2-marginbottom20 ri2-left">
                             <div
                                 class="ri2-block ri2-relative ri2-marginbottom5 ri2-font14 ri2-txgrey1 ri2-semibold">
                                 Mengalih Tugaskan Dari

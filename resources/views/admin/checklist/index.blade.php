@@ -33,6 +33,17 @@
     </style>
 @endsection
 @section('content')
+    <div class="content-header ri2-block ri2-bgwhite1 ri2-paddingleft20 ri2-paddingright20">
+        <div class="ri2-table ri2-fullwidth ri2-fullheight">
+            <div class="ri2-cell ri2-vmid ri2-fit ri2-paddingright10">
+                <div class="ri2-table ri2-font18 ri2-semibold">
+                    <div class="ri2-cell ri2-paddingleft10">
+                        Checklist
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="ri2-block ri2-relative ri2-boxpad20 ri2-box ri2-bgwhite2">
         <div class="ri2-table ri2-relative ri2-fullwidth">
             <div class="ri2-cell ri2-vmid ri2-fit ri2-paddingright10">
@@ -257,6 +268,7 @@
         var modaltambahtugasclose = $('.modaltambahtugasclose');
 
         $(modaltambahtugasopen).on('click', function () {
+            $('#add-task-errors').html('');
             $('.modaltambahtugas').css('display', 'block');
             $('body', 'html').css('overflow', 'hidden');
             getUserEmployeeData();
@@ -280,7 +292,7 @@
             let locationId = $(this).attr("data-location");
             let dataList = $(this).attr("data-list");
             let dataDay = $(this).attr("data-day");
-            let AllData = ['senin', 'szelasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu'];
+            let AllData = ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu'];
             $('#editTugasListId').val(id);
             $('#editTugasListUserName').val(name);
             $('#editTugasListUserId').val(userId);
@@ -353,6 +365,7 @@
             $('#editTugasUserName').val(name);
             $('#editTugasLocationId').val(locationId).change();
             $('#editTugasNote').val(editTugasNote);
+            $('#add-task-errors-edit-day').html('');
             $('.modaledittugas').css('display', 'block');
             $('body', 'html').css('overflow', 'hidden');
             getChecklist(id);
@@ -369,9 +382,6 @@
         });
 
         $('.modaledittugassave').on('click', function () {
-            $('.modaledittugas').css('display', 'none');
-            $('body', 'html').css('overflow', 'auto');
-
             const check_list_ids = [];
 
             $("input[name='edit_check_list_ids']:checked").each(function () {
@@ -393,6 +403,14 @@
                     getOnDutyData();
                     popUpMessage('Success Edit CheckList');
                 },
+                error: function (data) {
+                    var errors = $.parseJSON(data.responseText);
+                    $('#add-task-errors-edit-day').html('');
+                    for (let i in errors.errors) {
+                        $('#add-task-errors-edit-day').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
+                    }
+                    $("#add-task-errors-edit-day").show();
+                }
             })
         });
 
@@ -427,7 +445,7 @@
             let location = $(this).attr("data-location");
             let location_id = $(this).attr("data-location-id");
             let reason = $(this).attr("data-reason");
-
+            $('#add-task-errors-opertugaseditday').html('');
             $('.modaleditopertugas').css('display', 'block');
             $('#editOperTugasFrom').val(from_user);
             $('#editOperTugasLocation').val(location);
@@ -468,6 +486,14 @@
                     getOnDutyData();
                     getOperTugasList();
                 },
+                error: function (data) {
+                    var errors = $.parseJSON(data.responseText);
+                    $('#add-task-errors-opertugaseditday').html('');
+                    for (let i in errors.errors) {
+                        $('#add-task-errors-opertugaseditday').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
+                    }
+                    $("#add-task-errors-opertugaseditday").show();
+                }
             });
         });
 
@@ -499,6 +525,7 @@
         });
 
         $(document).on("click", "div.modalopertugaseditlistopen", function () {
+            $('#add-task-errors-opertugasedit').html('');
             $('#editOperTugasListId').val($(this).attr('data-id'));
             $('#from_user_id_edit_list').val($(this).attr('data-from_user_id'));
             $('#from_user_name_edit_list').val($(this).attr('data-from_user_name'));
@@ -531,9 +558,9 @@
                     '_token': "{{  csrf_token() }}",
                     'from_user_id': $("#from_user_id_edit_list").val(),
                     'to_user_id': $("#to_user_id_edit_list").val(),
-                    'start_date' : $('#start_date_edit_list').val(),
-                    'end_date' :$('#end_date_edit_list').val(),
-                    'location_id' : $("#oper_tugas_location_id_edit_list").val(),
+                    'start_date': $('#start_date_edit_list').val(),
+                    'end_date': $('#end_date_edit_list').val(),
+                    'location_id': $("#oper_tugas_location_id_edit_list").val(),
                     'reason': $("#operTugasReasonedit_list").val()
                 },
                 success: function (data) {
@@ -543,7 +570,14 @@
                     $('.modalopertugaseditlist').css('display', 'none');
                     $('body', 'html').css('overflow', 'auto');
                     getOperTugasList();
-                },
+                }, error: function (data) {
+                    var errors = $.parseJSON(data.responseText);
+                    $('#add-task-errors-opertugasedit').html('');
+                    for (let i in errors.errors) {
+                        $('#add-task-errors-opertugasedit').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
+                    }
+                    $("#add-task-errors-opertugasedit").show();
+                }
             });
         });
 
@@ -576,6 +610,7 @@
         var modalopertugasclose = $('.modalopertugasclose');
 
         $(modalopertugasopen).on('click', function () {
+            $('#aadd-task-errors-opertugas').html('');
             $('.modalopertugas').css('display', 'block');
             $('body', 'html').css('overflow', 'hidden');
             $('#start_date').val('');
@@ -613,6 +648,13 @@
                     $('body', 'html').css('overflow', 'auto');
                     popUpMessage('Success Mengalih Tugaskan');
                     getOperTugasList();
+                }, error: function (data) {
+                    var errors = $.parseJSON(data.responseText);
+                    $('#add-task-errors-opertugas').html('');
+                    for (let i in errors.errors) {
+                        $('#add-task-errors-opertugas').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
+                    }
+                    $("#add-task-errors-opertugas").show();
                 }
             });
         });
@@ -701,7 +743,7 @@
             const nameLocation = $(this).data("name-location");
             const photoCheckList = $(this).data("photo");
             const nameOperanTugasUser = $(this).data("name-operan-tugas-user");
-
+            $("#note").val('');
             if (nameOperanTugasUser != undefined) {
                 $(".nameOperanTugasUser").html('Mengalih Tugaskan dari ' + nameOperanTugasUser);
                 $(".nameOperanTugasIcon").show();
@@ -714,7 +756,7 @@
             $(".photoCheckList").attr('src', photoCheckList);
             $("#tugasNoteId").val(checkListProgressId);
             $("#tugasNoteLocation").text(locationId);
-            $("#note").text(note);
+            $("#note").val(note);
 
             $('.modaltugasnote').css('display', 'block');
             $('body', 'html').css('overflow', 'hidden');
@@ -772,6 +814,7 @@
         $('.tambahchecklistopen').click(function () {
             $(this).hide();
             $(this).siblings().slideDown();
+            $('#add-task-errors-checklist').html('');
             $("#nameCheckList").val('');
             $('.ubahchecklistopen').parent().parent().slideUp();
         });
@@ -792,6 +835,14 @@
                     getChecklist();
                     popUpMessage('Success Tambah CheckList');
                 },
+                error: function (data) {
+                    var errors = $.parseJSON(data.responseText);
+                    $('#add-task-errors-checklist').html('');
+                    for (let i in errors.errors) {
+                        $('#add-task-errors-checklist').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
+                    }
+                    $("#add-task-errors-checklist").show();
+                }
             });
         });
 
@@ -802,6 +853,7 @@
         });
 
         $(document).on("click", "a.ubahchecklistopen", function () {
+            $('#add-task-errors-checklist-edit').html('');
             $(this).parent().parent().siblings().slideDown();
             $(this).parent().parent().slideUp();
             $("#editIdCheckList").val($(this).attr("data-id"));
@@ -823,9 +875,17 @@
                     $('.tambahchecklistopen').show();
                     getChecklist();
                     popUpMessage('Success Edit CheckList');
+                    $('.tambahchecklistopen').show();
                 },
+                error: function (data) {
+                    var errors = $.parseJSON(data.responseText);
+                    $('#add-task-errors-checklist-edit').html('');
+                    for (let i in errors.errors) {
+                        $('#add-task-errors-checklist-edit').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
+                    }
+                    $("#add-task-errors-checklist-edit").show();
+                }
             });
-            $('.tambahchecklistopen').show();
         });
 
         $('.ubahchecklisthapus').click(function () {
@@ -854,6 +914,7 @@
         $('.tambahlocationopen').click(function () {
             $(this).hide();
             $(this).siblings().slideDown();
+            $('#add-task-errors-location').html('');
             $("#namelocation").val('');
             $('.ubahlocationopen').parent().parent().slideUp();
         });
@@ -873,6 +934,14 @@
                     getLocation();
                     popUpMessage('Success Tambah location');
                 },
+                error: function (data) {
+                    var errors = $.parseJSON(data.responseText);
+                    $('#add-task-errors-location').html('');
+                    for (let i in errors.errors) {
+                        $('#add-task-errors-location').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
+                    }
+                    $("#add-task-errors-location").show();
+                }
             });
         });
 
@@ -885,6 +954,7 @@
         $(document).on("click", "a.ubahlocationopen", function () {
             $(this).parent().parent().siblings().slideDown();
             $(this).parent().parent().slideUp();
+            $('#add-task-errors-location-edit').html('');
             $("#editIdlocation").val($(this).attr("data-id"));
             $("#editNamelocation").val($(this).attr("data-name"));
             $('.tambahlocationopen').hide();
@@ -906,6 +976,14 @@
                     popUpMessage('Success Edit location');
                     $('.tambahlocationopen').show();
                 },
+                error: function (data) {
+                    var errors = $.parseJSON(data.responseText);
+                    $('#add-task-errors-location-edit').html('');
+                    for (let i in errors.errors) {
+                        $('#add-task-errors-location-edit').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
+                    }
+                    $("#add-task-errors-location-edit").show();
+                }
             });
         });
 
@@ -1049,6 +1127,14 @@
                     getTugasList();
                     popUpMessage('Success Tambah Tugas');
                 },
+                error: function (data) {
+                    var errors = $.parseJSON(data.responseText);
+                    $('#add-task-errors').html('');
+                    for (let i in errors.errors) {
+                        $('#add-task-errors').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
+                    }
+                    $("#add-task-errors").show();
+                }
             });
         });
 
@@ -1079,7 +1165,14 @@
                     getUserEmployeeData();
                     getTugasList();
                     popUpMessage('Success Edit Tugas');
-                },
+                }, error: function (data) {
+                    var errors = $.parseJSON(data.responseText);
+                    $('#add-task-errors-edit').html('');
+                    for (let i in errors.errors) {
+                        $('#add-task-errors-edit').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
+                    }
+                    $("#add-task-errors-edit").show();
+                }
             });
         });
         $(".modaledittugaslistdelete").click(function () {
@@ -1286,7 +1379,7 @@
                     let getUserEmployee = '<option value="" selected>Pilih Personel</option>';
                     let select = '';
                     for (i = 0; i < data.length; i++) {
-                        if (selectedUser != null && selectedUser === data[i]["id"]) {
+                        if (selectedUser != null && selectedUser === data[i]["email"]) {
                             select = 'selected';
                         } else {
                             select = '';

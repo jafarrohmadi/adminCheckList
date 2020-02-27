@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SaveOperTugasRequest extends FormRequest
+class CheckListRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,14 @@ class SaveOperTugasRequest extends FormRequest
     public function rules()
     {
         return [
-            'reason' => 'required',
+            'name' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'reason.required' => 'You must write a reason',
+            'name.required' => 'You must write a name',
         ];
     }
 }

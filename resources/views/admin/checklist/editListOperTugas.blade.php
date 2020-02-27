@@ -14,6 +14,10 @@
                     <input type="hidden" name="editOperTugasListId" id="editOperTugasListId">
                     <div class="ri2-block ri2-relative ri2-boxpad40 ri2-mobileboxpad20 ri2-box">
                         <div class="ri2-block ri2-relative ri2-marginbottom20 ri2-left">
+                            <ul id="add-task-errors-opertugasedit" style="padding: 0px">
+                            </ul>
+                        </div>
+                        <div class="ri2-block ri2-relative ri2-marginbottom20 ri2-left">
                             <div
                                 class="ri2-block ri2-relative ri2-marginbottom5 ri2-font14 ri2-txgrey1 ri2-semibold">
                                 Mengalih Tugaskan Dari
@@ -60,7 +64,7 @@
                                     <input type="text"
                                            class="ri2-input40 ri2-box ri2-fullwidth ri2-paddingleft10 ri2-paddingright10 ri2-bgwhite2 ri2-borderradius2 ri2-borderfull1 ri2-borderwhite5 form-control diss datetimepicker"
                                            autocomplete="off" name="start_date_edit_list" id="start_date_edit_list"
-                                           placeholder="YYYY/MM/DD H:M" maxlength="20" required>
+                                           placeholder="YYYY/MM/DD H:M" maxlength="20">
                                 </div>
                                 <div class="ri2-cell ri2-vmid ri2-paddingleft10 ri2-halfwidth">
                                     <div
@@ -70,7 +74,7 @@
                                     <input type="text"
                                            class="ri2-input40 ri2-box ri2-fullwidth ri2-paddingleft10 ri2-paddingright10 ri2-bgwhite2 ri2-borderradius2 ri2-borderfull1 ri2-borderwhite5 form-control diss datetimepicker"
                                            autocomplete="off" name="end_date_edit_list" id="end_date_edit_list"
-                                           placeholder="YYYY/MM/DD H:M" maxlength="20" required>
+                                           placeholder="YYYY/MM/DD H:M" maxlength="20">
                                 </div>
                             </div>
                         </div>
@@ -82,8 +86,7 @@
                             <div class="ri2-block ri2-relative">
                                 <textarea
                                     class="ri2-textarea100 ri2-noresize ri2-boxpad10 ri2-box ri2-bgwhite2 ri2-borderradius3 ri2-borderfull1 ri2-borderwhite5 ri2-fullwidth ri2-input-greyholder ri2-font14"
-                                    placeholder="Reason" name="operTugasReasonedit_list" id="operTugasReasonedit_list"
-                                    required></textarea>
+                                    placeholder="Reason" name="operTugasReasonedit_list" id="operTugasReasonedit_list"></textarea>
 
                             </div>
                         </div>

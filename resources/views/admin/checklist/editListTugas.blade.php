@@ -11,11 +11,16 @@
                         class="ri2-block ri2-relative ri2-left new-blackoutgradient ri2-txwhite1 ri2-font20 ri2-boxpad10 ri2-box">
                         Edit Tugas List
                     </div>
+
                     <div
                         class="ri2-block ri2-relative ri2-boxpad40 ri2-mobileboxpad20 ri2-box">
                         <input type="hidden" name="editTugasListId" id="editTugasListId">
                         <input type="hidden" name="editTugasListNote" id="editTugasListNote">
                         <input type="hidden" name="editTugasListUserId" id="editTugasListUserId">
+                        <div class="ri2-block ri2-relative ri2-marginbottom20 ri2-left">
+                            <ul id="add-task-errors-edit" style="padding: 0px">
+                            </ul>
+                        </div>
                         <div class="ri2-block ri2-relative ri2-marginbottom20 ri2-left">
                             <div
                                 class="ri2-block ri2-relative ri2-marginbottom5 ri2-font14 ri2-txgrey1 ri2-semibold">

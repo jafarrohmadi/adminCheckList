@@ -13,12 +13,18 @@
                     </div>
                     <div class="ri2-block ri2-relative ri2-boxpad40 ri2-mobileboxpad20 ri2-box">
                         <div class="ri2-block ri2-relative ri2-marginbottom20 ri2-left">
+                            <ul id="add-task-errors" style="padding: 0px">
+                            </ul>
+                        </div>
+                        <div class="ri2-block ri2-relative ri2-marginbottom20 ri2-left">
                             <div
                                 class="ri2-block ri2-relative ri2-marginbottom5 ri2-font14 ri2-txgrey1 ri2-semibold">
                                 Pilih Personel
                             </div>
                             <div class="ri2-block ri2-relative">
-                                <select class="basic-single basic-twolines_designation ri2-block ri2-relative ri2-input40 ri2-input-greyholder ri2-box ri2-bgwhite4 ri2-fullwidth"name="tambahTugasUserId" id="tambahTugasUserId" >
+                                <select
+                                    class="basic-single basic-twolines_designation ri2-block ri2-relative ri2-input40 ri2-input-greyholder ri2-box ri2-bgwhite4 ri2-fullwidth"
+                                    name="tambahTugasUserId" id="tambahTugasUserId" required>
                                 </select>
                             </div>
                         </div>
@@ -30,7 +36,7 @@
                             <div class="ri2-block ri2-relative">
                                 <select
                                     class="basic-single ri2-block ri2-relative ri2-input40 ri2-input-greyholder ri2-box ri2-bgwhite4 ri2-fullwidth"
-                                    name="location_id" id="location_id">
+                                    name="location_id" id="location_id" required>
                                 </select>
                             </div>
                         </div>
@@ -116,7 +122,7 @@
                         <div class="ri2-block ri2-relative ri2-left">
                             <button
                                 class="modaltambahtugassave ri2-inlineblock ri2-bordernone ri2-borderradius2 ri2-boxpad7 ri2-paddingright15 ri2-paddingleft15 ri2-bgblue1 ri2-txwhite1 ri2-hovering ri2-font16 ri2-semibold ri2-pointer"
-                            id="modaltambahtugassave">
+                                id="modaltambahtugassave">
                                 Simpan
                             </button>
                         </div>

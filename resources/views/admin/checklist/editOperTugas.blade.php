@@ -9,7 +9,7 @@
                     class="ri2-modal-body ri2-block ri2-relative ri2-bgwhite1 ri2-boxpad40 ri2-marginbottom15 ri2-borderradius2">
                     <div
                         class="ri2-block ri2-relative ri2-font24 ri2-semibold ri2-marginbottom20 ri2-center ri2-txblack3">
-                        Ubah Mengalih Tugaskan
+                        Ubah Mengalih Tugaskana
                     </div>
                     {{ (new Helper)->tanggal_indo(date('Y-m-d')) }}
                     <br>
@@ -17,6 +17,10 @@
                         class="ri2-block ri2-relative ri2-borderfull1 ri2-borderwhite4 ri2-borderradius2 ri2-overflowhidden ri2-marginbottom20 ri2-left">
                         <div
                             class="ri2-block ri2-relative ri2-boxpad20 ri2-box ri2-borderbottom1 ri2-borderwhite4">
+                            <div class="ri2-block ri2-relative ri2-marginbottom20 ri2-left">
+                                <ul id="add-task-errors-opertugaseditday" style="padding: 0px">
+                                </ul>
+                            </div>
                             <div
                                 class="ri2-block ri2-relative ri2-marginbottom10 ri2-font16 ri2-txblack3 ri2-semibold">
                                 Mengalih Tugaskan Dari
@@ -53,42 +57,6 @@
                         <input type="hidden" name="editOperTugasId" id="editOperTugasId">
                         <input type="hidden" name="editOperTugasFromUserId" id="editOperTugasFromUserId">
                         <input type="hidden" name="editOperTugasLocationId" id="editOperTugasLocationId">
-{{--                        <div class="ri2-block ri2-relative ri2-boxpad20 ri2-box ri2-borderbottom1 ri2-borderwhite4">--}}
-{{--                            <div--}}
-{{--                                class="ri2-block ri2-relative ri2-marginbottom10 ri2-font16 ri2-txblack3 ri2-semibold">--}}
-{{--                                Periode--}}
-{{--                            </div>--}}
-{{--                            <div class="ri2-block ri2-relative">--}}
-{{--                                <div class="ri2-table ri2-relative ri2-fullwidth">--}}
-{{--                                    <div class="ri2-cell ri2-vmid ri2-halfwidth">--}}
-{{--                                        <div--}}
-{{--                                            class="ri2-block ri2-relative ri2-marginbottom7 ri2-font12 ri2-txgrey2">--}}
-{{--                                            Dari--}}
-{{--                                        </div>--}}
-
-{{--                                        <input type="text"--}}
-{{--                                               class="ri2-input40 ri2-box ri2-fullwidth ri2-paddingleft10 ri2-paddingright10 ri2-bgwhite2 ri2-borderradius2 ri2-borderfull1 ri2-borderwhite5 form-control diss"--}}
-{{--                                               autocomplete="off" name="editOperTugasStartDate"--}}
-{{--                                               id="editOperTugasStartDate"--}}
-{{--                                               placeholder="YYYY/MM/DD"--}}
-{{--                                               maxlength="20" required>--}}
-{{--                                    </div>--}}
-{{--                                    <div--}}
-{{--                                        class="ri2-cell ri2-vmid ri2-paddingleft10 ri2-halfwidth">--}}
-{{--                                        <div--}}
-{{--                                            class="ri2-block ri2-relative ri2-marginbottom7 ri2-font12 ri2-txgrey2">--}}
-{{--                                            Sampai--}}
-{{--                                        </div>--}}
-{{--                                        <input type="text"--}}
-{{--                                               class="ri2-input40 ri2-box ri2-fullwidth ri2-paddingleft10 ri2-paddingright10 ri2-bgwhite2 ri2-borderradius2 ri2-borderfull1 ri2-borderwhite5 form-control diss"--}}
-{{--                                               autocomplete="off" name="editOperTugasEndDate" id="editOperTugasEndDate"--}}
-{{--                                               placeholder="YYYY/MM/DD"--}}
-{{--                                               maxlength="20" required>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
                         <div class="ri2-block ri2-relative ri2-boxpad20 ri2-box ri2-borderbottom1 ri2-borderwhite4">
                             <div
                                 class="ri2-block ri2-relative ri2-marginbottom10 ri2-font16 ri2-txblack3 ri2-semibold">
@@ -97,8 +65,7 @@
                             <div class="ri2-block ri2-relative">
                                 <textarea
                                     class="ri2-textarea100 ri2-noresize ri2-boxpad10 ri2-box ri2-bgwhite2 ri2-borderradius3 ri2-borderfull1 ri2-borderwhite5 ri2-fullwidth ri2-input-greyholder ri2-font14"
-                                    placeholder="Reason" name="editOperTugasReason" id="editOperTugasReason"
-                                    required></textarea>
+                                    placeholder="Reason" name="editOperTugasReason" id="editOperTugasReason"></textarea>
 
                             </div>
                         </div>

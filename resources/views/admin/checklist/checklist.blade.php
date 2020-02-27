@@ -17,6 +17,10 @@
                             </ol>
                             <div
                                 class="ri2-desktop-hide ri2-block ri2-relative ri2-marginbottom20 ri2-boxpad20 ri2-box ri2-bgwhite1 ri2-borderfull1 ri2-borderwhite5 ri2-borderradius2">
+                                <div class="ri2-block ri2-relative ri2-marginbottom20 ri2-left">
+                                    <ul id="add-task-errors-checklist-edit" style="padding: 0px">
+                                    </ul>
+                                </div>
                                 <div
                                     class="ri2-block ri2-relative ri2-marginbottom10 ri2-font14 ri2-txblack3">
                                     Edit CheckList
@@ -49,6 +53,10 @@
                                 Checklist</a>
                             <div
                                 class="ri2-desktop-hide ri2-block ri2-relative ri2-boxpad20 ri2-box ri2-bgwhite1 ri2-borderfull1 ri2-borderwhite5 ri2-borderradius2">
+                                <div class="ri2-block ri2-relative ri2-marginbottom20 ri2-left">
+                                    <ul id="add-task-errors-checklist" style="padding: 0px">
+                                    </ul>
+                                </div>
                                 <div
                                     class="ri2-block ri2-relative ri2-marginbottom10 ri2-font14 ri2-txblack3">
                                     Tambah Checklist

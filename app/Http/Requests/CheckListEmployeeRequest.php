@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CheckListEmployeeSaveRequest extends FormRequest
+class CheckListEmployeeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class CheckListEmployeeSaveRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id'        => 'required',
             'location_id'    => 'required',
-            'days'           => 'required',
             'check_list_ids' => 'required',
         ];
     }
@@ -34,9 +32,7 @@ class CheckListEmployeeSaveRequest extends FormRequest
     public function messages()
     {
         return [
-            'user_id.required'        => 'You must choose a user',
             'location_id.required'    => 'You must choose a location',
-            'days.required'           => 'You must choose a days',
             'check_list_ids.required' => 'You must choose a Checklist',
         ];
     }

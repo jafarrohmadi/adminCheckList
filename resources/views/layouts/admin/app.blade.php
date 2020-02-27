@@ -13,17 +13,6 @@
 
 <div id="main">
     <div id="content">
-        <div class="content-header ri2-block ri2-bgwhite1 ri2-paddingleft20 ri2-paddingright20">
-            <div class="ri2-table ri2-fullwidth ri2-fullheight">
-                <div class="ri2-cell ri2-vmid ri2-fit ri2-paddingright10">
-                    <div class="ri2-table ri2-font18 ri2-semibold">
-                        <div class="ri2-cell ri2-paddingleft10">
-                            Checklist
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         @yield('content')
     </div>
 </div>

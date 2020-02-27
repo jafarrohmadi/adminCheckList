@@ -52,4 +52,6 @@ Route::group([ 'middleware' => [ 'auth' ] ], function () {
     Route::get('/getOperTugasList/', 'Admin\CheckListController@getOperTugasList');
     Route::delete('/checkListEmployeeDelete/{id}', 'Admin\CheckListController@checkListEmployeeDelete');
     Route::put('/editOperTugasList/{id}', 'Admin\CheckListController@editOperTugasList');
+
+    Route::get('/checklist/getCheckListProgress/{id}', 'Admin\CheckListController@getCheckListProgress');
 });
