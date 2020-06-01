@@ -382,6 +382,7 @@
         });
 
         $('.modaledittugassave').on('click', function () {
+            $.LoadingOverlay("show");
             const check_list_ids = [];
 
             $("input[name='edit_check_list_ids']:checked").each(function () {
@@ -402,6 +403,7 @@
                     $('body', 'html').css('overflow', 'auto');
                     getOnDutyData();
                     popUpMessage('Success Edit CheckList');
+                    $.LoadingOverlay("hide");
                 },
                 error: function (data) {
                     var errors = $.parseJSON(data.responseText);
@@ -410,11 +412,13 @@
                         $('#add-task-errors-edit-day').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
                     }
                     $("#add-task-errors-edit-day").show();
+                    $.LoadingOverlay("hide");
                 }
             })
         });
 
         $('.modaledittugasdelete').on('click', function () {
+            $.LoadingOverlay("show");
             $.ajax({
                 type: 'delete',
                 url: "{{url('/checkListProcessDelete') }}/" + $('#editTugasId').val(),
@@ -426,6 +430,7 @@
                     $('body', 'html').css('overflow', 'auto');
                     getChecklist();
                     popUpMessage('Success Tambah CheckList');
+                    $.LoadingOverlay("hide");
                 },
             })
         });
@@ -467,6 +472,7 @@
         });
 
         $('.modaleditopertugassave').on('click', function () {
+            $.LoadingOverlay("show");
             $.ajax({
                 type: 'put',
                 url: "{{ url('/updateOperTugas/') }}/" + $("#editOperTugasId").val(),
@@ -485,6 +491,7 @@
                     $('body', 'html').css('overflow', 'auto');
                     getOnDutyData();
                     getOperTugasList();
+                    $.LoadingOverlay("hide");
                 },
                 error: function (data) {
                     var errors = $.parseJSON(data.responseText);
@@ -493,6 +500,7 @@
                         $('#add-task-errors-opertugaseditday').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
                     }
                     $("#add-task-errors-opertugaseditday").show();
+                    $.LoadingOverlay("hide");
                 }
             });
         });
@@ -550,6 +558,7 @@
         });
 
         $('.modalopertugaseditlistsave').on('click', function () {
+            $.LoadingOverlay("show");
             $.ajax({
                 type: 'put',
                 url: "{{ url('/editOperTugasList/') }}/" + $("#editOperTugasListId").val(),
@@ -570,6 +579,7 @@
                     $('.modalopertugaseditlist').css('display', 'none');
                     $('body', 'html').css('overflow', 'auto');
                     getOperTugasList();
+                    $.LoadingOverlay("hide");
                 }, error: function (data) {
                     var errors = $.parseJSON(data.responseText);
                     $('#add-task-errors-opertugasedit').html('');
@@ -577,6 +587,7 @@
                         $('#add-task-errors-opertugasedit').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
                     }
                     $("#add-task-errors-opertugasedit").show();
+                    $.LoadingOverlay("hide");
                 }
             });
         });
@@ -631,12 +642,15 @@
         });
 
         $('.modalopertugassave').on('click', function () {
+            $.LoadingOverlay("show");
+            var operTugas = $("#from_user_id").val();
+            var id = operTugas.split(',');
             $.ajax({
                 type: 'post',
                 url: "{{url('/saveOperTugas') }}",
                 data: {
                     '_token': "{{  csrf_token() }}",
-                    'from_user_id': $("#from_user_id").val(),
+                    'from_user_id': id[0],
                     'to_user_id': $("#to_user_id").val(),
                     'location_id': $("#oper_tugas_location_id").val(),
                     'start_date': $("#start_date").val(),
@@ -648,6 +662,7 @@
                     $('body', 'html').css('overflow', 'auto');
                     popUpMessage('Success Mengalih Tugaskan');
                     getOperTugasList();
+                    $.LoadingOverlay("hide");
                 }, error: function (data) {
                     var errors = $.parseJSON(data.responseText);
                     $('#add-task-errors-opertugas').html('');
@@ -655,6 +670,7 @@
                         $('#add-task-errors-opertugas').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
                     }
                     $("#add-task-errors-opertugas").show();
+                    $.LoadingOverlay("hide");
                 }
             });
         });
@@ -741,7 +757,7 @@
 
             const nameUser = $(this).data("name-user");
             const nameLocation = $(this).data("name-location");
-            const photoCheckList = $(this).data("photo");
+            const photoCheckList = $(this).data("photo") ? $(this).data("photo") : "{{asset('images/avatars/man.jpg')}}";
             const nameOperanTugasUser = $(this).data("name-operan-tugas-user");
             $("#note").val('');
             if (nameOperanTugasUser != undefined) {
@@ -820,6 +836,7 @@
         });
 
         $('.tambahchecklistsave').click(function () {
+            $.LoadingOverlay("show");
             $.ajax({
                 type: 'post',
                 url: "{{url('/storeCheckList') }}",
@@ -834,6 +851,7 @@
                     $('.ubahchecklistopen').parent().parent().slideDown();
                     getChecklist();
                     popUpMessage('Success Tambah CheckList');
+                    $.LoadingOverlay("hide");
                 },
                 error: function (data) {
                     var errors = $.parseJSON(data.responseText);
@@ -842,6 +860,7 @@
                         $('#add-task-errors-checklist').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
                     }
                     $("#add-task-errors-checklist").show();
+                    $.LoadingOverlay("hide");
                 }
             });
         });
@@ -862,6 +881,7 @@
         });
 
         $('.ubahchecklistsave').click(function () {
+            $.LoadingOverlay("show");
             $.ajax({
                 type: 'put',
                 url: "{{url('/updateCheckList') }}/" + $("#editIdCheckList").val(),
@@ -876,6 +896,7 @@
                     getChecklist();
                     popUpMessage('Success Edit CheckList');
                     $('.tambahchecklistopen').show();
+                    $.LoadingOverlay("hide");
                 },
                 error: function (data) {
                     var errors = $.parseJSON(data.responseText);
@@ -884,11 +905,13 @@
                         $('#add-task-errors-checklist-edit').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
                     }
                     $("#add-task-errors-checklist-edit").show();
+                    $.LoadingOverlay("hide");
                 }
             });
         });
 
         $('.ubahchecklisthapus').click(function () {
+            $.LoadingOverlay("show");
             $(this).parent().parent().slideUp();
             $.ajax({
                 type: 'delete',
@@ -901,6 +924,7 @@
                     $('.tambahchecklistopen').show();
                     getChecklist();
                     popUpMessage('Success Hapus CheckList');
+                    $.LoadingOverlay("hide");
                 },
             });
         });
@@ -920,6 +944,7 @@
         });
 
         $('.tambahlocationsave').click(function () {
+            $.LoadingOverlay("show");
             $.ajax({
                 type: 'post',
                 url: "{{url('/storeLocation') }}",
@@ -933,6 +958,7 @@
                     $('.ubahlocationopen').parent().parent().slideDown();
                     getLocation();
                     popUpMessage('Success Tambah location');
+                    $.LoadingOverlay("hide");
                 },
                 error: function (data) {
                     var errors = $.parseJSON(data.responseText);
@@ -941,6 +967,7 @@
                         $('#add-task-errors-location').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
                     }
                     $("#add-task-errors-location").show();
+                    $.LoadingOverlay("hide");
                 }
             });
         });
@@ -961,6 +988,7 @@
         });
 
         $('.ubahlocationsave').click(function () {
+            $.LoadingOverlay("show");
             $.ajax({
                 type: 'put',
                 url: "{{url('/updateLocation') }}/" + $("#editIdlocation").val(),
@@ -975,6 +1003,7 @@
                     getLocation();
                     popUpMessage('Success Edit location');
                     $('.tambahlocationopen').show();
+                    $.LoadingOverlay("hide");
                 },
                 error: function (data) {
                     var errors = $.parseJSON(data.responseText);
@@ -983,11 +1012,13 @@
                         $('#add-task-errors-location-edit').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
                     }
                     $("#add-task-errors-location-edit").show();
+                    $.LoadingOverlay("hide");
                 }
             });
         });
 
         $('.ubahlocationhapus').click(function () {
+            $.LoadingOverlay("show");
             $(this).parent().parent().slideUp();
             $.ajax({
                 type: 'delete',
@@ -1000,6 +1031,7 @@
                     $('.tambahlocationopen').show();
                     getLocation();
                     popUpMessage('Success Hapus location');
+                    $.LoadingOverlay("hide");
                 },
             });
         });
@@ -1073,33 +1105,34 @@
                 noty(hapus);
             });
         });
-        $(document).on("change", "#tambahTugasUserId", function () {
-            let id = $(this).val();
-            $.ajax({
-                type: 'get',
-                url: "{{url('/getCheckListEmployeeByUserId') }}/" + id,
-                success: function (data) {
-                    if (data) {
-                        $('input[name="days"]').prop('checked', false);
-                        $('input[name="check_list_ids"]').prop('checked', false);
-                        $("#location_id").val(data['location_id']).change();
-                        for (let i in data['checkListEmployeeDetail']) {
-                            $('input[name="check_list_ids"][value="' + i + '"]').prop('checked', true);
-                            for (let j in data['checkListEmployeeDetail'][i]) {
-                                $('input[name="days"][value="' + data['checkListEmployeeDetail'][i][j] + '"]').prop('checked', true);
-                            }
-                        }
-                    } else {
-                        $("#location_id").val('').change();
-                        $('input[name="days"]').prop('checked', true);
-                        $('input[name="check_list_ids"]').prop('checked', true);
-                    }
-                },
-            });
+        {{--$(document).on("change", "#tambahTugasUserId", function () {--}}
+        {{--    let id = $(this).val();--}}
+        {{--    $.ajax({--}}
+        {{--        type: 'get',--}}
+        {{--        url: "{{url('/getCheckListEmployeeByUserId') }}/" + id,--}}
+        {{--        success: function (data) {--}}
+        {{--            if (data) {--}}
+        {{--                $('input[name="days"]').prop('checked', false);--}}
+        {{--                $('input[name="check_list_ids"]').prop('checked', false);--}}
+        {{--                $("#location_id").val(data['location_id']).change();--}}
+        {{--                for (let i in data['checkListEmployeeDetail']) {--}}
+        {{--                    $('input[name="check_list_ids"][value="' + i + '"]').prop('checked', true);--}}
+        {{--                    for (let j in data['checkListEmployeeDetail'][i]) {--}}
+        {{--                        $('input[name="days"][value="' + data['checkListEmployeeDetail'][i][j] + '"]').prop('checked', true);--}}
+        {{--                    }--}}
+        {{--                }--}}
+        {{--            } else {--}}
+        {{--                $("#location_id").val('').change();--}}
+        {{--                $('input[name="days"]').prop('checked', true);--}}
+        {{--                $('input[name="check_list_ids"]').prop('checked', true);--}}
+        {{--            }--}}
+        {{--        },--}}
+        {{--    });--}}
 
-        });
+        {{--});--}}
 
         $("#modaltambahtugassave").click(function () {
+            $.LoadingOverlay("show");
             const days = [];
             const check_list_ids = [];
             $("input[name='days']:checked").each(function () {
@@ -1126,6 +1159,7 @@
                     getUserEmployeeData();
                     getTugasList();
                     popUpMessage('Success Tambah Tugas');
+                    $.LoadingOverlay("hide");
                 },
                 error: function (data) {
                     var errors = $.parseJSON(data.responseText);
@@ -1134,11 +1168,13 @@
                         $('#add-task-errors').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
                     }
                     $("#add-task-errors").show();
+                    $.LoadingOverlay("hide");
                 }
             });
         });
 
         $(".modaledittugaslistsave").click(function () {
+            $.LoadingOverlay("show");
             const days = [];
             const check_list_ids = [];
             $("input[name='edit_days']:checked").each(function () {
@@ -1158,6 +1194,7 @@
                     'check_list_ids': check_list_ids,
                     'days': days,
                     'location_id': $("#editTugasListLocationId").val(),
+                    'id': $("#editTugasListId").val(),
                 },
                 success: function (data) {
                     $('.modaledittugaslist').css('display', 'none');
@@ -1165,6 +1202,7 @@
                     getUserEmployeeData();
                     getTugasList();
                     popUpMessage('Success Edit Tugas');
+                    $.LoadingOverlay("hide");
                 }, error: function (data) {
                     var errors = $.parseJSON(data.responseText);
                     $('#add-task-errors-edit').html('');
@@ -1172,12 +1210,14 @@
                         $('#add-task-errors-edit').append('<li class="ri2-block ri2-relative" style="margin-bottom: 5px; color: red;">' + errors.errors[i][0] + '</li>');
                     }
                     $("#add-task-errors-edit").show();
+                    $.LoadingOverlay("hide");
                 }
             });
         });
         $(".modaledittugaslistdelete").click(function () {
             var confirmation = confirm("are you sure to delete this tugas?");
             if (confirmation) {
+                $.LoadingOverlay("show");
                 $.ajax({
                     type: 'delete',
                     url: "{{url('/checkListEmployeeDelete') }}/" + $("#editTugasListId").val(),
@@ -1190,6 +1230,7 @@
                         getUserEmployeeData();
                         getTugasList();
                         popUpMessage('Success Delete Tugas');
+                        $.LoadingOverlay("hide");
                     },
                 });
             }
@@ -1198,6 +1239,7 @@
         $("#modaltugasnoteedit").click(function () {
             const note = $("#note").val();
             const id = $("#tugasNoteId").val();
+            $.LoadingOverlay("show");
             $.ajax({
                 type: 'put',
                 url: "{{url('/editCheckListProgress') }}/" + id,
@@ -1209,6 +1251,7 @@
                     $('.modaltugasnote').css('display', 'none');
                     $('body', 'html').css('overflow', 'auto');
                     popUpMessage('Success Edit Note');
+                    $.LoadingOverlay("hide");
                 },
             });
         });
@@ -1246,7 +1289,6 @@
 
         function getChecklist(editDatachecklist) {
             editDatachecklist = editDatachecklist || 0;
-
             $.ajax({
                 type: 'get',
                 url: "{{url('/getCheckList') }}",
@@ -1328,7 +1370,9 @@
                 success: function (data) {
                     let getUserEmployee = '<option value="" selected>Pilih Personel</option>';
                     for (i = 0; i < data.length; i++) {
-                        getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + '" data-designation="' + data[i]["designation"] + '">' + data[i]["name"] + '</option>';
+                        for (j = 0; j < data[i]["check_list_employee"].length; j++) {
+                            getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + ',' + data[i]["check_list_employee"][j]['location_id'] + '" data-designation="' + data[i]["designation"] + ' - ' + data[i]["check_list_employee"][j]['location']['name'] + '">' + data[i]["name"] + '</option>';
+                        }
                     }
 
                     $('#from_user_id').html(getUserEmployee);
@@ -1337,6 +1381,7 @@
         }
 
         function getUserEmployeeDontHaveCheckList() {
+
             $.ajax({
                 type: 'get',
                 url: "{{url('/getUserEmployeeDontHaveCheckList') }}",
@@ -1345,16 +1390,16 @@
                     for (i = 0; i < data.length; i++) {
                         getUserEmployee = getUserEmployee + '<option value="' + data[i]["email"] + '" data-designation="' + data[i]["designation"] + '">' + data[i]["name"] + '</option>';
                     }
-
 //                    $('#user_id').html(getUserEmployee);
                 },
             });
         }
 
         function getCheckListEmployeeByUserId(id) {
+            id = id.split(',');
             $.ajax({
                 type: 'get',
-                url: "{{url('/getCheckListEmployeeByUserId') }}" + '/' + id,
+                url: "{{url('/getCheckListEmployeeByUserId') }}" + '/' + id[0] + '/' + id[1],
                 success: function (data) {
                     $('#oper_tugas_location_id').val(data['location']['id']);
                     $('#oper_tugas_location_name').val(data['location']['name']);
@@ -1364,7 +1409,7 @@
                         $('#start_date').val(data['oper_tugas_from_user']['start_date']);
                         $('#end_date').val(data['oper_tugas_from_user']['end_date']);
                     } else {
-                        getUserCheckListOperTugasToById(id);
+                        getUserCheckListOperTugasToById(id[0]);
                     }
                 },
             });
@@ -1390,28 +1435,34 @@
                     $('#to_user_id_edit_list').html(getUserEmployee).val(selectedUser).trigger('change');
                     $('#to_user_id').html(getUserEmployee).val(selectedUser).trigger('change');
                     $('#editOperTugasToUserId').html(getUserEmployee);
+
                 },
             });
 
         }
 
         function getCheckListProgressDetailByCheckListProgressId(id) {
+
             $.ajax({
                 type: 'get',
                 url: "{{url('/getCheckListProgressDetailByCheckListProgressId') }}" + '/' + id,
                 success: function (data) {
                     return data;
+
                 },
             });
         }
 
         function getOnDutyData() {
+
             $.ajax({
                 type: 'get',
                 url: "{{url('/getOnDutyData') }}",
                 success: function (data) {
                     let onDuty = '';
+                    let imagesSrc = '';
                     for (var i in data) {
+                        imagesSrc = data[i]["check_list_user"]["photo"] != null ? "{{asset('images/upload/profile/')}}/" + data[i]["check_list_user"]["photo"] : "{{asset('images/avatars/man.jpg')}}";
                         if (data[i]["check_list_oper_tugas_id"] !== null && data[i]["check_list_oper_tugas_id"] !== '') {
                             onDuty = onDuty + '<div class="modaleditopertugasopen ri2-floatleft ' +
                                 'new-onduty-list new-child ri2-vtop ri2-boxpad15 ri2-box ri2-borderradius5 ri2-borderfull1 ri2-borderwhite3 ri2-pointer" data-id="' + data[i]["check_list_oper_tugas_id"] + '"' +
@@ -1419,7 +1470,7 @@
                                 '"data-location="' + data[i]["location"]["name"] + '" data-location-id="' + data[i]["location"]["id"] + '" data-from-user-id="' + data[i]["check_list_oper_tugas"]["from_user_id"] + '" data-toUser = "' + data[i]["check_list_oper_tugas"]["to_user_id"] + '"' +
                                 ' data-reason ="' + data[i]["check_list_oper_tugas"]["reason"] + '" data-startDate ="' + data[i]["check_list_oper_tugas"]["start_date"] + '" data-endDate = "' + data[i]["check_list_oper_tugas"]["end_date"] + '">' +
                                 ' <div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">' +
-                                '<div class="ri2-inlineblock ri2-relative"><img src="' + data[i]["check_list_user"]["photo"] + '" class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">' +
+                                '<div class="ri2-inlineblock ri2-relative"><img src="' + imagesSrc + '" class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">' +
                                 '</div></div><div class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16">' + data[i]["check_list_user"]["name"] + '</div>' +
                                 '<div class="ri2-block ri2-relative ri2-center ri2-txgrey1 ri2-font14">' + data[i]["location"]["name"] + ' ' +
                                 '<a class="ri2-relative ri2-inlineblock ri2-nowrap ri2-tooltip">' +
@@ -1430,12 +1481,13 @@
                                 ' data-name="' + data[i]["check_list_user"]["name"] + '" data-location="' + data[i]["location_id"] + '"' +
                                 'data-note="' + data[i]["note"] + '">' +
                                 '<div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">' +
-                                '<div class="ri2-inlineblock ri2-relative"><img src="' + data[i]["check_list_user"]["photo"] + '" class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">' +
+                                '<div class="ri2-inlineblock ri2-relative"><img src="' + imagesSrc + '" class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">' +
                                 '</div></div><div class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16">' + data[i]["check_list_user"]["name"] + '</div>' +
                                 '<div class="ri2-block ri2-relative ri2-center ri2-txgrey1 ri2-font14">' + data[i]["location"]["name"] + '</div></div>';
                         }
                     }
                     $("#onDutyData").html(onDuty);
+
                 },
             });
         }
@@ -1451,6 +1503,7 @@
                 onSelectDate: function () {
                     let date = $('#filterChecklistProgressDate').val();
                     if (date != "{{ date('Y-m-d') }}") {
+                        $.LoadingOverlay("show");
                         $.ajax({
                             type: 'get',
                             url: "{{url('/filterChecklistProgressDate') }}/" + date,
@@ -1469,7 +1522,7 @@
                                     $('.noteInput').prop('readonly', false);
                                     $('#allOutput').show();
                                 }
-
+                                $.LoadingOverlay("hide");
                             },
                         });
                     } else {
@@ -1523,7 +1576,6 @@
                 },
             });
         }
-
 
     </script>
 @endsection

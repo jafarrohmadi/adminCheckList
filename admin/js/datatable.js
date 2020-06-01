@@ -3305,7 +3305,7 @@
             sInfoPostFix: "",
             sDecimal: "",
             sThousands: ",",
-            sLengthMenu: '_MENU_ &nbsp',
+            sLengthMenu: "_MENU_ &nbsp Tampil",
             sLoadingRecords: "Memuat...",
             sProcessing: "Sedang Proses...",
             sSearch: "Cari: ",

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\ReportExport;
 use App\Http\Controllers\ClientController;
 use App\Http\Requests\CheckListEmployeeRequest;
 use App\Http\Requests\CheckListEmployeeSaveRequest;
@@ -20,12 +21,14 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CheckListController extends ClientController
 {
     public function index()
     {
-        $location = Location::all();
+        $company  = Auth::user()->company;
+        $location = Location::where(['company' => $company, 'status' => 1])->get();
 
         $checkListProgress =
             CheckListProgress::with([
@@ -40,8 +43,9 @@ class CheckListController extends ClientController
                 ]
             )->where('date', date('Y-m-d'))->get();
 
-        $checkListEmployee  = CheckListEmployee::all();
-        $checkListOperTugas = CheckListOperTugas::where('end_date', '>=', date('Y-m-d'))->get();
+        $checkListEmployee  = CheckListEmployee::has('users')->with(['users', 'location'])->get();
+        $checkListOperTugas =
+            CheckListOperTugas::has('fromUser')->with(['location'])->where('end_date', '>=', date('Y-m-d'))->get();
 
         $onDutyData = $this->getOnDutyData();
 
@@ -51,19 +55,19 @@ class CheckListController extends ClientController
 
     public function getTugasList()
     {
-        $checkListEmployee = CheckListEmployee::all();
+        $checkListEmployee = CheckListEmployee::has('users')->get();
         return view('admin.checklist.tugasList', compact('checkListEmployee'));
     }
 
     public function getOperTugasList()
     {
-        $checkListOperTugas = CheckListOperTugas::where('end_date', '>=', date('Y-m-d'))->get();
+        $checkListOperTugas = CheckListOperTugas::has('fromUser')->where('end_date', '>=', date('Y-m-d'))->get();
         return view('admin.checklist.operTugasList', compact('checkListOperTugas'));
     }
 
     public function getUserEmployee()
     {
-        $user = User::doesnthave('checkListEmployee')->get();
+        $user = User::where('company', Auth::user()->company)->get();
 
         return $user;
     }
@@ -71,11 +75,13 @@ class CheckListController extends ClientController
     public function getUserEmployeeHaveCheckList()
     {
         $checkListOperTugas =
-            CheckListOperTugas::where('end_date', '>=', date('Y-m-d'))->pluck('from_user_Id')->toArray();
+            CheckListOperTugas::has('fromUser')->where('end_date', '>=',
+                date('Y-m-d'))->pluck('from_user_Id')->toArray();
 
         return User::has('checkListEmployee')
             ->whereNotIn('email', $checkListOperTugas)
-            ->with('checkListEmployee')
+            ->with('checkListEmployee', 'checkListEmployee.location')
+            ->where('company', Auth::user()->company)
             ->get();
     }
 
@@ -88,15 +94,15 @@ class CheckListController extends ClientController
     public function getUserCheckListOperTugasToById($id)
     {
         return User::where('email', '!=', $id)
+            ->where('company', Auth::user()->company)
             ->get();
     }
 
-    public function getCheckListEmployeeByUserId($id)
+    public function getCheckListEmployeeByUserId($id, $location)
     {
         $checkListEmployee = CheckListEmployee::with([
             'location',
-            'operTugasFromUser',
-        ])->where('user_id', $id)->latest('updated_at')->first();
+        ])->where(['user_id' => $id, 'location_id' => $location])->latest('updated_at')->first();
 
         if ($checkListEmployee) {
             $data = [];
@@ -111,9 +117,8 @@ class CheckListController extends ClientController
 
     public function checkListEmployeeSave(CheckListEmployeeSaveRequest $request)
     {
-        $findCheckList = CheckListEmployee::where('user_id', $request->user_id)->first();
-        if ($findCheckList) {
-            $checkListEmployee = $findCheckList;
+        if (isset($request->id)) {
+            $checkListEmployee = CheckListEmployee::where('id', $request->id)->first();
             $checkListEmployee->checkListEmployeeDetail()->delete();
         } else {
             $checkListEmployee = new CheckListEmployee();
@@ -201,13 +206,17 @@ class CheckListController extends ClientController
 
     public function getLocation()
     {
-        return Location::where('status', 1)->get();
+        return Location::where(['status' => 1, 'company' => Auth::user()->company])->get();
     }
 
     public function storeLocation(LocationRequest $request)
     {
-        $location       = new Location();
-        $location->name = $request->name;
+        $login = Auth::user();
+
+        $location          = new Location();
+        $location->name    = $request->name;
+        $location->company = $login->company;
+        $location->user_id = $login->email;
         $location->save();
         return $location;
     }
@@ -232,13 +241,16 @@ class CheckListController extends ClientController
 
     public function getCheckList()
     {
-        return CheckList::where('status', 1)->get();
+        return CheckList::where(['status' => 1, 'company' => Auth::user()->company])->get();
     }
 
     public function storeCheckList(CheckListRequest $request)
     {
-        $checkList       = new CheckList();
-        $checkList->name = $request->name;
+        $login              = Auth::user();
+        $checkList          = new CheckList();
+        $checkList->name    = $request->name;
+        $checkList->user_id = $login->email;
+        $checkList->company = $login->company;
         $checkList->save();
         return $checkList;
     }
@@ -322,8 +334,9 @@ class CheckListController extends ClientController
 
     public function getOnDutyData()
     {
-        $checkListProgress = CheckListProgress::with(['location', 'checkListOperTugas.fromUser', 'checkListUser'])
-            ->where('date', date('Y-m-d'))->get();
+        $checkListProgress =
+            CheckListProgress::has('checkListUser')->with(['location', 'checkListOperTugas.fromUser', 'checkListUser'])
+                ->where('date', date('Y-m-d'))->get();
 
         return $checkListProgress;
     }
@@ -372,4 +385,69 @@ class CheckListController extends ClientController
 
         return view('admin.checklist.checklist-progress.index', compact('checkListProgress'));
     }
+
+    //report
+
+    public function report()
+    {
+        $checkListProgress =
+            CheckListProgress::with([
+                'checkListProgressDetail.checkList',
+                'checkListOperTugas.fromUser',
+                'checkListUser',
+            ])->withCount([
+                    'checkListProgressDetail',
+                    'checkListProgressDetail as activeCheckListProgressDetail' => function ($query) {
+                        $query->where('status', 1)->orderBy('date', 'desc');
+                    },
+                ]
+            )->get();
+
+        return view('admin.report.index', compact('checkListProgress'));
+    }
+
+    public function reportfilterChecklistProgressDate($date = null)
+    {
+        $checkListProgress =
+            CheckListProgress::with([
+                'checkListProgressDetail.checkList',
+                'checkListOperTugas.fromUser',
+                'checkListUser',
+            ])->withCount([
+                    'checkListProgressDetail',
+                    'checkListProgressDetail as activeCheckListProgressDetail' => function ($query) {
+                        $query->where('status', 1)->orderBy('date', 'desc');
+                    },
+                ]
+            )->where('date', $date)->get();
+        if (count($checkListProgress) > 0) {
+            return view('admin.report.checklistProgressList', compact('checkListProgress'));
+        }
+        return;
+
+    }
+
+    public function reportGetCheckListProgress($id)
+    {
+        $checkListProgress = CheckListProgress::with([
+            'checkListProgressDetail.checkList',
+            'checkListOperTugas.fromUser',
+            'checkListUser',
+        ])->withCount([
+                'checkListProgressDetail',
+                'checkListProgressDetail as activeCheckListProgressDetail' => function ($query) {
+                    $query->where('status', 1)->orderBy('date', 'desc');
+                },
+            ]
+        )->find($id);
+
+        return view('admin.report.checklistProgress', compact('checkListProgress'));
+    }
+
+    public function reportDownload(Request $request)
+    {
+        $myFile = (new ReportExport($request->startDate, $request->endDate))->download('report.xls');
+        return $myFile;
+    }
+
 }

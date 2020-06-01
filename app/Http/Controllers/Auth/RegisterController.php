@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\Company;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Ramsey\Uuid\Uuid;
 
 class RegisterController extends Controller
 {
@@ -28,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/checklist';
 
     /**
      * Create a new controller instance.
@@ -49,9 +51,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name'         => ['required', 'string', 'max:255'],
+            'email'        => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone_number' => ['required', 'string', 'max:25', 'unique:users'],
+            'phone_code'   => ['required', 'string', 'max:25'],
+            'user_phone'   => ['required', 'string', 'max:25'],
+            'company'      => ['required', 'string', 'unique:users'],
+            'password'     => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -59,14 +65,29 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Models\User
+     * @throws \Exception
      */
     protected function create(array $data)
     {
+        $company        = new Company();
+        $company->code  = random_int(100000, 999999);
+        $company->name  = $data['company'];
+        $company->quota = 10;
+        $company->empty_space = 10;
+        $company->save();
+
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'name'         => $data['name'],
+            'email'        => $data['email'],
+            'password'     => Hash::make($data['password']),
+            'phone_number' => '+'.normalize_phone($data['phone_number']),
+            'phone_code'   => $data['phone_code'],
+            'user_phone'   => normalize_phone($data['user_phone']),
+            'company'      => $company->id,
+            'access'       => 'admin',
+            'status'       => 1,
+            'designation'  => 'Admin',
         ]);
     }
 }

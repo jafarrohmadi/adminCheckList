@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class CheckListEmployee extends Model
 {
@@ -18,12 +20,13 @@ class CheckListEmployee extends Model
 
     public function location()
     {
-    	return $this->belongsTo(Location::class);
+        return $this->belongsTo(Location::class);
     }
 
     public function users()
     {
-        return $this->belongsTo(User::class, 'user_id', 'email');
+        $company = Auth::user()->company;
+        return $this->belongsTo(User::class, 'user_id', 'email')->where('company', $company);
     }
 
     public function checkListEmployeeDetail()

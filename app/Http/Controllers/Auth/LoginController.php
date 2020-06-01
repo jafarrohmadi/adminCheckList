@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subscribe;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,13 +30,15 @@ class LoginController extends Controller
      * @var string
      */
 
-    protected function authenticated(Request $request, $user) {
-        if ($user->designation === 'Office Boy') {
-            return redirect('/userChecklist');
-        } else {
-            return redirect('/checklist');
-        }
+    protected function authenticated(Request $request, $user)
+    {
+//        $sub = Subscribe::where('user_id', Auth::id())->count();
+//        if($sub < 0) {
+//            return redirect('/subscribe');
+//        }
+        return redirect('/checklist');
     }
+
     /**
      * Create a new controller instance.
      *

@@ -10,7 +10,7 @@
             data-reason="{{$checkListOperTugases->reason}}"
             data-from_user_name="{{$checkListOperTugases->fromUser->name}}">
             <div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">
-                <img src="{{ $checkListOperTugases->toUser['photo'] }}"
+                <img src="{{ $checkListOperTugases->toUser['photo'] ? asset("images/upload/profile/".$checkListOperTugases->toUser['photo']) : asset('images/avatars/man.jpg') }}"
                      class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">
             </div>
             <div class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16">

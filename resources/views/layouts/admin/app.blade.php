@@ -24,6 +24,8 @@
 <script src="{{ asset('admin/js/php-date-formatter.js')}}"></script>
 <script src="{{ asset('admin/js/jquery.mousewheel.js')}}"></script>
 <script src="{{ asset('admin/js/jquery.datetimepicker.js')}}"></script>
+<script src="{{ asset('admin/js/loadingoverlay/loadingoverlay.min.js') }}"></script>
+<script src="{{ asset('admin/js/loadingoverlay/loadingoverlay_progress.min.js') }}"></script>
 
 @yield('js')
 

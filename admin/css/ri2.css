@@ -436,6 +436,13 @@ to {transform:scale(1)}}
 .ri2-radio-div{display: none;}
 .ri2-radiolabel-div{background-color: #364246; color: #fff;}
 .ri2-radio-div:checked + .ri2-radiolabel-div{background-color: #00b894; color: #fff;}
+/*radio image*/
+.ri2-form-group .radio-image {display: block;position: relative;}
+.ri2-form-group .radio-image input {display: none;}
+.ri2-form-group .radio-image label {display: block;position: relative;cursor: pointer;z-index: 1;}
+.ri2-form-group .radio-image label img {width: 100%;max-width: 40px;opacity: 0.5;transform: scale(0.9);transition: all 0.3s;}
+.ri2-form-group .radio-image.inline {display: inline-block;}
+.ri2-form-group .radio-image input:checked + label img {opacity: 1;transform: scale(1)}
 /*Spinning Loading*/
 .ri2-spinning{-webkit-animation-name: spin;-webkit-animation-duration: 2000ms;-webkit-animation-iteration-count: infinite;-webkit-animation-timing-function: linear;-moz-animation-name: spin;-moz-animation-duration: 2000ms;-moz-animation-iteration-count: infinite;-moz-animation-timing-function: linear;-ms-animation-name: spin;-ms-animation-duration: 2000ms;-ms-animation-iteration-count: infinite;-ms-animation-timing-function: linear;-o-transition: rotate(3600deg);}
 @-moz-keyframes spin { from { -moz-transform: rotate(0deg); } to { -moz-transform: rotate(360deg); } }
@@ -491,11 +498,38 @@ to {transform:scale(1)}}
 /*other*/
 button:disabled{background-color: #dfe4ea; background: #dfe4ea; border-color: #dfe4ea;color: #636e72;opacity: 1;cursor: default;}
 button:disabled:hover{background-color: #dfe4ea; background: #dfe4ea; border-color: #dfe4ea;color: #636e72;opacity: 1;}
+div.disabled{background-color: #dfe4ea; background: #dfe4ea; border-color: #dfe4ea;color: #636e72;opacity: 1;cursor: default;}
+div.disabled:hover{background-color: #dfe4ea; background: #dfe4ea; border-color: #dfe4ea;color: #636e72;opacity: 1;}
+a.disabled{background-color: #dfe4ea; background: #dfe4ea; border-color: #dfe4ea;color: #636e72;opacity: 1;cursor: default;}
+a.disabled:hover{background-color: #dfe4ea; background: #dfe4ea; border-color: #dfe4ea;color: #636e72;opacity: 1;}
 /*slider range*/
 .ri2-slider {-webkit-appearance: none;width: 100%;height: 1px;border-radius: 1px;background: #b2bec3;outline: none;opacity: 0.7;-webkit-transition: .2s;transition: opacity .2s;display: block;}
 .ri2-slider:hover {opacity: 1;}
 .ri2-slider::-webkit-slider-thumb {-webkit-appearance: none;appearance: none;width: 14px;height: 14px;border-radius: 50%;background: #005ba1;cursor: pointer;}
 .ri2-slider::-moz-range-thumb {width: 14px;height: 14px;border-radius: 50%;background: #005ba1;}
+/*scroll horizontal*/
+.ri2-hscrollmenu-wrapper {display: block; position: relative; padding: 0 35px; box-sizing: border-box; overflow: hidden;}
+.ri2-hscrollmenu-wrap {position: relative; display: block; overflow: hidden; margin-bottom: -17px;}
+.ri2-hscrollmenu {position: relative; display: flex; overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch; white-space: nowrap;}
+.ri2-hscrollmenu .ri2-hscrollmenu-item {display: block; position: relative;}
+.ri2-hscrollmenu-paddle {position: absolute;top: 0;bottom: 0;cursor: pointer;width: 30px;height: auto;background-color: transparent;border: none;padding: 0;}
+.ri2-hscrollmenu-paddle i{color: #212526;font-size: 20px;}
+.ri2-hscrollmenu-paddle:hover i{color: #364246;}
+.ri2-hscrollmenu-paddle:active i{color: #00b894;}
+.ri2-hscrollmenu-left-paddle {left: 0;}
+.ri2-hscrollmenu-right-paddle {right: 0;}
+.ri2-hscrollmenu-hidden {opacity: 0.2;}
+.ri2-hscrollmenu-hidden:hover i {color: initial; cursor: default;}
+/*switch*/
+.ri2-switch .switch {position: relative;display: inline-block;width: 38px;height: 16px;}
+.ri2-switch .switch input { opacity: 0;width: 0;height: 0;}
+.ri2-switch .slider {position: absolute;cursor: pointer;top: 0;left: 0;right: 0;bottom: 0;background-color: #dfe4ea;-webkit-transition: .4s;transition: .4s;}
+.ri2-switch .slider:before {position: absolute;content: "";height: 12px;width: 12px;left: 2px;bottom: 2px;background-color: white;-webkit-transition: .4s;transition: .4s;}
+.ri2-switch input:checked + .slider {background-color: #6c5ce7;}
+.ri2-switch input:focus + .slider {box-shadow: 0 0 1px #6c5ce7;}
+.ri2-switch input:checked + .slider:before {-webkit-transform: translateX(22px);-ms-transform: translateX(22px);transform: translateX(22px);}
+.ri2-switch .slider.round {border-radius: 8px;}
+.ri2-switch .slider.round:before {border-radius: 50%;}
 /* 1017 */
 @media (max-width: 1017px) {
 .ri2-mobile1autowidth{width: auto !important;}

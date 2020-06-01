@@ -126,6 +126,32 @@ $(".btn-toogle").click(function(){
 $("#back").click(function(){
     $(".new-notification").removeClass("new-notification-active")
 });
+
+
+$(".notification-button").click(function(){
+    $(".new-notification").toggleClass("overlay");
+    $(".overlay-notification").toggleClass("notifactive")
+});
+
+$(".notification-close").click(function(){
+    $(".new-notification").removeClass("overlay");
+    $(".overlay-notification").removeClass("notifactive")
+});
+
+$(".overlay-notification").click(function(){
+    $(".new-notification").removeClass("new-notification-active");
+    $(".overlay-notification").removeClass("notifactive")
+});
+
+$(".btn-toogle").click(function(){
+    $(".new-notification").removeClass("new-notification-active");
+    $(".overlay-notification").removeClass("notifactive")
+});
+
+$("#back").click(function(){
+    $(".new-notification").removeClass("new-notification-active")
+    $(".overlay-notification").removeClass("notifactive")
+});
 // select2
 
 //$('.basic-single').select2();

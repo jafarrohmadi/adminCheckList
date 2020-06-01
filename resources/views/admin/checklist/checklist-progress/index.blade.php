@@ -34,7 +34,7 @@
                                 class="ri2-block ri2-relative ri2-borderbottom1 ri2-borderwhite3 ri2-marginbottom20 ri2-paddingbottom10">
                                 <div class="ri2-table ri2-relative">
                                     <div class="ri2-cell ri2-relative ri2-vmid ri2-paddingright20">
-                                        <img src="{{ $checkListProgress->checkListUser->photo }}"
+                                        <img src="{{ $checkListProgress->checkListUser->photo ? asset("images/upload/profile/").'/'.$checkListProgress->checkListUser->photo : asset('images/avatars/man.jpg') }}"
                                              class="ri2-inlineblock ri2-relative ri2-vmid new-user-mthumbnail ri2-circle">
                                     </div>
                                     <div class="ri2-cell ri2-relative ri2-vmid">
@@ -109,7 +109,7 @@
                                                     @foreach(json_decode($checkList->picture) as $picture)
                                                         <div class="items"
                                                              onclick="openModal({{$checkList->picture}});currentSlide({{++$i}})">
-                                                            <img src="{{ $picture }}">
+                                                            <img src="{{ asset('images/upload/ACL/').'/'.$picture }}">
                                                         </div>
                                                     @endforeach
                                                 </div>
@@ -201,7 +201,7 @@
                 let j = parseInt(i) + parseInt(1);
                 pic = pic + '<div class="ri2-lightbox-slide">' +
                     '<div class="ri2-lightbox-number ri2-absolute ri2-txwhite1 ri2-font18">' + j + '/ ' + picture.length + '</div>' +
-                    '<img src="' + picture[i] + '" class="ri2-lightbox-image">' +
+                    '<img src="{{ asset('images/upload/ACL/')}}/' + picture[i] + '" class="ri2-lightbox-image">' +
                     '</div>'
             }
             $('#picturePost').html(pic);

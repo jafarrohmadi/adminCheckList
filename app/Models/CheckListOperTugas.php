@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class CheckListOperTugas extends Model
 {
@@ -24,7 +25,8 @@ class CheckListOperTugas extends Model
 
     public function fromUser()
     {
-        return $this->belongsTo(User::class, 'from_user_id', 'email');
+        $company = Auth::user()->company;
+        return $this->belongsTo(User::class, 'from_user_id', 'email')->where('company', $company);
     }
 
     public function toUser()

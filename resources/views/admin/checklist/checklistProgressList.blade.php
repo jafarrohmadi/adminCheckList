@@ -17,7 +17,7 @@
                 <td>{{ ++$i }}</td>
                 <td>
                     <div class="ri2-inlineblock ri2-relative ri2-vmid ri2-marginright7">
-                        <img src="{{ $checkListProgres->checkListUser->photo }}"
+                        <img src="{{ $checkListProgres->checkListUser->photo ? asset("images/upload/profile/").'/'.$checkListProgres->checkListUser->photo : asset('images/avatars/man.jpg')}}"
                              class="new-user-sthumbnail ri2-inlineblock ri2-circle ri2-vmid">
                     </div>
                     <span
@@ -51,7 +51,7 @@
                        data-note="{{$checkListProgres->note}}"
                        data-name-user="{{ $checkListProgres->checkListUser->name }}"
                        data-name-location="{{ $checkListProgres->location->name }}"
-                       data-photo="{{ $checkListProgres->checkListUser->photo }}"
+                       data-photo="{{ $checkListProgres->checkListUser->photo ? asset("images/upload/profile/").'/'.$checkListProgres->checkListUser->photo : asset('images/avatars/man.jpg')}}"
                        @if($checkListProgres->check_list_oper_tugas_id)
                        data-name-operan-tugas-user="{{ $checkListProgres->checkListOperTugas->fromUser->name ?? '' }}"
                         @endif

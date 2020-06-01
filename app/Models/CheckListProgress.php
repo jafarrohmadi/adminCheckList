@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class CheckListProgress extends Model
 {
@@ -16,32 +18,33 @@ class CheckListProgress extends Model
         'note_status',
         'created_at',
         'updated_at',
-        'userUpdate'
+        'userUpdate',
     ];
 
-    public function checkListProgressDetail ()
+    public function checkListProgressDetail()
     {
         return $this->hasMany(CheckListProgressDetail::class);
     }
 
-    public function checkListOperTugas ()
+    public function checkListOperTugas()
     {
         return $this->belongsTo(CheckListOperTugas::class);
     }
 
-    public function checkListEmployee ()
+    public function checkListEmployee()
     {
         return $this->hasMany(CheckListEmployee::class, 'user_id', 'user_id');
     }
 
-    public function location ()
+    public function location()
     {
         return $this->belongsTo(Location::class, 'location_id');
     }
 
     public function checkListUser()
     {
-        return $this->belongsTo(User::class, 'user_id', 'email');
+        $company = Auth::user()->company;
+        return $this->belongsTo(User::class, 'user_id', 'email')->where('status', 1)->where('company',$company);
     }
 
 

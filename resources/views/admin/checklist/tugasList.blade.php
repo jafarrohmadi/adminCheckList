@@ -7,7 +7,7 @@
             data-list="{{$checkListEmploye->check_list_id}}" data-day="{{$checkListEmploye->day}}">
             <div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">
                 <div class="ri2-inlineblock ri2-relative">
-                    <img src="{{ $checkListEmploye->users['photo'] }}"
+                    <img src="{{ $checkListEmploye->users['photo']  ? asset("images/upload/profile/" .$checkListEmploye->users['photo']) : asset('images/avatars/man.jpg')}} "
                          class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">
                 </div>
             </div>
