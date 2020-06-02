@@ -33,6 +33,37 @@ return [
     |
     */
     'debug' => env('APP_DEBUG', false),
+    'debug_blacklist' => [
+        '_ENV' => [
+            'APP_ENV',
+            'APP_KEY',
+            'REDIS_PASSWORD',
+            'PUSHER_APP_KEY',
+            'PUSHER_APP_SECRET',
+
+            'DB_CONNECTION',
+            'DB_HOST',
+            'DB_PORT',
+            'DB_DATABASE',
+            'DB_USERNAME',
+            'DB_PASSWORD',
+
+            'MAIL_HOST',
+            'MAIL_USERNAME',
+            'MAIL_PASSWORD',
+        ],
+        '_SERVER' => [
+            'APP_KEY',
+            'DB_PASSWORD',
+            'REDIS_PASSWORD',
+            'MAIL_PASSWORD',
+            'PUSHER_APP_KEY',
+            'PUSHER_APP_SECRET',
+        ],
+        '_POST' => [
+            'password',
+        ],
+    ],
     /*
     |--------------------------------------------------------------------------
     | Application URL

@@ -47,7 +47,7 @@ class ComproController extends Controller
         $contactUs->type           = $request->type;
         $contactUs->save();
 
-        $to_mail   = 'rohmadijafar@gmail.com';
+        $to_mail   = 'itdevelopment@airmasgroup.co.id';
         $data_mail = [
             'mail_subject' => 'Contact Us',
             'module'       => 'Contact Us',
