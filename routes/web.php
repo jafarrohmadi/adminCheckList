@@ -11,7 +11,7 @@
 |
 */
 
-Route::redirect('/', '/site/login');
+Route::redirect('/', '/admin/login');
 //Route::get('/login', ['as' =>'login' ,'uses' =>'ClientController@redirect']);
 Auth::routes();
 
@@ -19,15 +19,9 @@ Auth::routes();
 //Route::get('/login', 'ClientController@login');
 //Route::get('/redirect', ['as' => 'login', 'uses' => 'ClientController@redirect']);
 
-//Route::get('/login', ['as' => 'login', 'uses' => 'ClientController@redirect']);
-//
-//Route::get('/callback', 'ClientController@callback')->name('callback');
+Route::get('/login', ['as' => 'login', 'uses' => 'ClientController@redirect']);
 
-Route::get('/', 'ComproController@index');
-Route::get('/product', 'ComproController@product');
-Route::get('/price', 'ComproController@price')->name('price');
-Route::get('/faq', 'ComproController@faq');
-Route::post('/contactUs', 'ComproController@contactUs');
+Route::get('/callback', 'ClientController@callback')->name('callback');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/checklist', 'Admin\CheckListController@index')->name('checklist');

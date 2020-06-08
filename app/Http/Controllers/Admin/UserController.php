@@ -24,6 +24,11 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'email'        => 'required|unique:users|max:255',
+            'phone_number' => 'required|unique:users|max:255',
+        ]);
+
         if ($this->getQuotaLeave() > 0) {
             $company = Auth::user()->company;
 
@@ -72,7 +77,11 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $company = Auth::user()->company;
+        $validatedData = $request->validate([
+            'email'        => 'required|unique:users,email,'.$id,'|max:255',
+            'phone_number' => 'required|unique:users,phone_number,'.$id, '|max:255',
+        ]);
+        $company       = Auth::user()->company;
 
         $user               = User::find($id);
         $user->name         = $request->name;

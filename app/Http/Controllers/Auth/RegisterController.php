@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Admin;
 use App\Models\Company;
 use App\Models\User;
 use App\Http\Controllers\Controller;
@@ -77,7 +78,7 @@ class RegisterController extends Controller
         $company->empty_space = 10;
         $company->save();
 
-        return User::create([
+        return Admin::create([
             'name'         => $data['name'],
             'email'        => $data['email'],
             'password'     => Hash::make($data['password']),
