@@ -35,6 +35,7 @@ class ClientController extends Controller
 
     public function callback(Request $request)
     {
+        \Config::set('app.debug', true);
         if (isset($_GET['error'])) {
             return redirect('/');
         }
@@ -65,8 +66,9 @@ class ClientController extends Controller
         ]);
 
         $response = json_decode((string)$response->getBody(), true);
-
+ #       dd($response);
         Cookie::queue('bearer', $at, 60);
+<<<<<<< HEAD
 
         if(!isset($response['data']['company']['access']['AC']['active']))
         {
@@ -74,10 +76,20 @@ class ClientController extends Controller
                 return view('errors.error403cont');
             }
         }
+=======
+        
+        if(!isset($response['data']['company']['access']['AC']['active']))
+	    {
+		    if($response['data']['company']['access']['AC']['active'] != 1) { 
+			    return view('errors.error403cont');
+		    }
+	    }
+	    
+>>>>>>> 051ce81f52405a4fbfa5e4be317544ef4a8d61ee
 
         $finduserdb = Admin::where('email', $response['data']['email'])->first();
         if (!$finduserdb) {
-            $company = Company::where('code', $response['data']['company']['code'])->first();
+            $company = Company::where('code',$response['data']['company']['code'])->first();
             if (!$company) {
                 $company              = new Company();
                 $company->code        = $response['data']['company']['code'];
@@ -89,6 +101,15 @@ class ClientController extends Controller
                 $company->expired     = $response['data']['company']['access']['AC']['expired'];
                 $company->month       = $response['data']['company']['access']['AC']['month'];
                 $company->save();
+            }else {
+                $company->name        = $response['data']['company']['name'];
+                $company->address     = $response['data']['company']['address'];
+                $company->website     = $response['data']['company']['website'];
+                $company->quota       = $response['data']['company']['access']['AC']['quota'];
+                $company->empty_space = $response['data']['company']['access']['AC']['quota'];
+                $company->expired     = $response['data']['company']['access']['AC']['expired'];
+                $company->month       = $response['data']['company']['access']['AC']['month'];
+                $company->save();   
             }
 
             $user               = new Admin();
@@ -101,6 +122,37 @@ class ClientController extends Controller
             $user->phone_code   = $response['data']['phone_code'];
             $user->user_phone   = $response['data']['mobile'];
             $user->phone_number = $response['data']['phone_code'].$response['data']['mobile'];
+            $user->company      = $company->id;
+            $user->save();
+        }else{
+            $company = Company::where('code',$response['data']['company']['code'])->first();
+            if (!$company) {
+                $company              = new Company();
+                $company->code        = $response['data']['company']['code'];
+                $company->name        = $response['data']['company']['name'];
+                $company->address     = $response['data']['company']['address'];
+                $company->website     = $response['data']['company']['website'];
+                $company->quota       = $response['data']['company']['access']['AC']['quota'];
+                $company->empty_space = $response['data']['company']['access']['AC']['quota'];
+                $company->expired     = $response['data']['company']['access']['AC']['expired'];
+                $company->month       = $response['data']['company']['access']['AC']['month'];
+                $company->save();
+            }else {
+                 $user                 = User::where(['company' => $company->id, 'access' => 'user'])->get();
+            $responseEmptySpace = $response['data']['company']['access']['AC']['quota'] - count($user);
+          
+                $company->name        = $response['data']['company']['name'];
+                $company->address     = $response['data']['company']['address'];
+                $company->website     = $response['data']['company']['website'];
+                $company->quota       = $response['data']['company']['access']['AC']['quota'];
+                $company->empty_space = $responseEmptySpace > 0  ? $responseEmptySpace : 0;
+                $company->expired     = $response['data']['company']['access']['AC']['expired'];
+                $company->month       = $response['data']['company']['access']['AC']['month'];
+                $company->save();   
+            }
+
+            $user               =  Admin::where('email', $response['data']['email'])->first();
+      
             $user->company      = $company->id;
             $user->save();
         }

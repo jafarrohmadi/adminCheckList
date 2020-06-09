@@ -31,7 +31,11 @@
                     class="fas fa-plus-circle"></i> Buat User</a>
 
         <span
+<<<<<<< HEAD
                 style="font-size: 20px;margin: auto;padding-left: 300px;"> Total Kuota User : {{ $company->quota }} </span>
+=======
+            style="font-size: 20px;margin: auto;padding-left: 300px;"> Total Kuota User : {{ $company->quota }} </span>
+>>>>>>> 051ce81f52405a4fbfa5e4be317544ef4a8d61ee
         <span style="font-size: 20px;margin: auto;"
               class="sisakuota"> Total Kuota Tersisa : {{ $company->empty_space }}</span>
     </div>
@@ -301,7 +305,11 @@
                         console.warn(err.responseJSON.errors);
                         // display errors on each form field
                         $.each(err.responseJSON.errors, function (i, error) {
+<<<<<<< HEAD
                             var el = $(document).find('[name="edit' + i + '"]');
+=======
+                            var el = $(document).find('[name="' + i + '"]');
+>>>>>>> 051ce81f52405a4fbfa5e4be317544ef4a8d61ee
                             el.after($('<span style="color: red;">' + error[0] + '</span>'));
                         });
                     }
