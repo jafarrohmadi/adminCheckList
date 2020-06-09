@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
+use App\Models\Admin;
 use App\Models\CheckListEmployee;
 use App\Models\Company;
 use App\Models\User;
@@ -67,7 +68,14 @@ class ClientController extends Controller
 
         Cookie::queue('bearer', $at, 60);
 
-        $finduserdb = User::where('email', $response['data']['email'])->first();
+        if(!isset($response['data']['company']['access']['AC']['active']))
+        {
+            if($response['data']['company']['access']['AC']['active'] != 1) {
+                return view('errors.error403cont');
+            }
+        }
+
+        $finduserdb = Admin::where('email', $response['data']['email'])->first();
         if (!$finduserdb) {
             $company = Company::where('code', $response['data']['company']['code'])->first();
             if (!$company) {
@@ -83,7 +91,7 @@ class ClientController extends Controller
                 $company->save();
             }
 
-            $user               = new User();
+            $user               = new Admin();
             $user->email        = $response['data']['email'];
             $user->password     = Hash::make(Hash::make($response['data']['email']));
             $user->name         = $response['data']['name'];
@@ -97,36 +105,9 @@ class ClientController extends Controller
             $user->save();
         }
 
-        $user = User::where('email', $response['data']['email'])->first();
+        $user = Admin::where('email', $response['data']['email'])->first();
 
         Auth::login($user);
         return redirect('/checklist');
-    }
-
-    public function getUserEmployeeData($at = null)
-    {
-        if (Cookie::has('bearer') || $at) {
-            $client   = new Client();
-            $response = $client->request('POST', config('app.client_url').'api/data/users', [
-                    'headers' => [
-                        'Accept'        => 'application/json',
-                        'Authorization' => 'Bearer '.$at ?? Cookie::get('bearer'),
-                    ],
-                ]
-            );
-            $response = json_decode((string)$response->getBody(), true);
-            return $response;
-        }
-        return false;
-    }
-
-    protected function getUserEmployeeNameById($id)
-    {
-        $data = [];
-        foreach ($this->getUserEmployee() as $item) {
-            $data[$item['id']] = $item;
-        }
-
-        return $data[$id]['name'];
     }
 }

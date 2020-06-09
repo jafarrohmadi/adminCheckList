@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Admin;
 use App\Models\Company;
 use App\Models\User;
 use App\Http\Controllers\Controller;
@@ -52,11 +53,6 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name'         => ['required', 'string', 'max:255'],
-            'email'        => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone_number' => ['required', 'string', 'max:25', 'unique:users'],
-            'phone_code'   => ['required', 'string', 'max:25'],
-            'user_phone'   => ['required', 'string', 'max:25'],
-            'company'      => ['required', 'string', 'unique:users'],
             'password'     => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -77,7 +73,7 @@ class RegisterController extends Controller
         $company->empty_space = 10;
         $company->save();
 
-        return User::create([
+        return Admin::create([
             'name'         => $data['name'],
             'email'        => $data['email'],
             'password'     => Hash::make($data['password']),

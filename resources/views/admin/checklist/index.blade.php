@@ -48,29 +48,29 @@
         <div class="ri2-table ri2-relative ri2-fullwidth">
             <div class="ri2-cell ri2-vmid ri2-fit ri2-paddingright10">
                 <a class="modaltambahtugasopen new-toolbarbutton ri2-inlineblock new-ocean-gradient ri2-font14 ri2-mobilefont12 ri2-semibold ri2-txwhite1 ri2-pointer ri2-hovering"><i
-                        class="fas fa-plus-circle"></i> Tambah Tugas</a>
+                            class="fas fa-plus-circle"></i> Tambah Tugas</a>
                 @include('admin.checklist.tambahTugas')
             </div>
-            <div class="ri2-cell ri2-vmid ri2-right">
-                <button
-                    class="modallocationopen new-ba-toolbar ri2-inlineblock ri2-vmid ri2-circle ri2-borderfull1 ri2-bordergreen1 ri2-circle ri2-bgwhite1 ri2-txblack3 ri2-center ri2-font16 ri2-nopadding ri2-pointer ri2-tooltip ri2-relative ri2-nowrap ri2-linkhover">
-                    <span class="ri2-lefttooltiptext ri2-normal ri2-linenormal">Location</span><i
-                        class="fas fa-tasks"></i>
-                </button>
-                @include('admin.checklist.lokasi')
-                <button
-                    class="modalchecklistopen new-ba-toolbar ri2-inlineblock ri2-vmid ri2-circle ri2-borderfull1 ri2-bordergreen1 ri2-circle ri2-bgwhite1 ri2-txblack3 ri2-center ri2-font16 ri2-nopadding ri2-pointer ri2-tooltip ri2-relative ri2-nowrap ri2-linkhover">
-                    <span class="ri2-lefttooltiptext ri2-normal ri2-linenormal">Checklist</span><i
-                        class="fas fa-tasks"></i>
-                </button>
-                @include('admin.checklist.checklist')
-                <button
-                    class="modalopertugasopen new-ba-toolbar ri2-inlineblock ri2-vmid ri2-circle ri2-borderfull1 ri2-bordergreen1 ri2-circle ri2-bgwhite1 ri2-txblack3 ri2-center ri2-font16 ri2-nopadding ri2-pointer ri2-tooltip ri2-relative ri2-nowrap ri2-linkhover">
-                    <span class="ri2-lefttooltiptext ri2-normal ri2-linenormal">Mengalih Tugaskan</span><i
-                        class="fas fa-exchange-alt ri2-rotate-45"></i>
-                </button>
-                @include('admin.checklist.operTugas')
-            </div>
+{{--            <div class="ri2-cell ri2-vmid ri2-right">--}}
+{{--                <button--}}
+{{--                        class="modallocationopen new-ba-toolbar ri2-inlineblock ri2-vmid ri2-circle ri2-borderfull1 ri2-bordergreen1 ri2-circle ri2-bgwhite1 ri2-txblack3 ri2-center ri2-font16 ri2-nopadding ri2-pointer ri2-tooltip ri2-relative ri2-nowrap ri2-linkhover">--}}
+{{--                    <span class="ri2-lefttooltiptext ri2-normal ri2-linenormal">Location</span><i--}}
+{{--                            class="fas fa-tasks"></i>--}}
+{{--                </button>--}}
+{{--                @include('admin.checklist.lokasi')--}}
+{{--                <button--}}
+{{--                        class="modalchecklistopen new-ba-toolbar ri2-inlineblock ri2-vmid ri2-circle ri2-borderfull1 ri2-bordergreen1 ri2-circle ri2-bgwhite1 ri2-txblack3 ri2-center ri2-font16 ri2-nopadding ri2-pointer ri2-tooltip ri2-relative ri2-nowrap ri2-linkhover">--}}
+{{--                    <span class="ri2-lefttooltiptext ri2-normal ri2-linenormal">Checklist</span><i--}}
+{{--                            class="fas fa-tasks"></i>--}}
+{{--                </button>--}}
+{{--                @include('admin.checklist.checklist')--}}
+{{--                <button--}}
+{{--                        class="modalopertugasopen new-ba-toolbar ri2-inlineblock ri2-vmid ri2-circle ri2-borderfull1 ri2-bordergreen1 ri2-circle ri2-bgwhite1 ri2-txblack3 ri2-center ri2-font16 ri2-nopadding ri2-pointer ri2-tooltip ri2-relative ri2-nowrap ri2-linkhover">--}}
+{{--                    <span class="ri2-lefttooltiptext ri2-normal ri2-linenormal">Mengalih Tugaskan</span><i--}}
+{{--                            class="fas fa-exchange-alt ri2-rotate-45"></i>--}}
+{{--                </button>--}}
+{{--                @include('admin.checklist.operTugas')--}}
+{{--            </div>--}}
         </div>
     </div>
     <div class="content-body">
@@ -78,9 +78,9 @@
             <div class="ri2-block ri2-relative new-content-space">
                 <div class="ri2-block ri2-relative">
                     <div
-                        class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-shadow"></div>
+                            class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-shadow"></div>
                     <div
-                        class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-white"></div>
+                            class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-white"></div>
                     <div class="ri2-block ri2-relative">
                         <div class="ri2-block ri2-font16 ri2-txblack5 ri2-semibold ri2-bgwhite3 ri2-boxpad7">
                             Tugas List
@@ -91,28 +91,28 @@
                     </div>
                 </div>
             </div>
+{{--            <div class="ri2-block ri2-relative new-content-space">--}}
+{{--                <div class="ri2-block ri2-relative">--}}
+{{--                    <div--}}
+{{--                            class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-shadow"></div>--}}
+{{--                    <div--}}
+{{--                            class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-white"></div>--}}
+{{--                    <div class="ri2-block ri2-relative">--}}
+{{--                        <div class="ri2-block ri2-font16 ri2-txblack5 ri2-semibold ri2-bgwhite3 ri2-boxpad7">--}}
+{{--                            Mengalih Tugaskan List--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="ri2-block ri2-relative ri2-boxpad20 ri2-box" id="operTugasListIndex">--}}
+{{--                        @include('admin.checklist.operTugasList')--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
             <div class="ri2-block ri2-relative new-content-space">
                 <div class="ri2-block ri2-relative">
                     <div
-                        class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-shadow"></div>
+                            class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-shadow"></div>
                     <div
-                        class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-white"></div>
-                    <div class="ri2-block ri2-relative">
-                        <div class="ri2-block ri2-font16 ri2-txblack5 ri2-semibold ri2-bgwhite3 ri2-boxpad7">
-                            Mengalih Tugaskan List
-                        </div>
-                    </div>
-                    <div class="ri2-block ri2-relative ri2-boxpad20 ri2-box" id="operTugasListIndex">
-                        @include('admin.checklist.operTugasList')
-                    </div>
-                </div>
-            </div>
-            <div class="ri2-block ri2-relative new-content-space">
-                <div class="ri2-block ri2-relative">
-                    <div
-                        class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-shadow"></div>
-                    <div
-                        class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-white"></div>
+                            class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-white"></div>
                     <div class="ri2-block ri2-relative">
                         <div class="ri2-block ri2-font16 ri2-txblack5 ri2-semibold ri2-bgwhite3 ri2-boxpad7">
                             On Duty
@@ -124,14 +124,14 @@
                         @if( count($onDutyData) > 4)
                             <div class="ri2-block ri2-relative ri2-center ri2-margintop20">
                                 <div
-                                    class="onduty-open ri2-inlineblock ri2-font16 ri2-txblack3 ri2-pointer ri2-linkhover">
+                                        class="onduty-open ri2-inlineblock ri2-font16 ri2-txblack3 ri2-pointer ri2-linkhover">
                                     <i class="fas fa-angle-double-down"></i> Lihat Semua {{ count($onDutyData) }}
                                     Personel
                                 </div>
                             </div>
                             <div class="ri2-desktop-hide ri2-relative ri2-center ri2-margintop20">
                                 <div
-                                    class="onduty-close ri2-inlineblock ri2-font16 ri2-txblack3 ri2-pointer ri2-linkhover">
+                                        class="onduty-close ri2-inlineblock ri2-font16 ri2-txblack3 ri2-pointer ri2-linkhover">
                                     <i class="fas fa-angle-double-up"></i> Sembunyikan
                                 </div>
                             </div>
@@ -1463,19 +1463,8 @@
                     let imagesSrc = '';
                     for (var i in data) {
                         imagesSrc = data[i]["check_list_user"]["photo"] != null ? "{{asset('images/upload/profile/')}}/" + data[i]["check_list_user"]["photo"] : "{{asset('images/avatars/man.jpg')}}";
-                        if (data[i]["check_list_oper_tugas_id"] !== null && data[i]["check_list_oper_tugas_id"] !== '') {
-                            onDuty = onDuty + '<div class="modaleditopertugasopen ri2-floatleft ' +
-                                'new-onduty-list new-child ri2-vtop ri2-boxpad15 ri2-box ri2-borderradius5 ri2-borderfull1 ri2-borderwhite3 ri2-pointer" data-id="' + data[i]["check_list_oper_tugas_id"] + '"' +
-                                'data-fromUser="' + data[i]["check_list_oper_tugas"]["from_user"]["name"] +
-                                '"data-location="' + data[i]["location"]["name"] + '" data-location-id="' + data[i]["location"]["id"] + '" data-from-user-id="' + data[i]["check_list_oper_tugas"]["from_user_id"] + '" data-toUser = "' + data[i]["check_list_oper_tugas"]["to_user_id"] + '"' +
-                                ' data-reason ="' + data[i]["check_list_oper_tugas"]["reason"] + '" data-startDate ="' + data[i]["check_list_oper_tugas"]["start_date"] + '" data-endDate = "' + data[i]["check_list_oper_tugas"]["end_date"] + '">' +
-                                ' <div class="ri2-block ri2-relative ri2-center ri2-marginbottom10">' +
-                                '<div class="ri2-inlineblock ri2-relative"><img src="' + imagesSrc + '" class="ri2-circle ri2-vmid ri2-borderfull3 ri2-borderwhite5 new-user-mthumbnail">' +
-                                '</div></div><div class="ri2-block ri2-relative ri2-center ri2-txblack3 ri2-font16">' + data[i]["check_list_user"]["name"] + '</div>' +
-                                '<div class="ri2-block ri2-relative ri2-center ri2-txgrey1 ri2-font14">' + data[i]["location"]["name"] + ' ' +
-                                '<a class="ri2-relative ri2-inlineblock ri2-nowrap ri2-tooltip">' +
-                                '<span class="ri2-tooltiptext ri2-normal ri2-linenormal">Mengalih Tugaskan dari ' + data[i]["check_list_oper_tugas"]["from_user"]["name"] + '</span><i class="fas fa-exchange-alt ri2-rotate-45 ri2-txgreen1"></i></a></div></div>';
-                        } else {
+                        if (data[i]["check_list_oper_tugas_id"] === null) {
+
                             onDuty = onDuty + '<div class="modaledittugasopen ri2-floatleft ' +
                                 'new-onduty-list new-child ri2-vtop ri2-boxpad15 ri2-box ri2-borderradius5 ri2-borderfull1 ri2-borderwhite3 ri2-pointer" data-id="' + data[i]["id"] + '"' +
                                 ' data-name="' + data[i]["check_list_user"]["name"] + '" data-location="' + data[i]["location_id"] + '"' +
@@ -1506,7 +1495,7 @@
                         $.LoadingOverlay("show");
                         $.ajax({
                             type: 'get',
-                            url: "{{url('/filterChecklistProgressDate') }}/" + date,
+                            url: "{{url('/filterChecklistProgressDate') }}/" + date + '/tambahTugas',
                             success: function (data) {
                                 if (data) {
                                     $('#allOutput').hide();

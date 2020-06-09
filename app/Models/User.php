@@ -32,7 +32,7 @@ class User extends Authenticatable
         'company',
         'phone_code',
         'user_phone',
-        'status'
+        'status',
     ];
 
     /**

@@ -20,7 +20,7 @@
                 <div class="ri2-table ri2-font18 ri2-semibold">
                     <div class="ri2-cell ri2-paddingright10 ri2-borderright1 ri2-bordergrey2">
                         <a href="" class="ri2-tooltip ri2-nowrap ri2-relative"><span class="ri2-righttooltiptext">Halaman Sebelum</span><i
-                                class="fas fa-chevron-circle-left ri2-txblack5 ri2-linkhover"></i></a>
+                                    class="fas fa-chevron-circle-left ri2-txblack5 ri2-linkhover"></i></a>
                     </div>
                     <div class="ri2-cell ri2-paddingleft10">
                         Report Data Pekerjaan
@@ -34,22 +34,22 @@
         <div class="ri2-table ri2-relative ri2-fullwidth">
             <div class="ri2-cell ri2-vmid ri2-fit ri2-paddingright10">
                 <a class="modalreportopen new-toolbarbutton ri2-inlineblock new-ocean-gradient ri2-font14 ri2-mobilefont12 ri2-semibold ri2-txwhite1 ri2-pointer ri2-hovering"><i
-                        class="far fa-file-alt"></i> Report</a>
+                            class="far fa-file-alt"></i> Report</a>
                 <div class="modalreport ri2-modal ri2-fixed ri2-fullwidth ri2-fullheight">
                     <div class="ri2-table ri2-fullwidth ri2-fullheight ri2-relative">
                         <div class="ri2-cell ri2-center ri2-vmid ri2-boxpad20 ri2-box">
                             <div class="modalreportback ri2-modal-back ri2-absolute ri2-fullwidth ri2-fullheight"></div>
                             <div class="ri2-modal-content ri2-relative new-modal-content">
                                 <div
-                                    class="ri2-modal-body ri2-block ri2-relative ri2-bgwhite1 ri2-marginbottom15 ri2-borderradius2 ri2-overflowhidden">
+                                        class="ri2-modal-body ri2-block ri2-relative ri2-bgwhite1 ri2-marginbottom15 ri2-borderradius2 ri2-overflowhidden">
                                     <div
-                                        class="ri2-block ri2-relative ri2-left new-blackoutgradient ri2-txwhite1 ri2-font20 ri2-boxpad10 ri2-box">
+                                            class="ri2-block ri2-relative ri2-left new-blackoutgradient ri2-txwhite1 ri2-font20 ri2-boxpad10 ri2-box">
                                         Report
                                     </div>
                                     <div class="ri2-block ri2-relative ri2-boxpad40 ri2-mobileboxpad20 ri2-box">
                                         <div class="ri2-block ri2-relative ri2-marginbottom20 ri2-left">
                                             <div
-                                                class="ri2-block ri2-relative ri2-marginbottom5 ri2-font14 ri2-txgrey1 ri2-semibold">
+                                                    class="ri2-block ri2-relative ri2-marginbottom5 ri2-font14 ri2-txgrey1 ri2-semibold">
                                                 Waktu
                                             </div>
                                             <div class="ri2-inlineblock ri2-fullwidth ri2-relative ri2-radio">
@@ -83,7 +83,7 @@
                                         </div>
                                         <div class="ri2-block ri2-relative ri2-left">
                                             <button
-                                                class="export-button modalreportclose ri2-inlineblock ri2-bordernone ri2-borderradius2 ri2-boxpad7 ri2-paddingright15 ri2-paddingleft15 ri2-bgblue1 ri2-txwhite1 ri2-hovering ri2-font16 ri2-semibold ri2-pointer">
+                                                    class="export-button modalreportclose ri2-inlineblock ri2-bordernone ri2-borderradius2 ri2-boxpad7 ri2-paddingright15 ri2-paddingleft15 ri2-bgblue1 ri2-txwhite1 ri2-hovering ri2-font16 ri2-semibold ri2-pointer">
                                                 Export
                                             </button>
                                         </div>
@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="ri2-block ri2-relative ri2-center">
                                     <div
-                                        class="modalreportclose ri2-inlineblock ri2-relative ri2-modal-close ri2-txwhite1 ri2-semibold ri2-font18 ri2-pointer ri2-linkhoveryellow1">
+                                            class="modalreportclose ri2-inlineblock ri2-relative ri2-modal-close ri2-txwhite1 ri2-semibold ri2-font18 ri2-pointer ri2-linkhoveryellow1">
                                         <i class="fas fa-times-circle"></i> Tutup
                                     </div>
                                 </div>
@@ -204,10 +204,9 @@
 
         $('.export-button').click(function () {
 
-            if($('#startDate').val() != null){
-            window.open("{{'report/reportDownload'}}?startDate="+$('#startDate').val()+'&endDate='+$('#endDate').val(), '_blank');
-                }
-            else {
+            if ($('#startDate').val() != null) {
+                window.open("{{'report/reportDownload'}}?startDate=" + $('#startDate').val() + '&endDate=' + $('#endDate').val(), '_blank');
+            } else {
                 window.open("{{'report/reportDownload'}}", '_blank');
             }
         });
