@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<?php
+header('X-Frame-Options: DENY');
+?>
 <head>
     @include('layouts.admin.meta')
     <link href="{{ asset('admin/css/jquery.datetimepicker.css') }}" rel="stylesheet">

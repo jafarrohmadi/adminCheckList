@@ -1,5 +1,8 @@
 <!doctype html>
 <html class="no-js">
+<?php
+header('X-Frame-Options: DENY');
+?>
 <head>
     <meta charset="utf-8">
     <meta name="theme-color" content="#8E2DE2">

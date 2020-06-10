@@ -1,5 +1,8 @@
 <!doctype html>
 <html lang="en">
+<?php
+header('X-Frame-Options: DENY');
+?>
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
