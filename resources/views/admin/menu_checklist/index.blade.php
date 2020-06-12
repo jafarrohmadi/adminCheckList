@@ -24,20 +24,9 @@
                     <div class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-shadow"></div>
                     <div class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-white"></div>
                     <div class="ri2-block ri2-relative ri2-boxpad40 ri2-mobileboxpad20 ri2-box">
-                        <div class="ri2-block ri2-relative ri2-overflowauto ri2-paddingbottom20" data-simplebar
-                             data-simplebar-auto-hide="false">
-                            <table class="display datatable-table" style="width:100%;">
-                                <thead>
-                                <tr>
-                                    <th class="fit">No</th>
-                                    <th>Name</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody id="userAll">
-                                @include('admin.menu_checklist.index_list')
-                                </tbody>
-                            </table>
+                        <div class="ri2-block ri2-relative ri2-overflowauto ri2-paddingbottom20 " data-simplebar
+                             data-simplebar-auto-hide="false" id="userAll">
+                            @include('admin.menu_checklist.index_list')
                         </div>
                     </div>
                 </div>
@@ -105,6 +94,7 @@
                 url: "{{url('/getMenuChecklist') }}",
                 success: function (data) {
                     $('#userAll').html(data);
+                    $('.datatable-table').DataTable();
                 }
             });
         }
@@ -146,7 +136,7 @@
                     if (data == 'false') {
                         $('.modalbuatuseropen').hide();
                     } else {
-                        popUpMessage('Success Tambah Lokasi');
+                        popUpMessage('Success Tambah Checklist');
                     }
                     getAllUser();
                     $.LoadingOverlay("hide");
@@ -197,7 +187,7 @@
                     $('body', 'html').css('overflow', 'auto');
                     getAllUser();
 
-                    popUpMessage('Success Edit Location');
+                    popUpMessage('Success Edit Checklist');
                     $.LoadingOverlay("hide");
                 }, error: function (err) {
                     if (err.status == 422) { // when status code is 422, it's a validation issue

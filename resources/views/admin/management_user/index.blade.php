@@ -30,12 +30,8 @@
         <a class="modalbuatuseropen new-toolbarbutton ri2-inlineblock new-ocean-gradient ri2-font14 ri2-mobilefont12 ri2-semibold ri2-txwhite1 ri2-pointer ri2-hovering"><i
                     class="fas fa-plus-circle"></i> Buat User</a>
 
-        <span
-<<<<<<< HEAD
-                style="font-size: 20px;margin: auto;padding-left: 300px;"> Total Kuota User : {{ $company->quota }} </span>
-=======
-            style="font-size: 20px;margin: auto;padding-left: 300px;"> Total Kuota User : {{ $company->quota }} </span>
->>>>>>> 051ce81f52405a4fbfa5e4be317544ef4a8d61ee
+        <span style="font-size: 20px;margin: auto;padding-left: 300px;"> Total Kuota User : {{ $company->quota }} </span>
+
         <span style="font-size: 20px;margin: auto;"
               class="sisakuota"> Total Kuota Tersisa : {{ $company->empty_space }}</span>
     </div>
@@ -48,24 +44,8 @@
                     <div class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-white"></div>
                     <div class="ri2-block ri2-relative ri2-boxpad40 ri2-mobileboxpad20 ri2-box">
                         <div class="ri2-block ri2-relative ri2-overflowauto ri2-paddingbottom20" data-simplebar
-                             data-simplebar-auto-hide="false">
-                            <table class="display datatable-table" style="width:100%;">
-                                <thead>
-                                <tr>
-                                    <th class="fit">No</th>
-                                    <th>Name</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>Department</th>
-                                    <th>Jabatan</th>
-                                    <th>Atasan</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody id="userAll">
-                                @include('admin.management_user.index_list')
-                                </tbody>
-                            </table>
+                             data-simplebar-auto-hide="false" id="userAll">
+                            @include('admin.management_user.index_list')
                         </div>
                     </div>
                 </div>
@@ -167,6 +147,7 @@
                 url: "{{url('/getAllUser') }}",
                 success: function (data) {
                     $('#userAll').html(data);
+                    $('.datatable-table').DataTable();
                 }
             });
         }
@@ -305,11 +286,9 @@
                         console.warn(err.responseJSON.errors);
                         // display errors on each form field
                         $.each(err.responseJSON.errors, function (i, error) {
-<<<<<<< HEAD
+
                             var el = $(document).find('[name="edit' + i + '"]');
-=======
-                            var el = $(document).find('[name="' + i + '"]');
->>>>>>> 051ce81f52405a4fbfa5e4be317544ef4a8d61ee
+
                             el.after($('<span style="color: red;">' + error[0] + '</span>'));
                         });
                     }

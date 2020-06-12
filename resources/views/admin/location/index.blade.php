@@ -25,19 +25,10 @@
                     <div class="ri2-absolute ri2-fullwidth ri2-fullheight ri2-bgwhite1 new-content-box-white"></div>
                     <div class="ri2-block ri2-relative ri2-boxpad40 ri2-mobileboxpad20 ri2-box">
                         <div class="ri2-block ri2-relative ri2-overflowauto ri2-paddingbottom20" data-simplebar
-                             data-simplebar-auto-hide="false">
-                            <table class="display datatable-table" style="width:100%;">
-                                <thead>
-                                <tr>
-                                    <th class="fit">No</th>
-                                    <th>Name</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody id="userAll">
+                             data-simplebar-auto-hide="false" id="userAll">
+
                                 @include('admin.location.index_list')
-                                </tbody>
-                            </table>
+
                         </div>
                     </div>
                 </div>
@@ -105,6 +96,7 @@
                 url: "{{url('/getMenuLocation') }}",
                 success: function (data) {
                     $('#userAll').html(data);
+                    $('.datatable-table').DataTable();
                 }
             });
         }

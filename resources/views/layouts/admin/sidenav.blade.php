@@ -18,6 +18,13 @@
                 @endif
 
                 @if(\Illuminate\Support\Facades\Auth::user()->access == 'admin')
+                    <li><a href="{{ url('management_user') }}"
+                           @if(url()->current() === url('management_user')) class="selected" @endif>
+                            <div class="nav-icon"><i class="fas fa-user awesome-nav"></i></div>
+                            Users</a></li>
+                @endif
+
+                @if(\Illuminate\Support\Facades\Auth::user()->access == 'admin')
                     <li><a href="{{ route('checklist') }}"
                            @if(url()->current() === url('checklist')) class="selected" @endif>
                             <div class="nav-icon"><i class="fas fa-chart-line awesome-nav"></i></div>
@@ -36,13 +43,6 @@
                            @if(url()->current() === url('report')) class="selected" @endif>
                             <div class="nav-icon"><i class="fas fa-file awesome-nav"></i></div>
                             Laporan Tugas</a></li>
-                @endif
-
-                @if(\Illuminate\Support\Facades\Auth::user()->access == 'admin')
-                    <li><a href="{{ url('management_user') }}"
-                           @if(url()->current() === url('management_user')) class="selected" @endif>
-                            <div class="nav-icon"><i class="fas fa-user awesome-nav"></i></div>
-                            Users</a></li>
                 @endif
             </ul>
         </nav>
