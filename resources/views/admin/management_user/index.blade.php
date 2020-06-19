@@ -30,10 +30,10 @@
         <a class="modalbuatuseropen new-toolbarbutton ri2-inlineblock new-ocean-gradient ri2-font14 ri2-mobilefont12 ri2-semibold ri2-txwhite1 ri2-pointer ri2-hovering"><i
                     class="fas fa-plus-circle"></i> Buat User</a>
 
-        <span style="font-size: 20px;margin: auto;padding-left: 300px;"> Total Kuota User : {{ $company->quota }} </span>
+        {{--        <span style="font-size: 20px;margin: auto;padding-left: 300px;"> Total Kuota User : {{ $company->quota }} </span>--}}
 
-        <span style="font-size: 20px;margin: auto;"
-              class="sisakuota"> Total Kuota Tersisa : {{ $company->empty_space }}</span>
+        {{--        <span style="font-size: 20px;margin: auto;"--}}
+        {{--              class="sisakuota"> Total Kuota Tersisa : {{ $company->empty_space }}</span>--}}
     </div>
 
     <div class="content-body">
@@ -203,7 +203,7 @@
                         popUpMessageFailed('Quota Anda sudah habis , silahkan membeli di airmascloud');
                         $('.modalbuatuseropen').hide();
                     } else {
-                        $('.sisakuota').html('Total Kuota Tersisa : ' + data);
+                        // $('.sisakuota').html('Total Kuota Tersisa : ' + data);
                         popUpMessage('Success Tambah User');
                     }
                     getAllUser();
@@ -346,7 +346,7 @@
                     $('body', 'html').css('overflow', 'auto');
                     getAllUser();
                     $('.modalbuatuseropen').show();
-                    $('.sisakuota').html('Total Kuota Tersisa : ' + data);
+                    // $('.sisakuota').html('Total Kuota Tersisa : ' + data);
                     popUpMessage('Success Delete User');
                     $.LoadingOverlay("hide");
                 }

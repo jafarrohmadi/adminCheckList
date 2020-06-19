@@ -62,8 +62,4 @@ class Admin extends Authenticatable
     {
         return $this->belongsTo(Company::class, 'company');
     }
-<<<<<<< HEAD
-    
-=======
->>>>>>> 051ce81f52405a4fbfa5e4be317544ef4a8d61ee
 }

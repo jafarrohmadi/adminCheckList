@@ -66,17 +66,9 @@ class ClientController extends Controller
         ]);
 
         $response = json_decode((string)$response->getBody(), true);
- #       dd($response);
-        Cookie::queue('bearer', $at, 60);
-<<<<<<< HEAD
 
-        if(!isset($response['data']['company']['access']['AC']['active']))
-        {
-            if($response['data']['company']['access']['AC']['active'] != 1) {
-                return view('errors.error403cont');
-            }
-        }
-=======
+        Cookie::queue('bearer', $at, 60);
+
         
         if(!isset($response['data']['company']['access']['AC']['active']))
 	    {
@@ -84,8 +76,7 @@ class ClientController extends Controller
 			    return view('errors.error403cont');
 		    }
 	    }
-	    
->>>>>>> 051ce81f52405a4fbfa5e4be317544ef4a8d61ee
+
 
         $finduserdb = Admin::where('email', $response['data']['email'])->first();
         if (!$finduserdb) {
