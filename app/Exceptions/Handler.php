@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Mail;
 
 class Handler extends ExceptionHandler
 {
@@ -25,16 +26,25 @@ class Handler extends ExceptionHandler
         'password',
         'password_confirmation',
     ];
-
-    /**
-     * Report or log an exception.
-     *
-     * @param  \Exception  $exception
-     * @return void
-     */
+	
+	/**
+	 * Report or log an exception.
+	 *
+	 * @param  \Exception  $exception
+	 * @return void
+	 * @throws Exception
+	 */
     public function report(Exception $exception)
     {
         parent::report($exception);
+	
+        if(env('APP_DEBUG') == false) {
+	        Mail::send('mail.errorreport', ['e' => $exception], function ($message) {
+		        $message->to('rohmadijafar@gmail.com')
+		                ->subject('error!');
+	        }
+	        );
+        }
     }
 
     /**

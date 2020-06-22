@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Mail\UserAdd;
 use App\Mail\UserRegistered;
@@ -37,18 +38,18 @@ class UserController extends Controller
 		$company = Auth::user()->company;
 		
 		$user               = new User();
-		$user->name         = $request->name;
+		$user->name         = (new Helper())->removetags($request->name);
 		$user->password     = bcrypt($request->name);
 		$user->phone_number = '+'.normalize_phone($request->phone_number);
-		$user->email        = $request->email;
+		$user->email        = (new Helper())->removetags($request->email);
 		$user->access       = 'user';
-		$user->designation  = $request->jabatan;
-		$user->department   = $request->department;
+		$user->designation  = (new Helper())->removetags($request->jabatan);
+		$user->department   = (new Helper())->removetags($request->department);
 		$user->status       = 1;
-		$user->company      = $company;
-		$user->phone_code   = $request->phone_code;
+		$user->company      = (new Helper())->removetags($company);
+		$user->phone_code   = (new Helper())->removetags($request->phone_code);
 		$user->user_phone   = normalize_phone($request->user_phone);
-		$user->boss         = $request->boss;
+		$user->boss         = (new Helper())->removetags($request->boss);
 		$user->save();
 		
 		//Mail::to($request->email)->send(new UserAdd($request->name , $request->phone_number));
@@ -96,17 +97,17 @@ class UserController extends Controller
 		$company       = Auth::user()->company;
 		
 		$user               = User::find($id);
-		$user->name         = $request->name;
+		$user->name         = (new Helper())->removetags($request->name);
 		$user->password     = bcrypt($request->name);
 		$user->phone_number = '+'.normalize_phone($request->phone_number);
-		$user->email        = $request->email;
+		$user->email        = (new Helper())->removetags($request->email);
 		$user->access       = 'user';
 		$user->designation  = 'user';
-		$user->company      = $company;
-		$user->phone_code   = $request->phone_code;
-		$user->designation  = $request->jabatan;
+		$user->company      = (new Helper())->removetags($company);
+		$user->phone_code   = (new Helper())->removetags($request->phone_code);
+		$user->designation  = (new Helper())->removetags($request->jabatan);
 		$user->user_phone   = normalize_phone($request->user_phone);
-		$user->boss         = $request->boss;
+		$user->boss         = (new Helper())->removetags($request->boss);
 		$user->save();
 		
 		$data_mail = [

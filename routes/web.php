@@ -11,25 +11,21 @@
 |
 */
 
-<<<<<<< HEAD
-Route::redirect('/', '/login');
-=======
+
 Route::redirect('/', '/admin/login');
->>>>>>> 051ce81f52405a4fbfa5e4be317544ef4a8d61ee
+
 //Route::get('/login', ['as' =>'login' ,'uses' =>'ClientController@redirect']);
 Auth::routes();
 
 #Route::redirect('/', '/site/login');
 //Route::get('/login', 'ClientController@login');
 //Route::get('/redirect', ['as' => 'login', 'uses' => 'ClientController@redirect']);
+//
+//Route::get('/login', ['as' => 'login', 'uses' => 'ClientController@redirect']);
+//
+//
+//Route::get('/callback', 'ClientController@callback')->name('callback');
 
-Route::get('/login', ['as' => 'login', 'uses' => 'ClientController@redirect']);
-
-<<<<<<< HEAD
-=======
-Route::get('/callback', 'ClientController@callback')->name('callback');
-
->>>>>>> 051ce81f52405a4fbfa5e4be317544ef4a8d61ee
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('/checklist', 'Admin\CheckListController@index')->name('checklist');
 	Route::post('/checkListEmployeeSave', 'Admin\CheckListController@checkListEmployeeSave');

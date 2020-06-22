@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Exports\ReportExport;
+use App\Helpers\Helper;
 use App\Http\Controllers\ClientController;
 use App\Http\Requests\CheckListEmployeeRequest;
 use App\Http\Requests\CheckListEmployeeSaveRequest;
@@ -198,7 +199,7 @@ class CheckListController extends ClientController
 		$checkListProgress              = CheckListProgress::find($id);
 		$checkListProgress->location_id = $request->location_id;
 		if ($request->note != 'null') {
-			$checkListProgress->note        = $request->note;
+			$checkListProgress->note        = (new Helper())->removetags($request->note);
 			$checkListProgress->note_status = 0;
 			$checkListProgress->userUpdate  = Auth::user()->email;
 		}
@@ -232,7 +233,7 @@ class CheckListController extends ClientController
 	{
 		$checkListProgress = CheckListProgress::find($id);
 		if ($request->note != 'null') {
-			$checkListProgress->note        = $request->note;
+			$checkListProgress->note        = (new Helper())->removetags($request->note);
 			$checkListProgress->note_status = 0;
 			$checkListProgress->userUpdate  = Auth::user()->email;
 		}
@@ -254,9 +255,9 @@ class CheckListController extends ClientController
 		$login = Auth::user();
 		
 		$location          = new Location();
-		$location->name    = $request->name;
-		$location->company = $login->company;
-		$location->user_id = $login->email;
+		$location->name    = (new Helper())->removetags($request->name);
+		$location->company = (new Helper())->removetags($login->company);
+		$location->user_id = (new Helper())->removetags($login->email);
 		$location->save();
 		
 		return $location;
@@ -265,7 +266,7 @@ class CheckListController extends ClientController
 	public function updateLocation($id, LocationRequest $request)
 	{
 		$location       = Location::find($id);
-		$location->name = $request->name;
+		$location->name = (new Helper())->removetags($request->name);
 		$location->save();
 		
 		return $location;
@@ -294,9 +295,9 @@ class CheckListController extends ClientController
 	{
 		$login              = Auth::user();
 		$checkList          = new CheckList();
-		$checkList->name    = $request->name;
-		$checkList->user_id = $login->email;
-		$checkList->company = $login->company;
+		$checkList->name    = (new Helper())->removetags($request->name);
+		$checkList->user_id = (new Helper())->removetags($login->email);
+		$checkList->company = (new Helper())->removetags($login->company);
 		$checkList->save();
 		
 		return $checkList;
@@ -305,7 +306,7 @@ class CheckListController extends ClientController
 	public function updateCheckList($id, CheckListRequest $request)
 	{
 		$checkList       = CheckList::find($id);
-		$checkList->name = $request->name;
+		$checkList->name = (new Helper())->removetags($request->name);
 		$checkList->save();
 		
 		return $checkList;
@@ -325,12 +326,12 @@ class CheckListController extends ClientController
 	public function editOperTugasList(SaveOperTugasListRequest $request, $id)
 	{
 		$checkListOperTugas               = CheckListOperTugas::find($id);
-		$checkListOperTugas->from_user_id = $request->from_user_id;
-		$checkListOperTugas->to_user_id   = $request->to_user_id;
+		$checkListOperTugas->from_user_id = (new Helper())->removetags($request->from_user_id);
+		$checkListOperTugas->to_user_id   = (new Helper())->removetags($request->to_user_id);
 		$checkListOperTugas->location_id  = $request->location_id;
 		$checkListOperTugas->start_date   = $request->start_date;
 		$checkListOperTugas->end_date     = $request->end_date;
-		$checkListOperTugas->reason       = $request->reason;
+		$checkListOperTugas->reason       = (new Helper())->removetags($request->reason);
 		$checkListOperTugas->save();
 		
 		return $checkListOperTugas;
@@ -339,12 +340,12 @@ class CheckListController extends ClientController
 	public function saveOperTugas(SaveOperTugasListRequest $request)
 	{
 		$checkListOperTugas               = new CheckListOperTugas();
-		$checkListOperTugas->from_user_id = $request->from_user_id;
-		$checkListOperTugas->to_user_id   = $request->to_user_id;
+		$checkListOperTugas->from_user_id = (new Helper())->removetags($request->from_user_id);
+		$checkListOperTugas->to_user_id   = (new Helper())->removetags($request->to_user_id);
 		$checkListOperTugas->location_id  = $request->location_id;
 		$checkListOperTugas->start_date   = $request->start_date;
 		$checkListOperTugas->end_date     = $request->end_date;
-		$checkListOperTugas->reason       = $request->reason;
+		$checkListOperTugas->reason       = (new Helper())->removetags($request->reason);
 		$checkListOperTugas->save();
 		
 		return $checkListOperTugas;
@@ -356,21 +357,21 @@ class CheckListController extends ClientController
 		$firstCheckListOperTugas->reason = $request->reason;
 		if ($firstCheckListOperTugas->to_user_id !== $request->to_user_id) {
 			$secondCheckListOperTugas               = new CheckListOperTugas();
-			$secondCheckListOperTugas->from_user_id = $request->from_user_id;
-			$secondCheckListOperTugas->to_user_id   = $request->to_user_id;
+			$secondCheckListOperTugas->from_user_id = (new Helper())->removetags($request->from_user_id);
+			$secondCheckListOperTugas->to_user_id   = (new Helper())->removetags($request->to_user_id);
 			$secondCheckListOperTugas->location_id  = $request->location_id;
 			$secondCheckListOperTugas->start_date   = date('Y-m-d');
 			$secondCheckListOperTugas->end_date     = date('Y-m-d');
-			$secondCheckListOperTugas->reason       = $request->reason;
+			$secondCheckListOperTugas->reason       = (new Helper())->removetags($request->reason);
 			$secondCheckListOperTugas->save();
 			
 			$lastCheckListOperTugas               = new CheckListOperTugas();
-			$lastCheckListOperTugas->from_user_id = $firstCheckListOperTugas->from_user_id;
+			$lastCheckListOperTugas->from_user_id = (new Helper())->removetags($firstCheckListOperTugas->from_user_id);
 			$lastCheckListOperTugas->to_user_id   = $firstCheckListOperTugas->to_user_id;
 			$lastCheckListOperTugas->location_id  = $firstCheckListOperTugas->location_id;
 			$lastCheckListOperTugas->start_date   = date('Y-m-d', strtotime('+1 day'));
 			$lastCheckListOperTugas->end_date     = $firstCheckListOperTugas->end_date;
-			$lastCheckListOperTugas->reason       = $firstCheckListOperTugas->reason;
+			$lastCheckListOperTugas->reason       = (new Helper())->removetags($firstCheckListOperTugas->reason);
 			$lastCheckListOperTugas->save();
 			$firstCheckListOperTugas->end_date = date('Ymd', strtotime('-1 day'));
 			$checkListProgress                 = CheckListProgress::where([

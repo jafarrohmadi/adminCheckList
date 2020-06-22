@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LocationRequest;
 use App\Models\CheckListEmployeeDetail;
@@ -26,9 +27,9 @@ class LocationController extends Controller
 		$login = Auth::user();
 		
 		$location          = new Location();
-		$location->name    = $request->name;
-		$location->company = $login->company;
-		$location->user_id = $login->email;
+		$location->name    = (new Helper())->removetags($request->name);
+		$location->company = (new Helper())->removetags($login->company);
+		$location->user_id = (new Helper())->removetags($login->email);
 		$location->save();
 		
 		return $location;
@@ -37,7 +38,7 @@ class LocationController extends Controller
 	public function update($id, LocationRequest $request)
 	{
 		$location       = Location::find($id);
-		$location->name = $request->name;
+		$location->name = (new Helper())->removetags($request->name);
 		$location->save();
 		
 		return $location;

@@ -132,5 +132,10 @@ class Helper
 
         return $text;
     }
-
+    
+	function removetags($val){
+		if( isset($val) ){
+			return preg_replace('/<[^>]*>/', '', $val);
+		}
+	}
 }
